@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Menulist from "./container/menulist";
+import CoffeesInfo from "./container/coffeeInfo";
+import BrandInfo from "./container/brandInfo";
+import {
+  Route,
+  Switch,
+  RouteComponentProps,
+  withRouter,
+} from "react-router-dom";
 
-function App() {
+export const App = ({
+  history,
+  location,
+  match,
+}: RouteComponentProps): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path={`/coffee/:coffee_id`}>
+        <CoffeesInfo location={location} />
+      </Route>
+      <Route exact path={"/coffee"}>
+        <Menulist />
+      </Route>
+      <Route exact path={"/brandinfo"}>
+        <BrandInfo></BrandInfo>
+      </Route>
+    </Switch>
   );
-}
+};
 
-export default App;
+export const AppContainerWithRouter = withRouter(App);

@@ -1,4 +1,8 @@
 import React from "react";
+
+// import "./App.css";
+
+import Main from "./container/mainPage/Main";
 import Menulist from "./container/menulist";
 import CoffeesInfo from "./container/coffeeInfo";
 import BrandInfo from "./container/brandInfo";
@@ -9,6 +13,7 @@ import {
   withRouter,
 } from "react-router-dom";
 
+
 export const App = ({
   history,
   location,
@@ -16,6 +21,7 @@ export const App = ({
 }: RouteComponentProps): JSX.Element => {
   return (
     <Switch>
+      <Route path="/" exact={true} component={Main} />
       <Route exact path={`/coffee/:coffee_id`}>
         <CoffeesInfo location={location} />
       </Route>

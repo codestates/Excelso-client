@@ -6,6 +6,8 @@ import Main from "./container/mainPage/Main";
 import Menulist from "./container/menulist";
 import CoffeesInfo from "./container/coffeeInfo";
 import BrandInfo from "./container/brandInfo";
+import Signup from './pages/signup';
+import Mypage from './pages/mypage';
 import {
   Route,
   Switch,
@@ -31,6 +33,8 @@ export const App = ({
       <Route exact path={"/brandinfo"}>
         <BrandInfo></BrandInfo>
       </Route>
+      <Route exact path="/signup" render={() => <Signup />} />
+      <Route path="/mypage" render={() => <Mypage />} />
     </Switch>
   );
 };

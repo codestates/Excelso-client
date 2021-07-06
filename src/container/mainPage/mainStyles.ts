@@ -71,11 +71,6 @@ export const VideoContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-
-  source {
-    width: 100%;
-    height: 100%;
-  }
 `;
 
 export const Video = styled.video`
@@ -83,7 +78,6 @@ export const Video = styled.video`
   display: block;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
 `;
 
 export const MainSectionThree = styled.section`

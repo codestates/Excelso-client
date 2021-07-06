@@ -1,18 +1,38 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import "./App.css";
+// import "./App.css";
 
 import Main from "./container/mainPage/Main";
+import Menulist from "./container/menulist";
+import CoffeesInfo from "./container/coffeeInfo";
+import BrandInfo from "./container/brandInfo";
+import {
+  Route,
+  Switch,
+  RouteComponentProps,
+  withRouter,
+} from "react-router-dom";
 
-function App() {
+
+export const App = ({
+  history,
+  location,
+  match,
+}: RouteComponentProps): JSX.Element => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact={true} component={Main} />
-      </Switch>
-    </BrowserRouter>
+    <Switch>
+      <Route path="/" exact={true} component={Main} />
+      <Route exact path={`/coffee/:coffee_id`}>
+        <CoffeesInfo location={location} />
+      </Route>
+      <Route exact path={"/coffee"}>
+        <Menulist />
+      </Route>
+      <Route exact path={"/brandinfo"}>
+        <BrandInfo></BrandInfo>
+      </Route>
+    </Switch>
   );
-}
+};
 
-export default App;
+export const AppContainerWithRouter = withRouter(App);

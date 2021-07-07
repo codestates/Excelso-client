@@ -112,6 +112,7 @@ export interface reviewI {
   coffee_id: number;
   user_id: number;
   nickname: string;
+  email: string;
 }
 
 const defaultState2 = {

@@ -17,6 +17,9 @@ export type CoffeeT = {
   kcal: number;
   caffeine: number;
   sugar: number;
+  protein: number;
+  salt: number;
+  fat: number;
   brand_id: number;
 };
 

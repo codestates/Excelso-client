@@ -2,7 +2,19 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
-import { NavContainer, NavDiv, Button, Logo } from "./navStyles";
+import {
+  NavContainer,
+  LogoDiv,
+  BeanDiv,
+  MenuDiv,
+  MenuButton,
+  // NavDiv,
+  LoginDiv,
+  SignUpDiv,
+  Button,
+  Logo
+  // GroupDiv
+} from "./navStyles";
 
 const Nav = () => {
   const history = useHistory();
@@ -41,37 +53,35 @@ const Nav = () => {
 
   return (
     <NavContainer>
-      <NavDiv>
+      <LogoDiv>
         <Logo onClick={goHome}>Excelso</Logo>
-      </NavDiv>
-      <NavDiv>
-        <Button as="a" href="#">
-          원두
-        </Button>
-        <Button as="a" href="#">
-          메뉴
-        </Button>
-      </NavDiv>
-      <NavDiv>
+      </LogoDiv>
+      <BeanDiv>
+        <Link to="/coffee">
+          <MenuButton>원두</MenuButton>
+        </Link>
+      </BeanDiv>
+      <MenuDiv>
+        <MenuButton>메뉴</MenuButton>
+      </MenuDiv>
+      <LoginDiv>
         {document.cookie ? (
-          <Button as="a" href="#">
-            마이페이지
-          </Button>
+          <Button onClick={onClickLogin}>로그인</Button>
         ) : (
-          <Button as="a" href="#" onClick={onClickLogin}>
-            로그인
-          </Button>
+          <Link to="/mypage">
+            <Button>마이페이지</Button>
+          </Link>
         )}
+      </LoginDiv>
+      <SignUpDiv>
         {document.cookie ? (
-          <Button as="a" href="#" onClick={onClickLogout}>
-            로그아웃
-          </Button>
+          <Button onClick={onClickLogout}>로그아웃</Button>
         ) : (
-          <Button as="a" href="#" onClick={onClickSignUp}>
-            회원가입
-          </Button>
+          <Link to="/signup">
+            <Button onClick={onClickSignUp}>회원가입</Button>
+          </Link>
         )}
-      </NavDiv>
+      </SignUpDiv>
     </NavContainer>
   );
 };

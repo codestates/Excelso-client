@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-// import Nav from "../../components/nav/Nav";
+import SwiperSlider from "../../components/slider/SwiperSlider";
+import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";
 import {
   MainContainer,
@@ -26,12 +27,10 @@ import {
 } from "./mainStyles";
 
 const Main = ({ match }: RouteComponentProps) => {
-  const videoSource =
-    "https://vod-progressive.akamaized.net/exp=1625449939~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4924%2F17%2F449623829%2F1976335115.mp4~hmac=13c3fb89cf434e015efedb2efc6c19ae8ce562f425750a11e9f637d4643f24de/vimeo-prod-skyfire-std-us/01/4924/17/449623829/1976335115.mp4?download=1&filename=Coffee+-+46989.mp4";
   const videoSource2 =
     "https://vod-progressive.akamaized.net/exp=1625549723~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2221%2F14%2F361107726%2F1481313478.mp4~hmac=d9bc34aa76f0ed11db6ae85ace702c14a3fd1eca475c8d97bf611c2c54c7af8e/vimeo-prod-skyfire-std-us/01/2221/14/361107726/1481313478.mp4?download=1&filename=Coffee+-+26846.mp4";
   const img1 =
-    "https://pixabay.com/get/g3aa8d0ed867beaffc0b60a5128731fd7423854c139500cdec8fdabd72a6139ad8826239ed412f5ec2ee84fb94e428255_1280.jpg?attachment=";
+    "https://pixabay.com/get/gbd71c3396177ae16233c15775cc9b32cbdbf9f8c2c310ac19deed5f95dbaacb5cd4f20985b68da9272003e04a637329d_1920.jpg?attachment=";
   const img2 =
     "https://pixabay.com/get/g2ccc8c48f99224b5de2482bd17c953e2cd639a6fba7fac27f99319f9737f0199730c563f15049418055fc57c4e6553b9_1920.jpg?attachment=";
   const img3 =
@@ -43,10 +42,12 @@ const Main = ({ match }: RouteComponentProps) => {
 
   return (
     <>
-      {/* <Nav /> */}
+      <Nav />
       <MainContainer>
         <MainSectionOne>
-          <FstContainer></FstContainer>
+          <FstContainer>
+            <SwiperSlider />
+          </FstContainer>
           <SndContainer>
             <ExcelLogo>Excelso</ExcelLogo>
             <ExcelExp>

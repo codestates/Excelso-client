@@ -3,8 +3,8 @@ import React, { useState } from "react";
 // import "./App.css";
 
 import Main from "./container/mainPage/Main";
-import Menulist from "./container/menulist";
-import CoffeesInfo from "./container/coffeeInfo";
+import MenulistPage from './pages/menulistpage'
+import Coffeeinfopage from './pages/coffeeinfopage'
 import BrandInfo from "./container/brandInfo";
 import Signup from './pages/signup';
 import Mypage from './pages/mypage';
@@ -31,10 +31,10 @@ export const App = ({
     <Switch>
       <Route path="/" exact={true} component={Main} />
       <Route exact path={`/coffee/:coffee_id`}>
-        <CoffeesInfo location={location} />
+        <Coffeeinfopage location={location} />
       </Route>
       <Route exact path={"/coffee"}>
-        <Menulist />
+        <MenulistPage />
       </Route>
       <Route exact path={"/brandinfo"}>
         <BrandInfo></BrandInfo>

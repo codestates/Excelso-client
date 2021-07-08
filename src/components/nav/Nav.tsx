@@ -57,12 +57,14 @@ const Nav = () => {
         <Logo onClick={goHome}>Excelso</Logo>
       </LogoDiv>
       <BeanDiv>
-        <Link to="/coffee">
+        <Link to="/brandinfo">
           <MenuButton>원두</MenuButton>
         </Link>
       </BeanDiv>
       <MenuDiv>
+      <Link to="/coffee">
         <MenuButton>메뉴</MenuButton>
+        </Link>
       </MenuDiv>
       <LoginDiv>
         {document.cookie ? (

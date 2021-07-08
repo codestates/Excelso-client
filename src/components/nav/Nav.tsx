@@ -57,16 +57,20 @@ const Nav = () => {
         <Logo onClick={goHome}>Excelso</Logo>
       </LogoDiv>
       <BeanDiv>
-        <Link to="/coffee">
+        <Link to="/brandinfo">
           <MenuButton>원두</MenuButton>
         </Link>
       </BeanDiv>
       <MenuDiv>
-        <MenuButton>메뉴</MenuButton>
+        <Link to="/coffee">
+          <MenuButton>메뉴</MenuButton>
+        </Link>
       </MenuDiv>
       <LoginDiv>
         {document.cookie ? (
-          <Button onClick={onClickLogin}>로그인</Button>
+          <Link to="/login">
+            <Button onClick={onClickLogin}>로그인</Button>
+          </Link>
         ) : (
           <Link to="/mypage">
             <Button>마이페이지</Button>
@@ -75,10 +79,12 @@ const Nav = () => {
       </LoginDiv>
       <SignUpDiv>
         {document.cookie ? (
-          <Button onClick={onClickLogout}>로그아웃</Button>
+          <Link to="/mypage">
+            <Button onClick={onClickSignUp}>회원가입</Button>
+          </Link>
         ) : (
           <Link to="/signup">
-            <Button onClick={onClickSignUp}>회원가입</Button>
+            <Button onClick={onClickLogout}>로그아웃</Button>
           </Link>
         )}
       </SignUpDiv>

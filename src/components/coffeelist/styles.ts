@@ -30,6 +30,8 @@ export const Item = styled(Link)<ItemI>`
   }
 `;
 export const Image = styled.img`
+  margin: 0;
+  padding: 0;
   border-radius: 50%;
   overflow: hidden;
   width: 250px;

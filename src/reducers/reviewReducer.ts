@@ -7,12 +7,12 @@ const DELETE_REVIEW = "DELETE_REVIEW";
 
 interface ADDREVIEW {
   type: typeof ADD_REVIEW;
-  message: "등록성공";
+  message: string;
 }
 
 interface DELETEREVIEW {
   type: typeof DELETE_REVIEW;
-  message: "삭제성공";
+  message: string;
 }
 
 interface GETREVIEW {
@@ -21,31 +21,39 @@ interface GETREVIEW {
 }
 
 type PostReviewDispatch = ADDREVIEW | DELETEREVIEW;
+
 export const addReviewAction = (
   coffee_id: number,
   content: string,
   rating: number,
   token: string
 ) => {
-  return async (dispatch: Dispatch) => {
-    const response = await axios.post("/review/update", {
-      coffee_id,
-      content,
-      rating,
-      token,
-    });
-    const data = await response.data;
-
-    return dispatch({
-      type: ADD_REVIEW,
-      message: data,
-    });
+  return async (dispatch: Dispatch<ADDREVIEW>) => {
+    try {
+      console.log("ADD_REVIEW ACTION");
+      console.log(coffee_id, content, rating, token);
+      const response = await axios.post("http://localhost:8000/review/update", {
+        coffee_id,
+        content,
+        rating,
+        token,
+      });
+      console.log(response);
+      const data: string = await response.data;
+      console.log(data);
+      return dispatch({
+        type: ADD_REVIEW,
+        message: data,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 };
 
 export const deleteReivewAction = (coffee_id: number, token: string) => {
-  return async (dispatch: Dispatch) => {
-    const response = await axios.post("/review/delete", {
+  return async (dispatch: Dispatch<DELETEREVIEW>) => {
+    const response = await axios.post("http://localhost:8000/review/delete", {
       coffee_id,
       token,
     });
@@ -112,6 +120,7 @@ export interface reviewI {
   coffee_id: number;
   user_id: number;
   nickname: string;
+  email: string;
 }
 
 const defaultState2 = {

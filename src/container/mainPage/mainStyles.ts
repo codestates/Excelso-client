@@ -1,4 +1,6 @@
-import styled from "styled-components/macro";
+// import styled from "styled-components/macro";
+import styled from "styled-components";
+import Slider from "react-slick";
 
 export const MainContainer = styled.div`
   position: relative;
@@ -10,18 +12,29 @@ export const MainContainer = styled.div`
 `;
 
 export const MainSectionOne = styled.section`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  display: flex;
-  display: block;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
 `;
 
 export const FstContainer = styled.div`
   width: 100%;
-  height: 60%;
+  height: 70%;
+  background-color: black;
+  overflow: hidden;
+  .swiper-button-prev {
+    color: pink;
+  }
+  .swiper-button-next {
+    color: pink;
+  }
+  .swiper-pagination-bullet {
+    background-color: pink;
+  }
+  .swiper-slide img {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+  }
 `;
 
 export const SndContainer = styled.div`
@@ -30,7 +43,7 @@ export const SndContainer = styled.div`
   align-items: center;
   display: block;
   width: 100%;
-  height: 40%;
+  height: 30%;
   background-color: pink;
   padding: 1.5rem;
 `;

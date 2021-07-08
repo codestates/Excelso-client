@@ -1,7 +1,7 @@
 import React from "react";
 // import styled, { createGlobalStyle } from "styled-components";
 import { Navbar, Container,
-   GlobalStyle, Button
+   GlobalStyle,
    } from './style';
 import SignupInfoCpn from '../components/signupData'
 
@@ -19,7 +19,6 @@ const SignupContainer = () => {
       <Container>
         <Navbar></Navbar>
         <SignupInfoCpn></SignupInfoCpn>
-        <Button>SIGN UP</Button>
       </Container>
     </>
   );

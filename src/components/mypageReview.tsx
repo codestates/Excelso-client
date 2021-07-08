@@ -4,6 +4,7 @@ import {MypageReviewBody, ReviewContainer,
     ReviewDelete} from "./style"
 
 const MypageReview = () => {
+  
   return (
     <MypageReviewBody>
       <ReviewContainer>

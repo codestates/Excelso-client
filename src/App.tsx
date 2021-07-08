@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // import "./App.css";
 
@@ -8,6 +8,7 @@ import CoffeesInfo from "./container/coffeeInfo";
 import BrandInfo from "./container/brandInfo";
 import Signup from './pages/signup';
 import Mypage from './pages/mypage';
+import LoginCpn from './components/login'; // ex
 import {
   Route,
   Switch,
@@ -21,6 +22,11 @@ export const App = ({
   location,
   match,
 }: RouteComponentProps): JSX.Element => {
+  // const handleUserInfo = (userData:any) => { //any
+  //   setUserData(userData)
+  // }
+  // const [ userData, setUserData ] = useState({})
+
   return (
     <Switch>
       <Route path="/" exact={true} component={Main} />
@@ -35,8 +41,12 @@ export const App = ({
       </Route>
       <Route exact path="/signup" render={() => <Signup />} />
       <Route path="/mypage" render={() => <Mypage />} />
+      <Route path="/login" render={() => <LoginCpn />} />
     </Switch>
   );
 };
 
 export const AppContainerWithRouter = withRouter(App);
+
+
+// handleUserInfo={handleUserInfo}

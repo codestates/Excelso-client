@@ -28,6 +28,13 @@ export const SignupInfoInput = styled.input`
 
 `
 
+export const SignupTitle = styled.div`
+
+`
+
+export const IsSameButton = styled.button`
+  
+`
 //=========== mypage =============
 export const MypageBody = styled.div`
   height: 50vh;
@@ -68,6 +75,10 @@ export const MypageInfoInput = styled.input`
 
 export const ChangePwBtn = styled.button`
 
+`
+
+export const Button = styled.button`
+  
 `
 
 // ==============Mypage Review=============
@@ -129,3 +140,5 @@ export const SignoutBarBody = styled.div`
 export const SignoutBtn = styled.button`
   margin-top : 12px;
 `
+
+//===========login ==============

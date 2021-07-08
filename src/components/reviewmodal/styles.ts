@@ -36,9 +36,23 @@ export const Middle = styled.div`
   margin-left: 10px;
 `;
 
-export const TextArea = styled.input.attrs((props) => ({
-  type: "text",
-}))`
+export const AddButton = styled.button<ButtonProps>`
+  vertical-align: top;
+  outline: none;
+  border-radius: 7px;
+  cursor: pointer;
+  padding: 10px;
+  margin-left: 10px;
+`;
+
+interface ButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+interface TextI {
+  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
+}
+
+export const TextArea = styled.textarea<TextI>`
   width: 80%;
   height: 100%;
   padding: 3px;
@@ -47,11 +61,6 @@ export const TextArea = styled.input.attrs((props) => ({
   border-radius: 7px;
 `;
 
-export const AddButton = styled.button`
-  vertical-align: top;
-  outline: none;
-  border-radius: 7px;
-  cursor: pointer;
-  padding: 10px;
-  margin-left: 10px;
-`;
+// .attrs((props) => ({
+//   type: "text",
+// }))`

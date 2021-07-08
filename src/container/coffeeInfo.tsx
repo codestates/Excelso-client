@@ -35,7 +35,11 @@ function CoffeesInfo({ location }: any) {
         review={review}
         handleShow={handleShow}
       ></CoffeeInfo>
-      <ReviewModal show={show} handleShow={handleShow}></ReviewModal>
+      <ReviewModal
+        show={show}
+        handleShow={handleShow}
+        path={path}
+      ></ReviewModal>
     </>
   );
 }

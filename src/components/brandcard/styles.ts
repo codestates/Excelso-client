@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const BrandCardContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
   width: 100%;
   height: 100vh;
 `;
 export const BrandCardInner = styled.div`
-  background-image: url("http://paikdabang.com/wp-content/themes/paikdabang/assets/images/ceo.jpg");
+  margin: 0 auto;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
@@ -13,9 +15,17 @@ export const BrandCardInner = styled.div`
   align-items: center;
   width: 550px;
   height: 535px;
-  position: relative;
+  background-size: contain; // coffee-bean => cover
+  background-repeat: no-repeat;
+  /* background-position: 110px -100px; */ //폴바셋
+  /* background-position: 10px; 달콤 */
+  /* background-position: 10px; starbucks */
 `;
-export const Image = styled.img``;
+export const Image = styled.img`
+  max-width: 100%;
+  max-height: 100%;
+  /* object-position: 0px -100px; */
+`;
 export const Title = styled.h1``;
 export const Desc = styled.p`
   width: 100%;

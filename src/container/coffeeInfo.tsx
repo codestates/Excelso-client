@@ -1,17 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CoffeeInfo from "../components/coffeeInfo";
 import Reviews from "../components/reviews";
 import { RootState } from "../reducers/index";
 import { useDispatch, useSelector } from "react-redux";
-import { getReviewAction } from "../reducers/reviewReducer";
+import { getReviewAction, reviewI } from "../reducers/reviewReducer";
 import { coffeeList } from "../reducers/coffeeReducer";
+import ReviewModal from "../components/reviewmodal";
 
 function CoffeesInfo({ location }: any) {
   const dispatch = useDispatch();
   const path = Number(location.pathname.split("/")[2]);
   const coffees = useSelector((state: RootState) => state.coffee.coffees);
-  const review = useSelector((state: RootState) => state.getRivew.review);
+  const review: reviewI | {} = useSelector(
+    (state: RootState) => state.getRivew.review
+  );
   const suitCoffee = coffees.filter((c) => c.id === path);
+
+  const [show, Setshow] = useState(false);
+
+  const handleShow = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.target !== e.currentTarget) return;
+    Setshow(!show);
+  };
 
   useEffect(() => {
     dispatch(coffeeList());
@@ -20,8 +30,16 @@ function CoffeesInfo({ location }: any) {
 
   return (
     <>
-      <CoffeeInfo suitCoffee={suitCoffee[0]}></CoffeeInfo>;
-      <Reviews review={review}></Reviews>
+      <CoffeeInfo
+        suitCoffee={suitCoffee[0]}
+        review={review}
+        handleShow={handleShow}
+      ></CoffeeInfo>
+      <ReviewModal
+        show={show}
+        handleShow={handleShow}
+        path={path}
+      ></ReviewModal>
     </>
   );
 }

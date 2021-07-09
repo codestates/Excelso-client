@@ -71,6 +71,10 @@ const Nav = () => {
           <Link to="/login">
             <Button onClick={onClickLogin}>로그인</Button>
           </Link>
+        ) : (
+          <Link to="/login">
+            <Button onClick={onClickLogin}>로그인</Button>
+          </Link>
         )}
       </LoginDiv>
       <SignUpDiv>
@@ -80,6 +84,10 @@ const Nav = () => {
           </Link>
         ) : (
           <Link to="/signup">
+            <Button onClick={onClickSignUp}>회원가입</Button>
+          </Link>
+        ) : (
+          <Link to="/mypage">
             <Button onClick={onClickSignUp}>회원가입</Button>
           </Link>
         )}

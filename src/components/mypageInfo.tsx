@@ -2,7 +2,7 @@ import React from 'react';
 import { MypageBody, MypageTitle, MypageInfo, MypageInfoBox, MypageInfoName,
     ChangeNicknameBtn, MypageInfoInput, ChangePwBtn} from './style'
 
-const MypageInfoCpn = () => {
+const MypageInfoCpn = ({userData}: any) => {
   // const [ userInfo, setUserInfo ] = useState({
   //   email: "",
   //   nickname: "",
@@ -12,6 +12,7 @@ const MypageInfoCpn = () => {
   //   password: "",
   //   checkPassword: "",
   // })
+  // const { info, accessToken } = userData;
   return (
     <MypageBody>
       <MypageTitle>마이페이지</MypageTitle>

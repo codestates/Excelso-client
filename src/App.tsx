@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // import "./App.css";
 
@@ -14,6 +14,7 @@ import {
   Switch,
   RouteComponentProps,
   withRouter,
+  Redirect,
 } from "react-router-dom";
 
 
@@ -22,14 +23,25 @@ export const App = ({
   location,
   match,
 }: RouteComponentProps): JSX.Element => {
-  // const handleUserInfo = (userData:any) => { //any
-  //   setUserData(userData)
-  // }
-  // const [ userData, setUserData ] = useState({})
+  
+  const [ userData, setUserData ] = useState(sessionStorage.getItem("info"));
+  const [ accessToken ] = useState(sessionStorage.getItem("accessToken"));
+  const [ isLogin, setIsLogin ] = useState(false);
 
+  useEffect(() => {
+    console.log('wow useEffect!')
+    console.log(userData, "userData")
+    if(accessToken) {
+      setIsLogin(true)
+    }
+    else {
+      setIsLogin(false);
+    }
+  },[accessToken])
+// 로그인 유지 작업하는 중이었음. 
   return (
     <Switch>
-      <Route path="/" exact={true} component={Main} />
+      <Route exact path="/" component={Main} />
       <Route exact path={`/coffee/:coffee_id`}>
         <CoffeesInfo location={location} />
       </Route>
@@ -40,13 +52,20 @@ export const App = ({
         <BrandInfo></BrandInfo>
       </Route>
       <Route exact path="/signup" render={() => <Signup />} />
-      <Route path="/mypage" render={() => <Mypage />} />
-      <Route path="/login" render={() => <LoginCpn />} />
+      <Route path="/mypage" render={() => <Mypage userData={userData}/>} />
+      <Route path="/login" render={() => {
+        return (
+          <>
+            { isLogin ? <Redirect to='/' />
+            : <LoginCpn />}
+          </>
+        )
+      }} />
     </Switch>
   );
 };
 
 export const AppContainerWithRouter = withRouter(App);
 
-
-// handleUserInfo={handleUserInfo}
+// window.location.reload();
+// window.location.replace('/')

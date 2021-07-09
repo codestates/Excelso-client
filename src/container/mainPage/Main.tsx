@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import SwiperSlider from "../../components/slider/SwiperSlider";
 import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";
+import GoToTop from "../../components/gototop/GoToTop";
 import {
   MainContainer,
   MainSectionOne,
@@ -44,6 +46,7 @@ const Main = ({ match }: RouteComponentProps) => {
     <>
       <Nav />
       <MainContainer>
+        <GoToTop />
         <MainSectionOne>
           <FstContainer>
             <SwiperSlider />

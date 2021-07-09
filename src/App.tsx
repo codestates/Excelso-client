@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-
+import React from "react";
 // import "./App.css";
 
 import Main from "./container/mainPage/Main";
-import MenulistPage from './pages/menulistpage'
-import Coffeeinfopage from './pages/coffeeinfopage'
+import MenulistPage from "./pages/menulistpage";
+import Coffeeinfopage from "./pages/coffeeinfopage";
 import BrandInfo from "./container/brandInfo";
-import Signup from './pages/signup';
-import Mypage from './pages/mypage';
-import LoginCpn from './components/login'; // ex
+import Signup from "./pages/signup";
+import Mypage from "./pages/mypage";
+import LoginCpn from "./components/login"; // ex
 import {
   Route,
   Switch,
@@ -16,17 +15,11 @@ import {
   withRouter,
 } from "react-router-dom";
 
-
 export const App = ({
   history,
   location,
   match,
 }: RouteComponentProps): JSX.Element => {
-  // const handleUserInfo = (userData:any) => { //any
-  //   setUserData(userData)
-  // }
-  // const [ userData, setUserData ] = useState({})
-
   return (
     <Switch>
       <Route path="/" exact={true} component={Main} />
@@ -47,6 +40,5 @@ export const App = ({
 };
 
 export const AppContainerWithRouter = withRouter(App);
-
 
 // handleUserInfo={handleUserInfo}

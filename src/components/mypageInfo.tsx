@@ -1,26 +1,42 @@
-import React from 'react';
-import { MypageBody, MypageTitle, MypageInfo, MypageInfoBox, MypageInfoName,
-    ChangeNicknameBtn, MypageInfoInput, ChangePwBtn} from './style'
+import React from "react";
+import { RootState } from "../reducers";
+import { successPayloadType } from "../reducers/loginReducer";
+import { useSelector } from "react-redux";
+import {
+  MypageBody,
+  MypageTitle,
+  MypageInfo,
+  MypageInfoBox,
+  MypageInfoName,
+  ChangeNicknameBtn,
+  MypageInfoInput,
+  ChangePwBtn,
+} from "./style";
+interface userDataI {
+  success: boolean;
+  accessToken: string;
+  info: {
+    id: number;
+    email: string;
+    nickname: string;
+  };
+  message: string;
+}
 
 const MypageInfoCpn = () => {
-  // const [ userInfo, setUserInfo ] = useState({
-  //   email: "",
-  //   nickname: "",
-  // })
+  const userData: userDataI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
 
-  // const [ passwordData, setPasswordData ] = useState({
-  //   password: "",
-  //   checkPassword: "",
-  // })
-  return (
+  return "success" in userData ? (
     <MypageBody>
       <MypageTitle>마이페이지</MypageTitle>
       <MypageInfo>
         <MypageInfoBox>
-          <MypageInfoName>이메일: sth</MypageInfoName>
+          <MypageInfoName>이메일:{userData.info.email}</MypageInfoName>
         </MypageInfoBox>
         <MypageInfoBox>
-          <MypageInfoName>닉네임: sth</MypageInfoName>
+          <MypageInfoName>닉네임:{userData.info.nickname}</MypageInfoName>
           <ChangeNicknameBtn>닉네임 변경하기</ChangeNicknameBtn>
         </MypageInfoBox>
         <MypageInfoBox>
@@ -39,8 +55,10 @@ const MypageInfoCpn = () => {
           <ChangePwBtn>비밀번호 변경</ChangePwBtn>
         </MypageInfoBox>
       </MypageInfo>
-    </MypageBody>    
-  )
-}
+    </MypageBody>
+  ) : (
+    <div>로그인해라</div>
+  );
+};
 
 export default MypageInfoCpn;

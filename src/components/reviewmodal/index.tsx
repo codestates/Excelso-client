@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Dispatch } from "redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addReviewAction } from "../../reducers/reviewReducer";
+import { RootState } from "../../reducers";
 import {
   ReviewModalConatiner,
   Modal,
@@ -16,7 +16,16 @@ interface ReviewModalProps {
   handleShow: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   path: number;
 }
-
+interface userDataI {
+  success: boolean;
+  token: string;
+  info: {
+    id: number;
+    email: string;
+    nickname: string;
+  };
+  message: string;
+}
 export default function ReviewModal({
   show,
   handleShow,
@@ -28,10 +37,15 @@ export default function ReviewModal({
   };
 
   const dispatch = useDispatch();
+
+  const userData: userDataI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
+
   const addReview = () => {
-    console.log("리뷰등록시도");
-    console.log("components", path, value);
-    dispatch(addReviewAction(path, value, 3, "token"));
+    console.log("addReview 눌렀습니다.");
+    console.log(userData);
+    dispatch(addReviewAction(path, value, 5, userData.token));
   };
   return (
     <ReviewModalConatiner show={show} onClick={handleShow}>

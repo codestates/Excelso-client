@@ -6,7 +6,7 @@ import loginReducer from "./loginReducer";
 export const rootReducer = combineReducers({
   coffee: allCoffeeReducer,
   getRivew: GetReviewReducer,
-  loginReducer,
+  loginReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

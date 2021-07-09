@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../reducers";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import {
   NavContainer,
@@ -12,11 +15,28 @@ import {
   LoginDiv,
   SignUpDiv,
   Button,
-  Logo
+  Logo,
   // GroupDiv
 } from "./navStyles";
+import { setLogin } from "../../reducers/loginReducer";
 
-const Nav = () => {
+interface userDataI {
+  success: boolean;
+  accessToken?: string;
+  info?: {
+    id: number;
+    email: string;
+    nickname: string;
+  };
+}
+
+const Nav = (): JSX.Element => {
+  const dispatch = useDispatch();
+  const userData: userDataI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
+  console.log(userData.success);
+
   const history = useHistory();
 
   const [clickLogin, setClickLogin] = useState(false);
@@ -51,6 +71,13 @@ const Nav = () => {
     }
   };
 
+  // useEffect(() => {
+  //   console.log("start");
+  //   axios
+  //     .get("http://localhost:3000/auth")
+  //     .then((response) => response.data)
+  //     .then((data) => console.log(data));
+  // }, []);
   return (
     <NavContainer>
       <LogoDiv>
@@ -62,13 +89,15 @@ const Nav = () => {
         </Link>
       </BeanDiv>
       <MenuDiv>
-      <Link to="/coffee">
-        <MenuButton>메뉴</MenuButton>
+        <Link to="/coffee">
+          <MenuButton>메뉴</MenuButton>
         </Link>
       </MenuDiv>
       <LoginDiv>
-        {document.cookie ? (
-          <Button onClick={onClickLogin}>로그인</Button>
+        {!userData.success ? (
+          <Link to="/login">
+            <Button onClick={onClickLogin}>로그인</Button>
+          </Link>
         ) : (
           <Link to="/mypage">
             <Button>마이페이지</Button>
@@ -76,11 +105,13 @@ const Nav = () => {
         )}
       </LoginDiv>
       <SignUpDiv>
-        {document.cookie ? (
-          <Button onClick={onClickLogout}>로그아웃</Button>
-        ) : (
+        {!userData.success ? (
           <Link to="/signup">
             <Button onClick={onClickSignUp}>회원가입</Button>
+          </Link>
+        ) : (
+          <Link to="/signup">
+            <Button onClick={onClickLogout}>로그아웃</Button>
           </Link>
         )}
       </SignUpDiv>

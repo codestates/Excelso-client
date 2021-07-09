@@ -1,4 +1,3 @@
-import { type } from "os";
 import styled from "styled-components/macro";
 interface Props {
   show: boolean;

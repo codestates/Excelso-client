@@ -1,6 +1,4 @@
-// import styled from "styled-components/macro";
-import styled from "styled-components";
-import Slider from "react-slick";
+import styled from "styled-components/macro";
 
 export const MainContainer = styled.div`
   position: relative;

@@ -29,6 +29,7 @@ export const Logo = styled.button`
   font-size: 1.5rem;
   border: none;
   color: pink;
+  cursor: pointer;
 `;
 
 export const BeanDiv = styled.div`
@@ -43,6 +44,7 @@ export const BeanDiv = styled.div`
   margin-right: 0;
   background-color: black;
   border-radius: 0.5rem;
+  cursor: pointer;
 `;
 
 export const MenuDiv = styled.div`
@@ -65,6 +67,7 @@ export const MenuButton = styled.button`
   font-size: 1.5rem;
   border: none;
   color: pink;
+  cursor: pointer;
 `;
 
 export const NavDiv = styled.div`
@@ -83,6 +86,7 @@ export const Button = styled.button`
   border: 0;
   font-weight: 500;
   font-size: 1.5rem;
+  cursor: pointer;
 `;
 
 export const LoginDiv = styled.div`
@@ -99,7 +103,7 @@ export const LoginDiv = styled.div`
 `;
 
 export const SignUpDiv = styled.div`
-  width: 6rem;
+  width: 8rem;
   height: 2.5rem;
   padding: 0.2rem;
   margin: 1rem;
@@ -109,4 +113,14 @@ export const SignUpDiv = styled.div`
   margin-left: 0;
   background-color: black;
   border-radius: 0.5rem;
+`;
+
+export const MypageButton = styled.button`
+  background: transparent;
+  width: 10rem;
+  color: pink;
+  border: 0;
+  font-weight: 500;
+  font-size: 1.5rem;
+  cursor: pointer;
 `;

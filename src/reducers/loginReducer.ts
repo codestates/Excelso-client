@@ -92,8 +92,15 @@ const loginReducer = (state = initialState, action: loginDispatchType) => {
         success: false,
       };
     case LOGIN_SUCCESS:
+<<<<<<< HEAD
       console.log("LOGIN_SUCCESS");
       const { token, info } = action.payload;
+=======
+      const { accessToken, info } = action.payload
+      sessionStorage.setItem("accessToken", JSON.stringify(accessToken));
+      sessionStorage.setItem("info", JSON.stringify(info))
+
+>>>>>>> 1a421cc1cfa41ddc1562fee3170cc05077d9ddfc
       return {
         ...state,
         success: true,

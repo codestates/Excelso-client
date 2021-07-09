@@ -70,10 +70,7 @@ const ContentInput = style.input`
 `;
 
 //type
-// type handleProps = {
-//   handleUserInfo: (userData: any) => void;
-// }
-// handleUserInfo }: handleProps
+
 const LoginCpn = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.loginReducer);
@@ -99,8 +96,6 @@ const LoginCpn = () => {
   const LoginButtonClick = () => {
     const { email, password } = inputData;
     dispatch(postUser(email, password));
-    console.log(userData); // user data
-    // handleUserInfo(userData);
     setHidden(true);
     setInputData({
       email: "",

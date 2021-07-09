@@ -48,7 +48,7 @@ export const SndContainer = styled.div`
 
 export const ExcelLogo = styled.div`
   opacity: 0.7;
-  width: 10rem;
+  width: 12.5rem;
   padding: 0.5rem;
   margin-top: 2rem;
   background-color: black;
@@ -109,7 +109,7 @@ export const MDWord = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0.7;
-  width: 15rem;
+  width: 17rem;
   padding: 0.5rem;
   margin: 4rem 2rem;
   background-color: black;
@@ -171,7 +171,7 @@ export const SnsWord = styled.div`
   justify-content: center;
   align-items: center;
   opacity: 0.7;
-  width: 30rem;
+  width: 35rem;
   padding: 0.5rem;
   margin: 4rem 2rem 0;
   background-color: black;

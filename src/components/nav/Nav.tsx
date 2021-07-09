@@ -11,12 +11,11 @@ import {
   BeanDiv,
   MenuDiv,
   MenuButton,
-  // NavDiv,
   LoginDiv,
   SignUpDiv,
   Button,
   Logo,
-  // GroupDiv
+  MypageButton,
 } from "./navStyles";
 import { setLogin } from "../../reducers/loginReducer";
 
@@ -44,6 +43,7 @@ const Nav = (): JSX.Element => {
   const [clickLogout, setClickLogout] = useState(false);
 
   const goHome = () => {
+    console.log("goHome");
     history.push("/");
   };
 
@@ -64,11 +64,7 @@ const Nav = (): JSX.Element => {
   };
 
   const onClickLogout = () => {
-    if (clickLogout) {
-      setClickLogout(false);
-    } else {
-      setClickLogout(true);
-    }
+    sessionStorage.clear();
   };
 
   // useEffect(() => {
@@ -94,24 +90,24 @@ const Nav = (): JSX.Element => {
         </Link>
       </MenuDiv>
       <LoginDiv>
-        {!userData.success ? (
-          <Link to="/login">
-            <Button onClick={onClickLogin}>로그인</Button>
+        {sessionStorage.getItem("accessToken") ? (
+          <Link to="/mypage">
+            <MypageButton>마이페이지</MypageButton>
           </Link>
         ) : (
-          <Link to="/mypage">
-            <Button>마이페이지</Button>
+          <Link to="/login">
+            <Button onClick={onClickLogin}>로그인</Button>
           </Link>
         )}
       </LoginDiv>
       <SignUpDiv>
-        {!userData.success ? (
-          <Link to="/signup">
-            <Button onClick={onClickSignUp}>회원가입</Button>
+        {sessionStorage.getItem("accessToken") ? (
+          <Link to="/">
+            <Button onClick={onClickLogout}>로그아웃</Button>
           </Link>
         ) : (
           <Link to="/signup">
-            <Button onClick={onClickLogout}>로그아웃</Button>
+            <Button onClick={onClickSignUp}>회원가입</Button>
           </Link>
         )}
       </SignUpDiv>

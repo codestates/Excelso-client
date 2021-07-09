@@ -30,6 +30,8 @@ export const addReviewAction = (
 ) => {
   return async (dispatch: Dispatch<ADDREVIEW>) => {
     try {
+      console.log("ADD_REVIEW ACTION");
+      console.log(coffee_id, content, rating, token);
       const response = await axios.post("http://localhost:3000/review/update", {
         coffee_id,
         content,

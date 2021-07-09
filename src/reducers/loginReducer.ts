@@ -70,6 +70,9 @@ const loginReducer = ( state = initialState, action:loginDispatchType ) => {
       }
     case LOGIN_SUCCESS:
       const { accessToken, info } = action.payload
+      sessionStorage.setItem("accessToken", JSON.stringify(accessToken));
+      sessionStorage.setItem("info", JSON.stringify(info))
+
       return {
         ...state,
         success: true,

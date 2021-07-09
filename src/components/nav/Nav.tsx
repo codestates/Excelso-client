@@ -44,11 +44,7 @@ const Nav = () => {
   };
 
   const onClickLogout = () => {
-    if (clickLogout) {
-      setClickLogout(false);
-    } else {
-      setClickLogout(true);
-    }
+    sessionStorage.clear();
   };
 
   return (
@@ -67,24 +63,24 @@ const Nav = () => {
         </Link>
       </MenuDiv>
       <LoginDiv>
-        {document.cookie ? (
-          <Link to="/login">
-            <Button onClick={onClickLogin}>로그인</Button>
-          </Link>
-        ) : (
+        {sessionStorage.getItem("accessToken") ? (
           <Link to="/mypage">
             <Button>마이페이지</Button>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <Button onClick={onClickLogin}>로그인</Button>
           </Link>
         )}
       </LoginDiv>
       <SignUpDiv>
-        {document.cookie ? (
-          <Link to="/mypage">
-            <Button onClick={onClickSignUp}>회원가입</Button>
-          </Link>
-        ) : (
+        {sessionStorage.getItem("accessToken") ? (
           <Link to="/signup">
             <Button onClick={onClickLogout}>로그아웃</Button>
+          </Link>
+        ) : (
+          <Link to="/mypage">
+            <Button onClick={onClickSignUp}>회원가입</Button>
           </Link>
         )}
       </SignUpDiv>

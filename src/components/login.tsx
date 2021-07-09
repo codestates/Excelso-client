@@ -70,11 +70,8 @@ const ContentInput = style.input`
 `
 
 //type
-// type handleProps = {
-//   handleUserInfo: (userData: any) => void;
-// }
-// handleUserInfo }: handleProps 
-const LoginCpn = () => {
+
+const LoginCpn = ( ) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: RootReducerType) => state.loginReducer); 
   const [ hidden, setHidden ] = useState(true); // 초기값은 true
@@ -99,8 +96,6 @@ const LoginCpn = () => {
   const LoginButtonClick = () => {
     const { email, password } = inputData
     dispatch(postUser(email, password));
-    console.log(userData); // user data
-    // handleUserInfo(userData);
     setHidden(true);
     setInputData({
         email: "",

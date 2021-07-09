@@ -4,13 +4,13 @@ import MypageReview from '../components/mypageReview';
 import SignoutBar from '../components/signout'
 
 
-const MypageContainer = () => {
+const MypageContainer = ({userData}: any) => {
   return (
     <>
       <GlobalStyle />
       <MpContainer>
         <Navbar></Navbar>
-        <MypageInfoCpn></MypageInfoCpn>
+        <MypageInfoCpn userData={userData}></MypageInfoCpn>
         <MypageReview></MypageReview>
         <SignoutBar></SignoutBar>
       </MpContainer>

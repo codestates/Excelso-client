@@ -32,7 +32,7 @@ export const addReviewAction = (
     try {
       console.log("ADD_REVIEW ACTION");
       console.log(coffee_id, content, rating, token);
-      const response = await axios.post("http://localhost:8000/review/update", {
+      const response = await axios.post("http://localhost:3000/review/update", {
         coffee_id,
         content,
         rating,
@@ -53,7 +53,7 @@ export const addReviewAction = (
 
 export const deleteReivewAction = (coffee_id: number, token: string) => {
   return async (dispatch: Dispatch<DELETEREVIEW>) => {
-    const response = await axios.post("http://localhost:8000/review/delete", {
+    const response = await axios.post("http://localhost:3000/review/delete", {
       coffee_id,
       token,
     });
@@ -70,7 +70,7 @@ export const getReviewAction = (coffee_id: number) => {
   return async (dispatch: Dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/review/${coffee_id}`
+        `http://localhost:3000/review/${coffee_id}`
       );
       const data = await response.data;
       return dispatch({

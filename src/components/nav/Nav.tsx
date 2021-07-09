@@ -8,12 +8,11 @@ import {
   BeanDiv,
   MenuDiv,
   MenuButton,
-  // NavDiv,
   LoginDiv,
   SignUpDiv,
   Button,
-  Logo
-  // GroupDiv
+  Logo,
+  MypageButton
 } from "./navStyles";
 
 const Nav = () => {
@@ -24,6 +23,7 @@ const Nav = () => {
   const [clickLogout, setClickLogout] = useState(false);
 
   const goHome = () => {
+    console.log("goHome");
     history.push("/");
   };
 
@@ -65,7 +65,11 @@ const Nav = () => {
       <LoginDiv>
         {sessionStorage.getItem("accessToken") ? (
           <Link to="/mypage">
-            <Button>마이페이지</Button>
+            <MypageButton>마이페이지</MypageButton>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <Button onClick={onClickLogin}>로그인</Button>
           </Link>
         ) : (
           <Link to="/login">
@@ -75,8 +79,12 @@ const Nav = () => {
       </LoginDiv>
       <SignUpDiv>
         {sessionStorage.getItem("accessToken") ? (
-          <Link to="/signup">
+          <Link to="/">
             <Button onClick={onClickLogout}>로그아웃</Button>
+          </Link>
+        ) : (
+          <Link to="/signup">
+            <Button onClick={onClickSignUp}>회원가입</Button>
           </Link>
         ) : (
           <Link to="/mypage">

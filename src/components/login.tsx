@@ -3,13 +3,13 @@ import style from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { postUser } from "../reducers/loginReducer";
-import Nav from "../components/nav/Nav";
-const OpenButton = style.button`
-  background: blue;
-  color: white;
-  padding: 5px 20px;
-  border-radius: 5px;
-`;
+
+// const OpenButton = style.button`
+//   background: blue;
+//   color: white;
+//   padding: 5px 20px;
+//   border-radius: 5px;
+// `;
 
 const ModalBody = style.div`
   width: 100%;
@@ -20,6 +20,7 @@ const ModalBody = style.div`
   justify-content: center;
   align-items: center;
   position: fixed;
+  z-index:100;
 `;
 
 const ModalOverlay = style.div`
@@ -71,18 +72,16 @@ const ContentInput = style.input`
 
 //type
 
-const LoginCpn = () => {
+const LoginCpn = ({ handleHidden, hidden }: any) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.loginReducer);
-  const [hidden, setHidden] = useState(true); // 초기값은 true
   const [inputData, setInputData] = useState({
     email: "",
     password: "",
   });
-
-  const openButtonClick = () => {
-    setHidden(false);
-  };
+  // const openButtonClick = () => {
+  //   handleHidden(false);
+  // };
 
   const ButtonClick = () => {
     setInputData({
@@ -90,13 +89,16 @@ const LoginCpn = () => {
       password: "",
     });
     console.log(userData);
-    setHidden(true);
+    handleHidden(true);
   };
 
-  const LoginButtonClick = () => {
+  const LoginButtonClick = async () => {
     const { email, password } = inputData;
-    dispatch(postUser(email, password));
-    setHidden(true);
+    if (!email || !password) {
+      return alert("로그인 정보를 입력해주세요.");
+    }
+    await dispatch(postUser(email, password));
+    handleHidden(true);
     setInputData({
       email: "",
       password: "",
@@ -112,8 +114,8 @@ const LoginCpn = () => {
 
   return (
     <>
-      <Nav />
-      <OpenButton onClick={openButtonClick}>open modal</OpenButton>
+      {/* <OpenButton onClick={openButtonClick}>open modal</OpenButton> */}
+      {/* <Nav></Nav> */}
       <ModalBody hidden={hidden} onClick={ButtonClick}>
         <ModalOverlay></ModalOverlay>
         <ModalContent onClick={(e) => e.stopPropagation()}>

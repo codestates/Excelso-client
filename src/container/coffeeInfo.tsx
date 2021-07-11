@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CoffeeInfo from "../components/coffeeInfo";
 import { RootState } from "../reducers/index";
 import { useDispatch, useSelector } from "react-redux";
-import { getReviewAction, reviewI } from "../reducers/reviewReducer";
+import { getReviewAction } from "../reducers/reviewReducer";
 import { coffeeList } from "../reducers/coffeeReducer";
 import ReviewModal from "../components/reviewmodal";
 
@@ -34,7 +34,7 @@ function CoffeesInfo({ location }: any) {
   useEffect(() => {
     // console.log("useEffet getReviewAction"); 기존의 작성되어있는 리뷰 호출
     dispatch(getReviewAction(path));
-  }, [dispatch]);
+  }, [dispatch, path]);
   return (
     <>
       <CoffeeInfo

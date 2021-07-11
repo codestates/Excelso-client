@@ -26,16 +26,15 @@ export default function Reviews({
   const userData: successPayloadTypeI = useSelector(
     (state: RootState) => state.loginReducer
   );
-
   const myReview =
-    userData.success &&
-    reviews.filter((review) => review.user_id === userData.info.id)[0];
-  console.log(myReview);
+    Array.isArray(reviews) && userData.success
+      ? reviews.filter((review) => review.user_id === userData.info.id)[0]
+      : [];
   return (
     <>
       <ReviewContainer>
         <div style={{ height: "90%" }}>
-          {reviews &&
+          {Array.isArray(reviews) ? (
             reviews.map((review) => {
               return "id" in review ? (
                 <Review key={review.id}>
@@ -61,7 +60,10 @@ export default function Reviews({
               ) : (
                 <div>작성된 리뷰가 없습니다</div>
               );
-            })}
+            })
+          ) : (
+            <div>작성된 리뷰가 없습니다1</div>
+          )}
         </div>
         {myReview ? (
           <AddReview onClick={handleShow}>리뷰 수정</AddReview>

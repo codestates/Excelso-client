@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addReviewAction,
@@ -44,13 +44,19 @@ export default function ReviewModal({
 
   const myReview =
     userData.success &&
+    Array.isArray(reviews) &&
     reviews.filter((review) => review.user_id === userData.info.id)[0];
-  console.log(myReview);
+  // console.log("myReview.content", myReview && myReview.content);
 
-  const [value, setValue] = useState<string>(
-    (myReview && myReview.content) || ""
-  );
+  const [value, setValue] = useState<string>("");
+
+  useEffect(() => {
+    myReview ? setValue(myReview.content) : setValue("");
+  }, [myReview]);
+
+  // console.log("value:", value);
   const getValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    console.log(e.currentTarget.value);
     setValue(e.currentTarget.value);
   };
 
@@ -95,7 +101,7 @@ export default function ReviewModal({
         ) : (
           <Middle>
             <TextArea value={value} onChange={getValue}></TextArea>
-            <AddButton onClick={addReview}>수정하기</AddButton>
+            <AddButton onClick={addReview}>등록하기</AddButton>
           </Middle>
         )}
       </Modal>

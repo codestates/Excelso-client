@@ -72,6 +72,7 @@ const ContentInput = style.input`
 
 //type
 
+
 const LoginCpn = ({ handleHidden, hidden }: any) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.loginReducer);
@@ -80,9 +81,11 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     password: "",
   });
 
+
   // const openButtonClick = () => {
   //   handleHidden(false);
   // };
+
 
   const ButtonClick = () => {
     setInputData({
@@ -120,6 +123,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
       <ModalBody hidden={hidden} onClick={ButtonClick}>
         <ModalOverlay></ModalOverlay>
         <ModalContent onClick={(e) => e.stopPropagation()}>
+
           <ContentBox>
             <ContentName>EMAIL</ContentName>
             <ContentInput

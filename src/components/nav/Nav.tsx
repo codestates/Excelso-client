@@ -49,6 +49,11 @@ const Nav = (): JSX.Element => {
     setHidden(data);
   };
 
+  const handleHidden = ( data: boolean ) => {
+    console.log(data);
+    setHidden(data);
+  }
+
   return (
     <>
       <NavContainer>

@@ -49,11 +49,9 @@ const SignupInfoCpn = () => {
         nickname,
         password,
       })
-      .then(() => {
-        setCheckedSame({
-          email: false,
-          nickname: false,
-        });
+      .then((data) => {
+        alert("회원가입이 완료되었습니다.");
+        window.location.replace("/");
       })
       .catch((err) => {
         return alert(err);

@@ -1,6 +1,4 @@
-// import styled from "styled-components/macro";
 import styled from "styled-components";
-import Slider from "react-slick";
 
 export const MainContainer = styled.div`
   position: relative;
@@ -19,16 +17,16 @@ export const MainSectionOne = styled.section`
 export const FstContainer = styled.div`
   width: 100%;
   height: 70%;
-  background-color: black;
+  background-color: #262223;
   overflow: hidden;
   .swiper-button-prev {
-    color: pink;
+    color: #ddc6b6;
   }
   .swiper-button-next {
-    color: pink;
+    color: #ddc6b6;
   }
   .swiper-pagination-bullet {
-    background-color: pink;
+    background-color: #ddc6b6;
   }
   .swiper-slide img {
     display: block;
@@ -44,7 +42,7 @@ export const SndContainer = styled.div`
   display: block;
   width: 100%;
   height: 30%;
-  background-color: pink;
+  background-color: #ddc6b6;
   padding: 1.5rem;
 `;
 
@@ -53,10 +51,10 @@ export const ExcelLogo = styled.div`
   width: 12.5rem;
   padding: 0.5rem;
   margin-top: 2rem;
-  background-color: black;
+  background-color: #262223;
   border-radius: 1rem;
 
-  color: white;
+  color: #ddc6b6;
   font-size: 3rem;
   font-weight: 500;
 `;
@@ -67,7 +65,7 @@ export const ExcelExp = styled.div`
   margin-top: 1.7rem;
 
   p {
-    color: black;
+    color: #262223;
     font-size: 1.5rem;
     font-weight: 600;
     word-spacing: 0.15rem;
@@ -77,7 +75,7 @@ export const ExcelExp = styled.div`
 export const MainSectionTwo = styled.section`
   width: 100%;
   height: 100vh;
-  background-color: black;
+  background-color: #262223;
 `;
 
 export const VideoContainer = styled.div`
@@ -114,10 +112,10 @@ export const MDWord = styled.div`
   width: 17rem;
   padding: 0.5rem;
   margin: 4rem 2rem;
-  background-color: black;
+  background-color: #262223;
   border-radius: 1rem;
 
-  color: white;
+  color: #ddc6b6;
   font-size: 3rem;
   font-weight: 500;
 `;
@@ -143,7 +141,7 @@ export const MDImg = styled.div`
   height: 10rem;
   border: 1px solid;
   border-radius: 2rem;
-  box-shadow: 0.623rem 0.313rem 0.313rem pink;
+  box-shadow: 0.623rem 0.313rem 0.313rem #ddc6b6;
 `;
 
 export const MDExp = styled.div`
@@ -151,7 +149,7 @@ export const MDExp = styled.div`
   height: 10rem;
   border: 1px solid;
   border-radius: 2rem;
-  box-shadow: 0.623rem 0.313rem 0.313rem pink;
+  box-shadow: 0.623rem 0.313rem 0.313rem #ddc6b6;
 `;
 
 export const MainSectionFour = styled.div`
@@ -161,7 +159,7 @@ export const MainSectionFour = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  background-color: pink;
+  background-color: #ddc6b6;
   padding: 2rem;
 `;
 
@@ -176,7 +174,7 @@ export const SnsWord = styled.div`
   width: 35rem;
   padding: 0.5rem;
   margin: 4rem 2rem 0;
-  background-color: black;
+  background-color: #262223;
   border-radius: 1rem;
 
   color: white;
@@ -197,7 +195,7 @@ export const FthContainer = styled.div`
 
 export const SnsContainer = styled.div`
   background: white;
-  color: black;
+  color: #262223;
 
   img {
     opacity: 0.7;

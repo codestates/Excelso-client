@@ -30,17 +30,15 @@ export const addReviewAction = (
 ) => {
   return async (dispatch: Dispatch<ADDREVIEW>) => {
     try {
-      console.log("ADD_REVIEW ACTION");
-      console.log(coffee_id, content, rating, token);
+      // console.log("ADD_REVIEW ACTION");
+      console.log(token);
       const response = await axios.post("http://localhost:3000/review/update", {
         coffee_id,
         content,
         rating,
         token,
       });
-      console.log(response);
       const data: string = await response.data;
-      console.log(data);
       return dispatch({
         type: ADD_REVIEW,
         message: data,

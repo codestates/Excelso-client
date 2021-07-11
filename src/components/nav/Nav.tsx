@@ -34,13 +34,11 @@ const Nav = (): JSX.Element => {
   const userData: userDataI = useSelector(
     (state: RootState) => state.loginReducer
   );
-  console.log(userData.success);
-
+  console.log(userData);
   const history = useHistory();
 
   const [clickLogin, setClickLogin] = useState(false);
   const [clickSignUp, setClickSignUp] = useState(false);
-  const [clickLogout, setClickLogout] = useState(false);
 
   const goHome = () => {
     console.log("goHome");
@@ -67,13 +65,6 @@ const Nav = (): JSX.Element => {
     sessionStorage.clear();
   };
 
-  // useEffect(() => {
-  //   console.log("start");
-  //   axios
-  //     .get("http://localhost:3000/auth")
-  //     .then((response) => response.data)
-  //     .then((data) => console.log(data));
-  // }, []);
   return (
     <NavContainer>
       <LogoDiv>

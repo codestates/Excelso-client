@@ -45,7 +45,7 @@ export const AddButton = styled.button<ButtonProps>`
 `;
 
 interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => any;
 }
 interface TextI {
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;

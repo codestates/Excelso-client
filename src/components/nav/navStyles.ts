@@ -10,7 +10,7 @@ export const NavContainer = styled.div`
   width: 100%;
   height: 5.2rem;
   z-index: 50;
-  background-color: black;
+  background-color: #262223;
 `;
 
 export const LogoDiv = styled.div`
@@ -28,7 +28,7 @@ export const Logo = styled.button`
   font-weight: 500;
   font-size: 1.5rem;
   border: none;
-  color: pink;
+  color: #ddc6b6;
   cursor: pointer;
 `;
 
@@ -42,7 +42,7 @@ export const BeanDiv = styled.div`
   align-items: center;
   margin-left: 4rem;
   margin-right: 0;
-  background-color: black;
+  background-color: #262223;
   border-radius: 0.5rem;
   cursor: pointer;
 `;
@@ -57,7 +57,7 @@ export const MenuDiv = styled.div`
   align-items: center;
   margin-right: 4rem;
   margin-left: 0;
-  background-color: black;
+  background-color: #262223;
   border-radius: 0.5rem;
 `;
 
@@ -66,7 +66,7 @@ export const MenuButton = styled.button`
   font-weight: 500;
   font-size: 1.5rem;
   border: none;
-  color: pink;
+  color: #ddc6b6;
   cursor: pointer;
 `;
 
@@ -82,7 +82,7 @@ export const NavDiv = styled.div`
 
 export const Button = styled.button`
   background: transparent;
-  color: pink;
+  color: #ddc6b6;
   border: 0;
   font-weight: 500;
   font-size: 1.5rem;
@@ -98,7 +98,7 @@ export const LoginDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-right: 0;
-  background-color: black;
+  background-color: #262223;
   border-radius: 0.5rem;
 `;
 
@@ -111,14 +111,14 @@ export const SignUpDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-left: 0;
-  background-color: black;
+  background-color: #262223;
   border-radius: 0.5rem;
 `;
 
 export const MypageButton = styled.button`
   background: transparent;
   width: 10rem;
-  color: pink;
+  color: #ddc6b6;
   border: 0;
   font-weight: 500;
   font-size: 1.5rem;

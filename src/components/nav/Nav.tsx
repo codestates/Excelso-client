@@ -13,13 +13,12 @@ import {
   SignUpDiv,
   Button,
   Logo,
-  MypageButton
+  MypageButton,
 } from "./navStyles";
 
-const Nav = () => {
+const Nav = (): JSX.Element => {
   const history = useHistory();
 
-  const [clickLogin, setClickLogin] = useState(false);
   const [clickSignUp, setClickSignUp] = useState(false);
   const [hidden, setHidden] = useState(true);
 
@@ -45,6 +44,11 @@ const Nav = () => {
     window.location.reload();
   };
 
+  const handleHidden = (data: boolean) => {
+    console.log(data);
+    setHidden(data);
+  };
+
   const handleHidden = ( data: boolean ) => {
     console.log(data);
     setHidden(data);
@@ -52,42 +56,42 @@ const Nav = () => {
 
   return (
     <>
-    <NavContainer>
-      <LogoDiv>
-        <Logo onClick={goHome}>Excelso</Logo>
-      </LogoDiv>
-      <BeanDiv>
-        <Link to="/brandinfo">
-          <MenuButton>원두</MenuButton>
-        </Link>
-      </BeanDiv>
-      <MenuDiv>
-        <Link to="/coffee">
-          <MenuButton>메뉴</MenuButton>
-        </Link>
-      </MenuDiv>
-      <LoginDiv>
-        {sessionStorage.getItem("accessToken") ? (
-          <Link to="/mypage">
-            <MypageButton>마이페이지</MypageButton>
+      <NavContainer>
+        <LogoDiv>
+          <Logo onClick={goHome}>Excelso</Logo>
+        </LogoDiv>
+        <BeanDiv>
+          <Link to="/brandinfo">
+            <MenuButton>원두</MenuButton>
           </Link>
-        ) : (
-          <Button onClick={onClickLogin}>로그인</Button>
-        )}
-      </LoginDiv>
-      <SignUpDiv>
-        {sessionStorage.getItem("accessToken") ? (
-          <Link to="/">
-            <Button onClick={onClickLogout}>로그아웃</Button>
+        </BeanDiv>
+        <MenuDiv>
+          <Link to="/coffee">
+            <MenuButton>메뉴</MenuButton>
           </Link>
-        ) : (
-          <Link to="/signup">
-            <Button onClick={onClickSignUp}>회원가입</Button>
-          </Link>
-        )}
-      </SignUpDiv>
-    </NavContainer>
-    <LoginCpn hidden={hidden} handleHidden={handleHidden}/>
+        </MenuDiv>
+        <LoginDiv>
+          {sessionStorage.getItem("accessToken") ? (
+            <Link to="/mypage">
+              <MypageButton>마이페이지</MypageButton>
+            </Link>
+          ) : (
+            <Button onClick={onClickLogin}>로그인</Button>
+          )}
+        </LoginDiv>
+        <SignUpDiv>
+          {sessionStorage.getItem("accessToken") ? (
+            <Link to="/">
+              <Button onClick={onClickLogout}>로그아웃</Button>
+            </Link>
+          ) : (
+            <Link to="/signup">
+              <Button onClick={onClickSignUp}>회원가입</Button>
+            </Link>
+          )}
+        </SignUpDiv>
+      </NavContainer>
+      <LoginCpn hidden={hidden} handleHidden={handleHidden} />
     </>
   );
 };

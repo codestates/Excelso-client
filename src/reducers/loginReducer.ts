@@ -6,7 +6,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const SET_LOGIN = "SET_LOGIN";
 
 export type successPayloadType = {
-  token: string;
+  accessToken: string;
   info: {
     id: number;
     email: string;
@@ -14,6 +14,16 @@ export type successPayloadType = {
   };
   message: string;
 };
+
+export interface successPayloadTypeI {
+  accessToken: string;
+  info: {
+    id: number;
+    email: string;
+    nickname: string;
+  };
+  success: boolean;
+}
 
 export interface loginSuccessDispatch {
   type: typeof LOGIN_SUCCESS;
@@ -25,7 +35,7 @@ export interface loginFailDispatch {
 }
 
 export interface loginstateDispatch {
-  type: typeof SET_LOGIN;
+  type: typeof LOGIN_SUCCESS;
   payload: successPayloadType;
 }
 
@@ -39,10 +49,11 @@ export const setLogin = () => {
   return async (dispatch: Dispatch<loginstateDispatch>) => {
     try {
       console.log("setLogin", "시도는하니?");
+      // console.log(token)
       const response = await axios.get("http://localhost:3000/auth");
       const data = await response.data;
       return dispatch({
-        type: SET_LOGIN,
+        type: LOGIN_SUCCESS,
         payload: data,
       });
     } catch (e) {
@@ -74,7 +85,7 @@ export const postUser =
   };
 
 //reducer
-interface InitialState {
+export interface InitialState {
   success: boolean;
   info?: successPayloadType;
   accessToken?: successPayloadType;
@@ -92,37 +103,33 @@ const loginReducer = (state = initialState, action: loginDispatchType) => {
         success: false,
       };
     case LOGIN_SUCCESS:
-<<<<<<< HEAD
       console.log("LOGIN_SUCCESS");
-      const { token, info } = action.payload;
-=======
-      const { accessToken, info } = action.payload
+      let { accessToken, info } = action.payload;
       sessionStorage.setItem("accessToken", JSON.stringify(accessToken));
-      sessionStorage.setItem("info", JSON.stringify(info))
+      sessionStorage.setItem("info", JSON.stringify(info));
 
->>>>>>> 1a421cc1cfa41ddc1562fee3170cc05077d9ddfc
       return {
         ...state,
         success: true,
-        token,
+        accessToken,
         info: {
           id: info.id,
           email: info.email,
           nickname: info.nickname,
         },
       };
-    case SET_LOGIN:
-      console.log("SET_LOGIN");
-      return {
-        ...state,
-        success: true,
-        token,
-        info: {
-          id: info.id,
-          email: info.email,
-          nickname: info.nickname,
-        },
-      };
+    // case SET_LOGIN:
+    //   console.log("SET_LOGIN");
+    //   return {
+    //     ...state,
+    //     success: true,
+    //     token,
+    //     info: {
+    //       id: info.id,
+    //       email: info.email,
+    //       nickname: info.nickname,
+    //     },
+    //   };
     default:
       return state;
   }

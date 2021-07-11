@@ -23,18 +23,12 @@ interface userDataI {
   message: string;
 }
 
-const MypageInfoCpn = ({userData}: any) => {
-  // const [ userInfo, setUserInfo ] = useState({
-  //   email: "",
-  //   nickname: "",
-  // })
-
-  // const [ passwordData, setPasswordData ] = useState({
-  //   password: "",
-  //   checkPassword: "",
-  // })
-  // const { info, accessToken } = userData;
-  return (
+const MypageInfoCpn = () => {
+  const userData: userDataI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
+  console.log(userData.success);
+  return "success" in userData ? (
     <MypageBody>
       <MypageTitle>마이페이지</MypageTitle>
       <MypageInfo>

@@ -1,5 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { reviewT } from "../../reducers/reviewReducer";
+import { successPayloadTypeI } from "../../reducers/loginReducer";
+import { RootState } from "../../reducers";
 import {
   ReviewContainer,
   Writer,
@@ -10,11 +13,24 @@ import {
   AddReview,
 } from "./styles";
 interface Props {
-  reviews: reviewT[];
   handleShow: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  path: number;
+  reviews: reviewT[];
 }
 
-export default function Reviews({ reviews, handleShow }: Props): JSX.Element {
+export default function Reviews({
+  handleShow,
+  path,
+  reviews,
+}: Props): JSX.Element {
+  const userData: successPayloadTypeI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
+
+  const myReview =
+    userData.success &&
+    reviews.filter((review) => review.user_id === userData.info.id)[0];
+  console.log(myReview);
   return (
     <>
       <ReviewContainer>
@@ -47,7 +63,11 @@ export default function Reviews({ reviews, handleShow }: Props): JSX.Element {
               );
             })}
         </div>
-        <AddReview onClick={handleShow}>리뷰 등록</AddReview>
+        {myReview ? (
+          <AddReview onClick={handleShow}>리뷰 수정</AddReview>
+        ) : (
+          <AddReview onClick={handleShow}>리뷰 등록</AddReview>
+        )}
       </ReviewContainer>
     </>
   );

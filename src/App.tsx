@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "./reducers";
+import { setLogin } from "./reducers/loginReducer";
 // import "./App.css";
 
 import Main from "./container/mainPage/Main";
@@ -22,19 +24,13 @@ export const App = ({
   location,
   match,
 }: RouteComponentProps): JSX.Element => {
-  const [userData, setUserData] = useState(sessionStorage.getItem("info"));
-  const [accessToken] = useState(sessionStorage.getItem("accessToken"));
-  const [isLogin, setIsLogin] = useState(false);
-
-  useEffect(() => {
-    console.log("wow useEffect!");
-    console.log(userData, "userData");
-    if (accessToken) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  }, [accessToken]);
+  const dispatch = useDispatch();
+  const userData = useSelector((state: RootState) => state.loginReducer);
+  // console.log("userData?:", userData);
+  // useEffect(() => {
+  //   console.log("커맨드 r 시도하나?");
+  //   dispatch(setLogin());
+  // }, []);
   // 로그인 유지 작업하는 중이었음.
   return (
     <Switch>
@@ -53,7 +49,7 @@ export const App = ({
       <Route
         path="/login"
         render={() => {
-          return <>{isLogin ? <Redirect to="/" /> : <LoginCpn />}</>;
+          return <LoginCpn />;
         }}
       />
     </Switch>

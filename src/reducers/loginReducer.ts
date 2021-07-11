@@ -72,7 +72,7 @@ const loginReducer = ( state = initialState, action:loginDispatchType ) => {
       const { accessToken, info } = action.payload
       sessionStorage.setItem("accessToken", JSON.stringify(accessToken));
       sessionStorage.setItem("info", JSON.stringify(info))
-
+      window.location.replace('/');
       return {
         ...state,
         success: true,

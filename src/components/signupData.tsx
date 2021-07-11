@@ -43,6 +43,8 @@ const SignupInfoCpn = () => {
         email: false,
         nickname: false,
       })
+      alert('회원가입이 완료되었습니다.');
+      window.location.replace('/');
     }).catch((err) => {
       return alert(err);
     })

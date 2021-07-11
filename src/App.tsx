@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-
+// import { addUserData, removeUserData } from './reducers/userInfo';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { RootState } from './reducers';
 // import "./App.css";
 
 import Main from "./container/mainPage/Main";
@@ -24,13 +26,14 @@ export const App = ({
   match,
 }: RouteComponentProps): JSX.Element => {
   
-  const [ userData, setUserData ] = useState(sessionStorage.getItem("info"));
-  const [ accessToken ] = useState(sessionStorage.getItem("accessToken"));
+  const [ userData, setUserData ] = useState(JSON.parse(sessionStorage.getItem("info")!));
+  const [ accessToken ] = useState(JSON.parse(sessionStorage.getItem("accessToken")!));
   const [ isLogin, setIsLogin ] = useState(false);
+  
 
   useEffect(() => {
-    console.log('wow useEffect!')
-    console.log(userData, "userData")
+    // console.log('wow useEffect!')
+    console.log("userData", userData)
     if(accessToken) {
       setIsLogin(true)
     }
@@ -38,6 +41,13 @@ export const App = ({
       setIsLogin(false);
     }
   },[accessToken])
+
+  const handleUserData = (nick: string) => {
+    setUserData({
+      ...userData,
+      nickname: nick,
+    })
+  }
 // 로그인 유지 작업하는 중이었음. 
   return (
     <Switch>
@@ -52,12 +62,12 @@ export const App = ({
         <BrandInfo></BrandInfo>
       </Route>
       <Route exact path="/signup" render={() => <Signup />} />
-      <Route path="/mypage" render={() => <Mypage userData={userData}/>} />
+      <Route path="/mypage" render={() => <Mypage userData={userData} handleUserData={handleUserData}/>} />
       <Route path="/login" render={() => {
         return (
           <>
-            { isLogin ? <Redirect to='/' />
-            : <LoginCpn />}
+            { accessToken ? <Redirect to='/' />
+            : <LoginCpn /> }
           </>
         )
       }} />

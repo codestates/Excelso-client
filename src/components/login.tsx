@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import style from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootReducerType } from '../store';
-import { postUser } from '../reducers/loginReducer'
+import { postUser } from '../reducers/loginReducer';
+import Nav from './nav/Nav';
 
 const OpenButton = style.button`
   background: blue;
@@ -20,6 +21,7 @@ const ModalBody = style.div`
   justify-content: center;
   align-items: center;
   position: fixed;
+  z-index:100;
 `
 
 const ModalOverlay = style.div`
@@ -71,17 +73,16 @@ const ContentInput = style.input`
 
 //type
 
-const LoginCpn = ( ) => {
+const LoginCpn = ({ handleHidden, hidden }:any) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: RootReducerType) => state.loginReducer); 
-  const [ hidden, setHidden ] = useState(true); // 초기값은 true
   const [ inputData, setInputData ] = useState({
     email: "",
     password: "",
   }) 
 
   const openButtonClick = () => {
-    setHidden(false);
+    handleHidden(false);
   }
 
   const ButtonClick = () => {
@@ -90,13 +91,16 @@ const LoginCpn = ( ) => {
         password: "",
     })
     console.log(userData);
-    setHidden(true);
+    handleHidden(true);
   }
 
   const LoginButtonClick = () => {
     const { email, password } = inputData
+    if(!email || !password) {
+      return alert('로그인 정보를 입력해주세요.')
+    }
     dispatch(postUser(email, password));
-    setHidden(true);
+    handleHidden(true);
     setInputData({
         email: "",
         password: "",
@@ -112,7 +116,8 @@ const LoginCpn = ( ) => {
 
   return (
     <>
-    <OpenButton onClick={openButtonClick}>open modal</OpenButton>
+    {/* <OpenButton onClick={openButtonClick}>open modal</OpenButton> */}
+    {/* <Nav></Nav> */}
     <ModalBody hidden={hidden} onClick={ButtonClick}>
       <ModalOverlay></ModalOverlay>
       <ModalContent onClick={(e) => e.stopPropagation()}>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import LoginCpn from "../login";
 
 import {
   NavContainer,
@@ -20,7 +21,7 @@ const Nav = () => {
 
   const [clickLogin, setClickLogin] = useState(false);
   const [clickSignUp, setClickSignUp] = useState(false);
-  const [clickLogout, setClickLogout] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   const goHome = () => {
     console.log("goHome");
@@ -28,11 +29,7 @@ const Nav = () => {
   };
 
   const onClickLogin = () => {
-    if (clickLogin) {
-      setClickLogin(false);
-    } else {
-      setClickLogin(true);
-    }
+    setHidden(false);
   };
 
   const onClickSignUp = () => {
@@ -45,9 +42,16 @@ const Nav = () => {
 
   const onClickLogout = () => {
     sessionStorage.clear();
+    window.location.reload();
   };
 
+  const handleHidden = ( data: boolean ) => {
+    console.log(data);
+    setHidden(data);
+  }
+
   return (
+    <>
     <NavContainer>
       <LogoDiv>
         <Logo onClick={goHome}>Excelso</Logo>
@@ -68,13 +72,7 @@ const Nav = () => {
             <MypageButton>마이페이지</MypageButton>
           </Link>
         ) : (
-          <Link to="/login">
-            <Button onClick={onClickLogin}>로그인</Button>
-          </Link>
-        ) : (
-          <Link to="/login">
-            <Button onClick={onClickLogin}>로그인</Button>
-          </Link>
+          <Button onClick={onClickLogin}>로그인</Button>
         )}
       </LoginDiv>
       <SignUpDiv>
@@ -86,13 +84,11 @@ const Nav = () => {
           <Link to="/signup">
             <Button onClick={onClickSignUp}>회원가입</Button>
           </Link>
-        ) : (
-          <Link to="/mypage">
-            <Button onClick={onClickSignUp}>회원가입</Button>
-          </Link>
         )}
       </SignUpDiv>
     </NavContainer>
+    <LoginCpn hidden={hidden} handleHidden={handleHidden}/>
+    </>
   );
 };
 

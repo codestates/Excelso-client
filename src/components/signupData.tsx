@@ -108,7 +108,7 @@ const SignupInfoCpn = () => {
   // 닉네임 중복여부, 이메일 중복여부 확인
   return (
     <SignupBody>
-      <SignupTitle>회원가입</SignupTitle>
+      <SignupTitle>Excelso SIGNUP</SignupTitle>
       <SignupInfo>
         <SignupInfoBox>
           <SignupInfoName>EMAIL</SignupInfoName>
@@ -154,3 +154,4 @@ const SignupInfoCpn = () => {
 // 확인 패스워드 state따로 정해서 버튼 누를때 해보기.
 
 export default SignupInfoCpn;
+

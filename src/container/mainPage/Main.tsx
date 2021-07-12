@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React from "react";
 
 import SwiperSlider from "../../components/slider/SwiperSlider";
 import Nav from "../../components/nav/Nav";

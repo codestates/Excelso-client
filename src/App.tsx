@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-// import "./App.css";
+// import { addUserData, removeUserData } from './reducers/userInfo';
+import { useDispatch } from "react-redux";
+// import { RootState } from "./reducers";
+import { setLogin } from "./reducers/loginReducer";
 
 import Main from "./container/mainPage/Main";
 import MenulistPage from "./pages/menulistpage";
@@ -14,7 +16,7 @@ import {
   Switch,
   RouteComponentProps,
   withRouter,
-  Redirect,
+  // Redirect,
 } from "react-router-dom";
 
 export const App = ({
@@ -22,19 +24,38 @@ export const App = ({
   location,
   match,
 }: RouteComponentProps): JSX.Element => {
-  const [userData, setUserData] = useState(sessionStorage.getItem("info"));
-  const [accessToken] = useState(sessionStorage.getItem("accessToken"));
-  const [isLogin, setIsLogin] = useState(false);
+  const dispatch = useDispatch();
+
+  // const [userData, setUserData] = useState(
+  //   JSON.parse(sessionStorage.getItem("info")!)
+  // );
+  const [accessToken] = useState(
+    JSON.parse(sessionStorage.getItem("accessToken")!)
+  );
+  // const [isLogin, setIsLogin] = useState(false);
+
+  // useEffect(() => {
+  //   // console.log('wow useEffect!')
+  //   console.log("userData", userData);
+  //   if (accessToken) {
+  //     setIsLogin(true);
+  //   } else {
+  //     setIsLogin(false);
+  //   }
+  // }, [accessToken]);
 
   useEffect(() => {
-    console.log("wow useEffect!");
-    console.log(userData, "userData");
-    if (accessToken) {
-      setIsLogin(true);
-    } else {
-      setIsLogin(false);
-    }
-  }, [accessToken]);
+    // console.log("accessToken:", `"${accessToken}"`);
+    // console.log("accessToken:", typeof accessToken);
+    dispatch(setLogin(accessToken));
+  }, [dispatch, accessToken]);
+
+  // const handleUserData = (nick: string) => {
+  //   setUserData({
+  //     ...userData,
+  //     nickname: nick,
+  //   });
+  // };
   // 로그인 유지 작업하는 중이었음.
   return (
     <Switch>
@@ -49,11 +70,11 @@ export const App = ({
         <BrandInfo></BrandInfo>
       </Route>
       <Route exact path="/signup" render={() => <Signup />} />
-      <Route path="/mypage" render={() => <Mypage userData={userData} />} />
+      <Route path="/mypage" render={() => <Mypage />} />
       <Route
         path="/login"
         render={() => {
-          return <>{isLogin ? <Redirect to="/" /> : <LoginCpn />}</>;
+          return <LoginCpn />;
         }}
       />
     </Switch>

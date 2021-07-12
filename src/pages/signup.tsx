@@ -1,11 +1,15 @@
 import React from 'react';
-import SignupContainer  from '../container/signup'
+import SignupContainer  from '../container/signup';
+import Nav from '../components/nav/Nav';
 
 
 const Signup = () => {
   
     return (
-      <SignupContainer></SignupContainer>
+      <>
+        <Nav></Nav>
+        <SignupContainer></SignupContainer>
+      </>
     );
   }
 

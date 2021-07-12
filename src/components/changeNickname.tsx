@@ -2,16 +2,19 @@
 import React, { useState } from "react";
 import style from "styled-components";
 
+
 const ModalBody = style.div`
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
+
   display: ${(props) => (props.hidden ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   position: fixed;
 `;
+
 
 const ModalOverlay = style.div`
   background-color: rgba(0, 0, 0, 0.6);
@@ -19,6 +22,7 @@ const ModalOverlay = style.div`
   height: 100%;
   position: absolute;
 `;
+
 
 const ModalContent = style.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -29,6 +33,7 @@ const ModalContent = style.div`
   width: 30%;
   position: relative;
 `;
+
 
 const ButtonBox = style.div`
   display: flex;
@@ -41,11 +46,13 @@ const ChangeButton = style.button`
   width: 80%;
 `;
 
+
 const ContentBox = style.div`
   width:100%;
   display: flex;
   justify-content: flex-start;
   margin-top: 24px;
+
 `;
 
 const ContentName = style.div`

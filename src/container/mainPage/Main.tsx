@@ -1,5 +1,4 @@
 import React from "react";
-import { RouteComponentProps } from "react-router";
 import SwiperSlider from "../../components/slider/SwiperSlider";
 import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";
@@ -25,7 +24,7 @@ import {
   FthContainer,
   SnsWord,
   SnsMinWord,
-  SnsContainer,
+  SnsContainer
 } from "./mainStyles";
 
 import img1 from "../../img/cake-1589012_1280.jpg";
@@ -34,7 +33,7 @@ import img3 from "../../img/coffee-4597416_1920.jpg";
 import img4 from "../../img/restaurant-4011989_1920.jpg";
 import img5 from "../../img/table-2600954_1920.jpg";
 
-const Main = ({ match }: RouteComponentProps) => {
+const Main = () => {
   const videoSource = `https://vod-progressive.akamaized.net/exp=1626047862~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4722%2F5%2F148614389%2F452088434.mp4~hmac=576d1790672bfa6f6d64c3755e553ec1858791ee3830445ef4a0dd220898788e/vimeo-prod-skyfire-std-us/01/4722/5/148614389/452088434.mp4?download=1&filename=Coffee+Jet+-+1631.mp4`;
 
   const mdImg1 = `https://www.coffeebeankorea.com/data/menu/아이스바닐라라떼.jpg`;

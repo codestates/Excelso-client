@@ -10,6 +10,8 @@ import {
   ChangeNicknameBtn,
   MypageInfoInput,
   ChangePwBtn,
+  MypageInfoEmail,
+  MypageInfoNick,
 } from "./style";
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";

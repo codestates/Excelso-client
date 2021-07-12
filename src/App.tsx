@@ -23,6 +23,7 @@ export const App = ({
   location,
   match,
 }: RouteComponentProps): JSX.Element => {
+
   const dispatch = useDispatch();
 
   // const [userData, setUserData] = useState(
@@ -76,6 +77,7 @@ export const App = ({
           return <LoginCpn />;
         }}
       />
+
     </Switch>
   );
 };

@@ -55,6 +55,7 @@ const Nav = (): JSX.Element => {
   const onClickLogout = () => {
     sessionStorage.clear();
     window.location.reload();
+
   };
 
   const onClickMenu = () => {
@@ -70,10 +71,10 @@ const Nav = (): JSX.Element => {
     setHidden(data);
   };
 
-  //   const handleHidden = ( data: boolean ) => {
-  //     console.log(data);
-  //     setHidden(data);
-  //   }
+  // const handleHidden = ( data: boolean ) => {
+  //   console.log(data);
+  //   setHidden(data);
+  // }
 
   return (
     <>
@@ -152,7 +153,7 @@ const Nav = (): JSX.Element => {
         )}
         )
       </MenuHidden>
-      <LoginCpn hidden={hidden} handleHidden={handleHidden} />
+      {/* <LoginCpn hidden={hidden} handleHidden={handleHidden} /> */}
     </>
   );
 };

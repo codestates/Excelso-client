@@ -134,19 +134,66 @@ export const ThdContainer = styled.div`
   width: 65rem;
   height: 12rem;
   margin: 2rem;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export const ThdTempContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 20rem;
+  height: 12rem;
+  margin: 1.7rem;
+  margin-top: 3rem;
+  margin-right: 4rem;
+  border-radius: 1rem;
+  background-color: #ddc6b6;
+  div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    p {
+      color: #262223;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
 `;
 
 export const MDImg = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 16rem;
-  height: 10rem;
+  height: 11.5rem;
   border: 1px solid;
   border-radius: 2rem;
   box-shadow: 0.623rem 0.313rem 0.313rem #ddc6b6;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    width: 70%;
+    height: 100%;
+  }
 `;
 
 export const MDExp = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem 1.5rem;
   width: 45rem;
-  height: 10rem;
+  height: 11.5rem;
   border: 1px solid;
   border-radius: 2rem;
   box-shadow: 0.623rem 0.313rem 0.313rem #ddc6b6;
@@ -183,6 +230,35 @@ export const SnsWord = styled.div`
   button {
     background: transparent;
   }
+
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export const SnsMinWord = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.7;
+  width: 20rem;
+  padding: 0.5rem;
+  margin: 4rem 2rem 0;
+  background-color: #262223;
+  border-radius: 1rem;
+
+  color: white;
+  font-size: 3rem;
+  font-weight: 500;
+  button {
+    background: transparent;
+  }
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
 `;
 
 export const FthContainer = styled.div`
@@ -206,5 +282,8 @@ export const SnsContainer = styled.div`
     &:hover {
       opacity: 1;
     }
+  }
+  @media screen and (max-width: 500px) {
+    display: none;
   }
 `;

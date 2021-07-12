@@ -10,7 +10,7 @@ function CoffeesInfo({ location }: any) {
   const dispatch = useDispatch();
   const path = Number(location.pathname.split("/")[2]);
   const coffees = useSelector((state: RootState) => state.coffee.coffees);
-  const reviews = useSelector((state: RootState) => state.getRivew.reviews);
+  // const reviews = useSelector((state: RootState) => state.getRivew.reviews);
   const suitCoffee = coffees.filter(c => c.id === path);
 
   const [show, Setshow] = useState(false);

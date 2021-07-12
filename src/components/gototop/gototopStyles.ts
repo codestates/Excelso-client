@@ -9,7 +9,7 @@ export const GoContainer = styled.div`
     cursor: pointer;
     font-size: 1.125rem;
     background-color: inherit;
-    border: solid pink;
+    border: solid #cfcecc;
     border-width: 0 0.2rem 0.2rem 0;
     display: inline-block;
     padding: 0.625rem;

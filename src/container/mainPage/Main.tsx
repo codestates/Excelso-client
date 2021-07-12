@@ -1,7 +1,5 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { Link } from "react-router-dom";
-
+import React from "react";
+import { RouteComponentProps } from "react-router";
 import SwiperSlider from "../../components/slider/SwiperSlider";
 import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";
@@ -19,28 +17,27 @@ import {
   MainSectionThree,
   MDContainer,
   ThdContainer,
+  ThdTempContainer,
   MDWord,
   MDImg,
   MDExp,
   MainSectionFour,
   FthContainer,
   SnsWord,
+  SnsMinWord,
   SnsContainer,
 } from "./mainStyles";
 
-const Main = (): JSX.Element => {
-  const videoSource2 =
-    "https://vod-progressive.akamaized.net/exp=1625549723~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F2221%2F14%2F361107726%2F1481313478.mp4~hmac=d9bc34aa76f0ed11db6ae85ace702c14a3fd1eca475c8d97bf611c2c54c7af8e/vimeo-prod-skyfire-std-us/01/2221/14/361107726/1481313478.mp4?download=1&filename=Coffee+-+26846.mp4";
-  const img1 =
-    "https://pixabay.com/get/gbd71c3396177ae16233c15775cc9b32cbdbf9f8c2c310ac19deed5f95dbaacb5cd4f20985b68da9272003e04a637329d_1920.jpg?attachment=";
-  const img2 =
-    "https://pixabay.com/get/g2ccc8c48f99224b5de2482bd17c953e2cd639a6fba7fac27f99319f9737f0199730c563f15049418055fc57c4e6553b9_1920.jpg?attachment=";
-  const img3 =
-    "https://pixabay.com/get/g32c3311b379b8df0bb01c4fa7a4ebd6d43aa3f41b01a0c86a17256e7a270e7fcee538f9e750b9e1f17c2b65cf20b4ce5_1920.jpg?attachment=";
-  const img4 =
-    "https://pixabay.com/get/g21b390a1aff341dcbd8b34f91b654784e45188280b13eab9213c80ade1719d1f743e42f744cfff7f96d1709f1c86d92d_1920.jpg?attachment=";
-  const img5 =
-    "https://pixabay.com/get/g0bec103ac7e2ec8d4bd614bf1b713be32104d80941af205d366cbe58e022b729657be4755b6d66ce8855dea5914df37f_1920.jpg?attachment=";
+import img1 from "../../img/cake-1589012_1280.jpg";
+import img2 from "../../img/coffee-3759005_1920.jpg";
+import img3 from "../../img/coffee-4597416_1920.jpg";
+import img4 from "../../img/restaurant-4011989_1920.jpg";
+import img5 from "../../img/table-2600954_1920.jpg";
+
+const Main = ({ match }: RouteComponentProps) => {
+  const videoSource = `https://vod-progressive.akamaized.net/exp=1626047862~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4722%2F5%2F148614389%2F452088434.mp4~hmac=576d1790672bfa6f6d64c3755e553ec1858791ee3830445ef4a0dd220898788e/vimeo-prod-skyfire-std-us/01/4722/5/148614389/452088434.mp4?download=1&filename=Coffee+Jet+-+1631.mp4`;
+
+  const mdImg1 = `https://www.coffeebeankorea.com/data/menu/아이스바닐라라떼.jpg`;
 
   return (
     <>
@@ -58,6 +55,7 @@ const Main = (): JSX.Element => {
                 저희 Excelso에서는 원하시는 브랜드 커피 음료를 추천받으실 수
                 있습니다.
                 <br />
+                <br />
                 원하시는 제품에 대한 영양정보 및 다른 고객님들의 제품 리뷰 등
                 다양한 정보를 얻으실 수 있습니다.
               </p>
@@ -67,7 +65,7 @@ const Main = (): JSX.Element => {
         <MainSectionTwo>
           <VideoContainer>
             <Video autoPlay muted loop>
-              <source src={videoSource2} type="video/mp4" />
+              <source src={videoSource} type="video/mp4" />
             </Video>
           </VideoContainer>
         </MainSectionTwo>
@@ -75,21 +73,60 @@ const Main = (): JSX.Element => {
           <MDWord>MD's PICK</MDWord>
           <MDContainer>
             <ThdContainer>
-              <MDImg></MDImg>
-              <MDExp></MDExp>
+              <MDImg>
+                <div>
+                  <img src={mdImg1} alt="" />
+                </div>
+              </MDImg>
+              <MDExp>
+                <div>
+                  <p>요즘 같은 더운 날씨에 강력추천합니다.</p>
+                </div>
+              </MDExp>
             </ThdContainer>
             <ThdContainer>
-              <MDExp></MDExp>
+              <MDExp>
+                <div>
+                  <p>
+                    찝찝한 하루, 더 상쾌해지길 원하세요?
+                    <br />
+                    시원한 하루를 즐기기 위해선 이 음료를 추천합니다!
+                  </p>
+                </div>
+              </MDExp>
               <MDImg></MDImg>
             </ThdContainer>
             <ThdContainer>
               <MDImg></MDImg>
-              <MDExp></MDExp>
+              <MDExp>
+                <div>
+                  <p>제 최애커피입니다.</p>
+                </div>
+              </MDExp>
             </ThdContainer>
+            <ThdTempContainer>
+              <div>
+                <p>요즘 같은 더운 날씨에 강력추천합니다.</p>
+              </div>
+            </ThdTempContainer>
+            <ThdTempContainer>
+              <div>
+                <p>
+                  찝찝한 하루, 더 상쾌해지길 원하세요? 시원한 하루를 즐기기
+                  위해선 이 음료를 추천합니다!
+                </p>
+              </div>
+            </ThdTempContainer>
+            <ThdTempContainer>
+              <div>
+                <p>제 최애커피입니다.</p>
+              </div>
+            </ThdTempContainer>
           </MDContainer>
         </MainSectionThree>
         <MainSectionFour>
           <SnsWord>INSTAGRAM 보러가기</SnsWord>
+          <SnsMinWord>INSTAGRAM</SnsMinWord>
           <FthContainer>
             <SnsContainer>
               <img src={img1} alt={"sns"} />

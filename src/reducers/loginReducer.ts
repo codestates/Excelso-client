@@ -45,12 +45,14 @@ export type loginDispatchType =
   | loginstateDispatch;
 
 //action
-export const setLogin = () => {
+export const setLogin = (accessToken: string) => {
   return async (dispatch: Dispatch<loginstateDispatch>) => {
     try {
-      console.log("setLogin", "시도는하니?");
+      console.log("로그인유지시도");
       // console.log(token)
-      const response = await axios.get("http://localhost:3000/auth");
+      const response = await axios.post("http://localhost:3000/auth", {
+        accessToken,
+      });
       const data = await response.data;
       return dispatch({
         type: LOGIN_SUCCESS,
@@ -66,7 +68,8 @@ export const postUser =
   (email: string, password: string) =>
   async (dispatch: Dispatch<loginDispatchType>) => {
     try {
-      const userData = await axios
+      console.log("Start requset of postUser");
+      await axios
         .post("http://localhost:3000/user/login", {
           email,
           password,
@@ -103,11 +106,10 @@ const loginReducer = (state = initialState, action: loginDispatchType) => {
         success: false,
       };
     case LOGIN_SUCCESS:
-      console.log("LOGIN_SUCCESS");
+      console.log("LOGIN_SUCCESS & 로그인유지성공");
       let { accessToken, info } = action.payload;
       sessionStorage.setItem("accessToken", JSON.stringify(accessToken));
-      sessionStorage.setItem("info", JSON.stringify(info));
-
+      // window.location.replace("/");
       return {
         ...state,
         success: true,

@@ -30,6 +30,7 @@ export default function Reviews({
     Array.isArray(reviews) && userData.success
       ? reviews.filter((review) => review.user_id === userData.info.id)[0]
       : [];
+
   return (
     <>
       <ReviewContainer>

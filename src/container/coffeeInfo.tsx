@@ -35,6 +35,7 @@ function CoffeesInfo({ location }: any) {
     // console.log("useEffet getReviewAction"); 기존의 작성되어있는 리뷰 호출
     dispatch(getReviewAction(path));
   }, [dispatch, path]);
+
   return (
     <>
       <CoffeeInfo

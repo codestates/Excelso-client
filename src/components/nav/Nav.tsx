@@ -35,6 +35,7 @@ const Nav = (): JSX.Element => {
 
   const [menu, setMenu] = useState(false);
 
+
   const goHome = () => {
     console.log("goHome");
     history.push("/");

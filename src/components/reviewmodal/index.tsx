@@ -55,6 +55,7 @@ export default function ReviewModal({
   }, [myReview]);
 
   // console.log("value:", value);
+
   const getValue = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     console.log(e.currentTarget.value);
     setValue(e.currentTarget.value);
@@ -102,6 +103,7 @@ export default function ReviewModal({
           <Middle>
             <TextArea value={value} onChange={getValue}></TextArea>
             <AddButton onClick={addReview}>등록하기</AddButton>
+
           </Middle>
         )}
       </Modal>

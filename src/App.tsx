@@ -55,6 +55,7 @@ export const App = ({
   //     nickname: nick,
   //   });
   // };
+
   // 로그인 유지 작업하는 중이었음.
   return (
     <Switch>

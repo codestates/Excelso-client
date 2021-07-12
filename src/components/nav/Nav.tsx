@@ -57,7 +57,6 @@ const Nav = (): JSX.Element => {
     window.location.reload();
   };
 
-
   const onClickMenu = () => {
     if (menu) {
       setMenu(false);
@@ -66,17 +65,15 @@ const Nav = (): JSX.Element => {
     }
   };
 
-
   const handleHidden = (data: boolean) => {
     console.log(data);
     setHidden(data);
   };
 
-//   const handleHidden = ( data: boolean ) => {
-//     console.log(data);
-//     setHidden(data);
-//   }
-
+  // const handleHidden = ( data: boolean ) => {
+  //   console.log(data);
+  //   setHidden(data);
+  // }
 
   return (
     <>
@@ -114,7 +111,6 @@ const Nav = (): JSX.Element => {
             </Link>
           )}
         </SignUpDiv>
-
         <Menubar onClick={onClickMenu}>
           <div>
             <BiMenu size="lg"></BiMenu>
@@ -157,9 +153,7 @@ const Nav = (): JSX.Element => {
         )
       </MenuHidden>
 
-      </NavContainer>
-      <LoginCpn hidden={hidden} handleHidden={handleHidden} />
-
+      {/* <LoginCpn hidden={hidden} handleHidden={handleHidden} /> */}
     </>
   );
 };

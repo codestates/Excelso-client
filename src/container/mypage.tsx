@@ -1,7 +1,8 @@
-import { MpContainer, GlobalStyle, Navbar } from './style';
+import { MpContainer, GlobalStyle,  } from './style';
 import MypageInfoCpn from '../components/mypageInfo';
 import MypageReview from '../components/mypageReview';
-import SignoutBar from '../components/signout'
+import SignoutBar from '../components/signout';
+import Nav from '../components/nav/Nav';
 
 
 const MypageContainer = ({userData, handleUserData}: any) => {
@@ -9,7 +10,7 @@ const MypageContainer = ({userData, handleUserData}: any) => {
     <>
       <GlobalStyle />
       <MpContainer>
-        <Navbar></Navbar>
+        <Nav></Nav>
         <MypageInfoCpn userData={userData} handleUserData={handleUserData}></MypageInfoCpn>
         <MypageReview></MypageReview>
         <SignoutBar></SignoutBar>

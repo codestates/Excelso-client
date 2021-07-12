@@ -1,6 +1,6 @@
 import React from "react";
 // import styled, { createGlobalStyle } from "styled-components";
-import { Navbar, Container,
+import { Container,
    GlobalStyle,
    } from './style';
 import SignupInfoCpn from '../components/signupData'
@@ -17,7 +17,6 @@ const SignupContainer = () => {
     <>
     <GlobalStyle />
       <Container>
-        <Navbar></Navbar>
         <SignupInfoCpn></SignupInfoCpn>
       </Container>
     </>

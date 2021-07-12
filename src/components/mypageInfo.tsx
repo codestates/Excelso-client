@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MypageBody, MypageTitle, MypageInfo, MypageInfoBox, MypageInfoName,
-    ChangeNicknameBtn, MypageInfoInput, ChangePwBtn} from './style';
+    ChangeNicknameBtn, MypageInfoInput, ChangePwBtn, MypageInfoEmail, MypageInfoNick,
+    } from './style';
 import ChangeNickname from './changeNickname';
 import { StaticRouter } from 'react-router';
 import axios from 'axios';
@@ -35,7 +36,7 @@ const MypageInfoCpn = ({userData, handleUserData}: any) => {
     }else if(!regex.test(changePw) && !regex.test(checkChangePw)) {
       return alert('숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.');
     }
-    
+
     await axios.patch('http://localhost:3000/user/changepassword', {
       currentPassword: currentPw,
       changePassword: changePw,
@@ -61,10 +62,12 @@ const MypageInfoCpn = ({userData, handleUserData}: any) => {
       <MypageTitle>마이페이지</MypageTitle>
       <MypageInfo>
         <MypageInfoBox>
-          <MypageInfoName>이메일: {userData.email}</MypageInfoName>
+          <MypageInfoName>이메일: </MypageInfoName>
+          <MypageInfoEmail>{userData.email}</MypageInfoEmail>
         </MypageInfoBox>
         <MypageInfoBox>
-          <MypageInfoName>닉네임: {userData.nickname}</MypageInfoName>
+          <MypageInfoName>닉네임: </MypageInfoName>
+          <MypageInfoNick>{userData.nickname}</MypageInfoNick>
           <ChangeNicknameBtn onClick={changeNicknameBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
         </MypageInfoBox>
         <MypageInfoBox>
@@ -78,8 +81,6 @@ const MypageInfoCpn = ({userData, handleUserData}: any) => {
         <MypageInfoBox>
           <MypageInfoName>비밀번호 확인</MypageInfoName>
           <MypageInfoInput type="password" onChange={handleChangePw('checkChangePw')}></MypageInfoInput>
-        </MypageInfoBox>
-        <MypageInfoBox>
           <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
         </MypageInfoBox>
       </MypageInfo>

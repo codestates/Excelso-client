@@ -33,12 +33,18 @@ const ModalOverlay = style.div`
 
 const ModalContent = style.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-  background-color: white;
+  background-color: #262223;
   text-align: center;
   border-radius: 20px;
-  height: 65vh;
+  height: 50vh;
   width: 30%;
   position: relative;
+  color: #DDC6B6;
+`
+
+const LoginTitle = style.div`
+  font-size: 1.8rem;
+  margin-top: 18px;
 `
 
 const ButtonBox = style.div`
@@ -46,29 +52,36 @@ const ButtonBox = style.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-top: 48px;
 `
 
 const LoginButton = style.button`
   width: 80%;
+  height: 4vh;
+  margin-bottom: 16px;
+  border-radius: 30px;
 `
 
 const SocialLoginButton = style.button`
   width: 80%;
+  height: 4vh;
+  border-radius: 30px;
 `
 
 const ContentBox = style.div`
-  width:100%;
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   margin-top: 24px;
 `
 
 const ContentName = style.div`
-  
+  padding: 4px 16px;
+  width: 30%;
 `
 
 const ContentInput = style.input`
-  
+  width: 50%;
 `
 
 //type
@@ -121,6 +134,7 @@ const LoginCpn = ({ handleHidden, hidden }:any) => {
     <ModalBody hidden={hidden} onClick={ButtonClick}>
       <ModalOverlay></ModalOverlay>
       <ModalContent onClick={(e) => e.stopPropagation()}>
+          <LoginTitle>Excelso LOGIN</LoginTitle>
           <ContentBox>
              <ContentName>EMAIL</ContentName>
              <ContentInput type="text"

@@ -11,8 +11,8 @@ const MypageReview = () => {
         <ReviewBox>
           <ReviewPicture />
           <ReviewFunc>
-            <ReviewUpdate>리뷰 수정</ReviewUpdate>
-            <ReviewDelete>리뷰 삭제</ReviewDelete>  
+            <ReviewUpdate>수정</ReviewUpdate>
+            <ReviewDelete>삭제</ReviewDelete>  
           </ReviewFunc>
         </ReviewBox>
         <ReviewBox>

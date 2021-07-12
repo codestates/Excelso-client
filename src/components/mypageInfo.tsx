@@ -87,10 +87,14 @@ const MypageInfoCpn = () => {
         <MypageTitle>마이페이지</MypageTitle>
         <MypageInfo>
           <MypageInfoBox>
-            <MypageInfoName>이메일: {userData.info.email}</MypageInfoName>
+            <MypageInfoName>
+              이메일: {userData.info && userData.info.email}
+            </MypageInfoName>
           </MypageInfoBox>
           <MypageInfoBox>
-            <MypageInfoName>닉네임: {userData.info.nickname}</MypageInfoName>
+            <MypageInfoName>
+              닉네임: {userData.info && userData.info.nickname}
+            </MypageInfoName>
             <ChangeNicknameBtn onClick={changeNicknameBtnClick}>
               닉네임 변경하기
             </ChangeNicknameBtn>

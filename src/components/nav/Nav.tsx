@@ -156,8 +156,6 @@ const Nav = (): JSX.Element => {
         )}
         )
       </MenuHidden>
-
-      </NavContainer>
       <LoginCpn hidden={hidden} handleHidden={handleHidden} />
 
     </>

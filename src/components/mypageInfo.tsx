@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducers";
@@ -11,6 +10,8 @@ import {
   ChangeNicknameBtn,
   MypageInfoInput,
   ChangePwBtn,
+  MypageInfoEmail,
+  MypageInfoNick,
 } from "./style";
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
@@ -84,47 +85,36 @@ const MypageInfoCpn = () => {
 
   return (
     <>
-      <MypageBody>
-        <MypageTitle>마이페이지</MypageTitle>
-        <MypageInfo>
-          <MypageInfoBox>
-            <MypageInfoName>이메일: {userData.info.email}</MypageInfoName>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>닉네임: {userData.info.nickname}</MypageInfoName>
-            <ChangeNicknameBtn onClick={changeNicknameBtnClick}>
-              닉네임 변경하기
-            </ChangeNicknameBtn>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>현재 비밀번호</MypageInfoName>
-            <MypageInfoInput
-              type="password"
-              onChange={handleChangePw("currentPw")}
-            ></MypageInfoInput>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>변경할 비밀번호</MypageInfoName>
-            <MypageInfoInput
-              type="password"
-              onChange={handleChangePw("changePw")}
-            ></MypageInfoInput>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>비밀번호 확인</MypageInfoName>
-            <MypageInfoInput
-              type="password"
-              onChange={handleChangePw("checkChangePw")}
-            ></MypageInfoInput>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
-          </MypageInfoBox>
-        </MypageInfo>
-      </MypageBody>
-      <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
-    </>
-  );
-};
+    <MypageBody>
+      <MypageTitle>마이페이지</MypageTitle>
+      <MypageInfo>
+        <MypageInfoBox>
+          <MypageInfoName>이메일: </MypageInfoName>
+          <MypageInfoEmail>{userData.email}</MypageInfoEmail>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>닉네임: </MypageInfoName>
+          <MypageInfoNick>{userData.nickname}</MypageInfoNick>
+          <ChangeNicknameBtn onClick={changeNicknameBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>현재 비밀번호</MypageInfoName>
+          <MypageInfoInput type="password" onChange={handleChangePw('currentPw')}></MypageInfoInput>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>변경할 비밀번호</MypageInfoName>
+          <MypageInfoInput type="password" onChange={handleChangePw('changePw')}></MypageInfoInput>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>비밀번호 확인</MypageInfoName>
+          <MypageInfoInput type="password" onChange={handleChangePw('checkChangePw')}></MypageInfoInput>
+          <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
+        </MypageInfoBox>
+      </MypageInfo>
+    </MypageBody>
+    <ChangeNickname hidden={hidden} handleHidden={handleHidden} handleUserData={handleUserData}/>
+    </>    
+  )
+}
 
 export default MypageInfoCpn;

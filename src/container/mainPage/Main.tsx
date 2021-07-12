@@ -51,14 +51,14 @@ const Main = () => {
           <SndContainer>
             <ExcelLogo>Excelso</ExcelLogo>
             <ExcelExp>
-              <p>
+              <div>
                 저희 Excelso에서는 원하시는 브랜드 커피 음료를 추천받으실 수
                 있습니다.
-                <br />
-                <br />
+              </div>
+              <div>
                 원하시는 제품에 대한 영양정보 및 다른 고객님들의 제품 리뷰 등
                 다양한 정보를 얻으실 수 있습니다.
-              </p>
+              </div>
             </ExcelExp>
           </SndContainer>
         </MainSectionOne>

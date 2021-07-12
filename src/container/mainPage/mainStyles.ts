@@ -64,10 +64,10 @@ export const ExcelExp = styled.div`
   padding: 0.5rem;
   margin-top: 1.7rem;
 
-  p {
+  div {
     color: #262223;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     word-spacing: 0.15rem;
   }
 `;
@@ -134,7 +134,8 @@ export const ThdContainer = styled.div`
   width: 65rem;
   height: 12rem;
   margin: 2rem;
-  @media screen and (max-width: 500px) {
+  margin-top: 2rem;
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -162,7 +163,7 @@ export const ThdTempContainer = styled.div`
     }
   }
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;
@@ -231,7 +232,7 @@ export const SnsWord = styled.div`
     background: transparent;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -256,7 +257,7 @@ export const SnsMinWord = styled.div`
   button {
     background: transparent;
   }
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;
@@ -283,7 +284,7 @@ export const SnsContainer = styled.div`
       opacity: 1;
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;

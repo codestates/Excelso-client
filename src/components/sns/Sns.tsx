@@ -30,7 +30,7 @@ const Sns: React.FC = () => {
         tag="section"
         wrapperTag="ul"
         style={{ height: "100%" }}
-        spaceBetween={2}
+        spaceBetween={10}
         slidesPerView={3}
         autoplay={true}
         pagination={false}

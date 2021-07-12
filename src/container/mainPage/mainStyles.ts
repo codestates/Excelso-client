@@ -28,6 +28,9 @@ export const FstContainer = styled.div`
   .swiper-pagination-bullet {
     background-color: #ddc6b6;
   }
+  .swiper-slide {
+    width: auto;
+  }
   .swiper-slide img {
     display: block;
     margin: 0 auto;
@@ -270,12 +273,43 @@ export const SnsMinWord = styled.div`
   }
 `;
 
+// export const FthContainer = styled.div`
+//   height: 23rem;
+//   margin: 7rem;
+//   display: grid;
+//   grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
+//   column-gap: 1rem;
+// `;
+
 export const FthContainer = styled.div`
-  height: 23rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30rem;
   margin: 7rem;
-  display: grid;
-  grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
-  column-gap: 1rem;
+  .swiper-container {
+    width: 100%;
+  }
+  .swiper-slide {
+    width: auto;
+  }
+  .swiper-slide img {
+    height: 100%;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
 `;
 
 export const SnsContainer = styled.div`

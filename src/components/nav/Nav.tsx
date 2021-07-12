@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+
+import { Autoplay } from "swiper";
+
+import { BiMenu } from "react-icons/bi";
+
 import LoginCpn from "../login";
 
 import {
@@ -14,6 +19,12 @@ import {
   Button,
   Logo,
   MypageButton,
+  Menubar,
+  MenuBarCol,
+  MenuHidden,
+  MenuLoginDiv,
+  MenuSignupDiv,
+  MenuHideButton
 } from "./navStyles";
 
 const Nav = (): JSX.Element => {
@@ -21,6 +32,8 @@ const Nav = (): JSX.Element => {
 
   const [clickSignUp, setClickSignUp] = useState(false);
   const [hidden, setHidden] = useState(true);
+
+  const [menu, setMenu] = useState(false);
 
   const goHome = () => {
     console.log("goHome");
@@ -44,15 +57,26 @@ const Nav = (): JSX.Element => {
     window.location.reload();
   };
 
+
+  const onClickMenu = () => {
+    if (menu) {
+      setMenu(false);
+    } else {
+      setMenu(true);
+    }
+  };
+
+
   const handleHidden = (data: boolean) => {
     console.log(data);
     setHidden(data);
   };
 
-  const handleHidden = ( data: boolean ) => {
-    console.log(data);
-    setHidden(data);
-  }
+//   const handleHidden = ( data: boolean ) => {
+//     console.log(data);
+//     setHidden(data);
+//   }
+
 
   return (
     <>
@@ -67,7 +91,7 @@ const Nav = (): JSX.Element => {
         </BeanDiv>
         <MenuDiv>
           <Link to="/coffee">
-            <MenuButton>메뉴</MenuButton>
+            <MenuButton>음료</MenuButton>
           </Link>
         </MenuDiv>
         <LoginDiv>
@@ -90,8 +114,52 @@ const Nav = (): JSX.Element => {
             </Link>
           )}
         </SignUpDiv>
+
+        <Menubar onClick={onClickMenu}>
+          <div>
+            <BiMenu size="lg"></BiMenu>
+          </div>
+        </Menubar>
+      </NavContainer>
+      <MenuHidden>
+        {menu ? (
+          <MenuBarCol>
+            <MenuLoginDiv>
+              {sessionStorage.getItem("accessToken") ? (
+                <Link to="/mypage">
+                  <MenuHideButton>마이페이지</MenuHideButton>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <MenuHideButton onClick={onClickLogin}>로그인</MenuHideButton>
+                </Link>
+              )}
+            </MenuLoginDiv>
+            <MenuSignupDiv>
+              {sessionStorage.getItem("accessToken") ? (
+                <Link to="/">
+                  <MenuHideButton onClick={onClickLogout}>
+                    로그아웃
+                  </MenuHideButton>
+                </Link>
+              ) : (
+                <Link to="/signup">
+                  <MenuHideButton onClick={onClickSignUp}>
+                    회원가입
+                  </MenuHideButton>
+                </Link>
+              )}
+            </MenuSignupDiv>
+          </MenuBarCol>
+        ) : (
+          ""
+        )}
+        )
+      </MenuHidden>
+
       </NavContainer>
       <LoginCpn hidden={hidden} handleHidden={handleHidden} />
+
     </>
   );
 };

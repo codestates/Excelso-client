@@ -69,6 +69,14 @@ export const ExcelExp = styled.div`
     font-size: 1.5rem;
     font-weight: 700;
     word-spacing: 0.15rem;
+    .mention2 {
+      @media screen and (max-width: 500px) {
+        color: #262223;
+        font-size: 0.7rem;
+        font-weight: 700;
+        word-spacing: 0.15rem;
+      }
+    }
   }
 `;
 

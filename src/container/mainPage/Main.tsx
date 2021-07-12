@@ -34,8 +34,10 @@ import img3 from "../../img/coffee-4597416_1920.jpg";
 import img4 from "../../img/restaurant-4011989_1920.jpg";
 import img5 from "../../img/table-2600954_1920.jpg";
 
+// import VideoSrc from "../videos/200223_Cafe_01_13.mp4";
+
 const Main = () => {
-  const videoSource = `https://vod-progressive.akamaized.net/exp=1626047862~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4722%2F5%2F148614389%2F452088434.mp4~hmac=576d1790672bfa6f6d64c3755e553ec1858791ee3830445ef4a0dd220898788e/vimeo-prod-skyfire-std-us/01/4722/5/148614389/452088434.mp4?download=1&filename=Coffee+Jet+-+1631.mp4`;
+  const videoSource = `https://content.videvo.net/videvo_files/video/free/2020-03/originalContent/200223_Cafe_01_13.mp4`;
 
   const mdImg1 = `https://www.coffeebeankorea.com/data/menu/아이스바닐라라떼.jpg`;
 
@@ -55,7 +57,7 @@ const Main = () => {
                 저희 Excelso에서는 원하시는 브랜드 커피 음료를 추천받으실 수
                 있습니다.
               </div>
-              <div>
+              <div className="mention2">
                 원하시는 제품에 대한 영양정보 및 다른 고객님들의 제품 리뷰 등
                 다양한 정보를 얻으실 수 있습니다.
               </div>

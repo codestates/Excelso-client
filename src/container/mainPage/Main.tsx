@@ -1,5 +1,4 @@
 import React from "react";
-
 import SwiperSlider from "../../components/slider/SwiperSlider";
 import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";

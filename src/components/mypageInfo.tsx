@@ -89,16 +89,14 @@ const MypageInfoCpn = () => {
         <MypageTitle>마이페이지</MypageTitle>
         <MypageInfo>
           <MypageInfoBox>
-            <MypageInfoName>이메일: </MypageInfoName>
-            <MypageInfoEmail>
-              {userData.info && userData.info.email}
-            </MypageInfoEmail>
+            <MypageInfoName>
+              이메일: {userData.info && userData.info.email}
+            </MypageInfoName>
           </MypageInfoBox>
           <MypageInfoBox>
-            <MypageInfoName>닉네임: </MypageInfoName>
-            <MypageInfoNick>
-              {userData && userData.info.nickname}
-            </MypageInfoNick>
+            <MypageInfoName>
+              닉네임: {userData.info && userData.info.nickname}
+            </MypageInfoName>
             <ChangeNicknameBtn onClick={changeNicknameBtnClick}>
               닉네임 변경하기
             </ChangeNicknameBtn>
@@ -123,6 +121,8 @@ const MypageInfoCpn = () => {
               type="password"
               onChange={handleChangePw("checkChangePw")}
             ></MypageInfoInput>
+          </MypageInfoBox>
+          <MypageInfoBox>
             <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
           </MypageInfoBox>
         </MypageInfo>

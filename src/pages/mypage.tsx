@@ -1,5 +1,4 @@
 import MypageContainer from "../container/mypage";
-import { successPayloadType } from "../reducers/loginReducer";
 
 // type userdata = {
 //   id: number,
@@ -7,11 +6,8 @@ import { successPayloadType } from "../reducers/loginReducer";
 //   nickname: string,
 // }
 
-
-const Mypage = ({userData, handleUserData}: any) => {
-  return (
-    <MypageContainer userData={userData} handleUserData={handleUserData}></MypageContainer>
-  )
-}
+const Mypage = () => {
+  return <MypageContainer></MypageContainer>;
+};
 
 export default Mypage;

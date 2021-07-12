@@ -1,4 +1,3 @@
-import { type } from "os";
 import styled from "styled-components/macro";
 interface Props {
   show: boolean;
@@ -46,7 +45,7 @@ export const AddButton = styled.button<ButtonProps>`
 `;
 
 interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => any;
 }
 interface TextI {
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;

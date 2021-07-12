@@ -1,60 +1,87 @@
-import React, { useState } from 'react';
-import { MypageBody, MypageTitle, MypageInfo, MypageInfoBox, MypageInfoName,
-    ChangeNicknameBtn, MypageInfoInput, ChangePwBtn, MypageInfoEmail, MypageInfoNick,
-    } from './style';
-import ChangeNickname from './changeNickname';
-import { StaticRouter } from 'react-router';
-import axios from 'axios';
-const MypageInfoCpn = ({userData, handleUserData}: any) => {
-  
-  const [ pwInfo, setPwInfo ] = useState({
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../reducers";
+import {
+  MypageBody,
+  MypageTitle,
+  MypageInfo,
+  MypageInfoBox,
+  MypageInfoName,
+  ChangeNicknameBtn,
+  MypageInfoInput,
+  ChangePwBtn,
+  MypageInfoEmail,
+  MypageInfoNick,
+} from "./style";
+import ChangeNickname from "./changeNickname";
+// import { StaticRouter } from "react-router";
+import axios from "axios";
+
+interface userDataI {
+  success: boolean;
+  accessToken: string;
+  info: {
+    id: number;
+    email: string;
+    nickname: string;
+  };
+  message: string;
+}
+const MypageInfoCpn = () => {
+  const [pwInfo, setPwInfo] = useState({
     currentPw: "",
     changePw: "",
     checkChangePw: "",
-  })
+  });
 
-  const [ hidden, setHidden ] = useState(true); // open
-  
-  const handleHidden = ( data: boolean ) => {
+  const userData: userDataI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
+
+  const [hidden, setHidden] = useState(true); // open
+
+  const handleHidden = (data: boolean) => {
     console.log(data);
     setHidden(data);
-  }
+  };
   const handleChangePw = (key: string) => (e: any) => {
     setPwInfo({
       ...pwInfo,
-      [key]: String(e.target.value)
-    })
-  }
+      [key]: String(e.target.value),
+    });
+  };
 
   const changeButtonClick = async () => {
     const { currentPw, changePw, checkChangePw } = pwInfo;
     const regex = /^[A-Za-z0-9]{6,20}$/;
-    if(changePw !== checkChangePw) {
-      return alert('변경할 비밀번호가 일치하지 않습니다.')
-    }else if( !currentPw || !changePw || !checkChangePw ) {
-      return alert('모든 비밀번호를 기입해주세요.');
-    }else if(!regex.test(changePw) && !regex.test(checkChangePw)) {
-      return alert('숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.');
+    if (changePw !== checkChangePw) {
+      return alert("변경할 비밀번호가 일치하지 않습니다.");
+    } else if (!currentPw || !changePw || !checkChangePw) {
+      return alert("모든 비밀번호를 기입해주세요.");
+    } else if (!regex.test(changePw) && !regex.test(checkChangePw)) {
+      return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
     }
 
-    await axios.patch('http://localhost:3000/user/changepassword', {
-      currentPassword: currentPw,
-      changePassword: changePw,
-      token: JSON.parse(sessionStorage.getItem("accessToken")!),
-    }).then((res) => {
-      console.log(res)
-      setPwInfo({
-        currentPw: "",
-        changePw: "",
-        checkChangePw: "",
+    await axios
+      .patch("http://localhost:3000/user/changepassword", {
+        currentPassword: currentPw,
+        changePassword: changePw,
+        token: JSON.parse(sessionStorage.getItem("accessToken")!),
       })
-    })
-    .catch((err) => console.log(err))
-  }
-  
+      .then((res) => {
+        console.log(res);
+        setPwInfo({
+          currentPw: "",
+          changePw: "",
+          checkChangePw: "",
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
   const changeNicknameBtnClick = () => {
     setHidden(false);
-  }
+  };
 
   return (
     <>

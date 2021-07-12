@@ -1,22 +1,21 @@
-import { MpContainer, GlobalStyle,  } from './style';
-import MypageInfoCpn from '../components/mypageInfo';
-import MypageReview from '../components/mypageReview';
-import SignoutBar from '../components/signout';
-import Nav from '../components/nav/Nav';
+import { MpContainer, GlobalStyle, Navbar } from "./style";
+import MypageInfoCpn from "../components/mypageInfo";
+import MypageReview from "../components/mypageReview";
+import SignoutBar from "../components/signout";
 
 
-const MypageContainer = ({userData, handleUserData}: any) => {
+const MypageContainer = () => {
   return (
     <>
       <GlobalStyle />
       <MpContainer>
-        <Nav></Nav>
-        <MypageInfoCpn userData={userData} handleUserData={handleUserData}></MypageInfoCpn>
+        <Navbar></Navbar>
+        <MypageInfoCpn></MypageInfoCpn>
         <MypageReview></MypageReview>
         <SignoutBar></SignoutBar>
       </MpContainer>
     </>
-  )
-}
+  );
+};
 
 export default MypageContainer;

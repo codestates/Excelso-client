@@ -1,19 +1,6 @@
 import React from "react";
 
-import {
-  BrandCardContainer,
-  BrandCardInner,
-  Image,
-  Title,
-  Desc,
-} from "./styles";
-interface SimpleImageSliderProps {
-  width: number;
-  height: number;
-  images: [];
-  showNavs: boolean;
-  showBullets: boolean;
-}
+import { BrandCardContainer, BrandCardInner, Title, Desc } from "./styles";
 
 // const images: { source: string }[] = [
 //   {
@@ -132,21 +119,4 @@ export default function BrandCard(): JSX.Element {
       </BrandCardInner>
     </BrandCardContainer>
   );
-}
-
-{
-  /* <>
-{images.map((image, idx) => {
-  return (
-    <div style={{}}>
-      <img
-        key={idx}
-        src={image.source}
-        alt={"카페 브랜드"}
-        style={{ objectFit: "contain" }}
-      />
-    </div>
-  );
-})}
-</> */
 }

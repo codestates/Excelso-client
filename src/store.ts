@@ -8,5 +8,4 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-export type RootReducerType = ReturnType<typeof rootReducer>;
 export default store;

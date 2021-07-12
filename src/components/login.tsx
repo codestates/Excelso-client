@@ -1,35 +1,27 @@
-import React, { useState } from 'react';
-import style from 'styled-components';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootReducerType } from '../store';
-import { postUser } from '../reducers/loginReducer';
-import Nav from './nav/Nav';
-
-const OpenButton = style.button`
-  background: blue;
-  color: white;
-  padding: 5px 20px;
-  border-radius: 5px;
-`
+import React, { useState } from "react";
+import style from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../reducers";
+import { postUser } from "../reducers/loginReducer";
 
 const ModalBody = style.div`
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  display: ${props => (props.hidden ? 'none' : 'flex')};
+  display: ${(props) => (props.hidden ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   position: fixed;
   z-index:100;
-`
+`;
 
 const ModalOverlay = style.div`
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   position: absolute;
-`
+`;
 
 const ModalContent = style.div`
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -73,7 +65,7 @@ const ContentBox = style.div`
   display: flex;
   justify-content: flex-start;
   margin-top: 24px;
-`
+`;
 
 const ContentName = style.div`
   padding: 4px 16px;
@@ -86,46 +78,49 @@ const ContentInput = style.input`
 
 //type
 
-const LoginCpn = ({ handleHidden, hidden }:any) => {
+
+const LoginCpn = ({ handleHidden, hidden }: any) => {
   const dispatch = useDispatch();
-  const userData = useSelector((state: RootReducerType) => state.loginReducer); 
-  const [ inputData, setInputData ] = useState({
+  const userData = useSelector((state: RootState) => state.loginReducer);
+  const [inputData, setInputData] = useState({
     email: "",
     password: "",
-  }) 
+  });
 
-  const openButtonClick = () => {
-    handleHidden(false);
-  }
+
+  // const openButtonClick = () => {
+  //   handleHidden(false);
+  // };
+
 
   const ButtonClick = () => {
     setInputData({
-        email: "",
-        password: "",
-    })
+      email: "",
+      password: "",
+    });
     console.log(userData);
     handleHidden(true);
-  }
+  };
 
-  const LoginButtonClick = () => {
-    const { email, password } = inputData
-    if(!email || !password) {
-      return alert('로그인 정보를 입력해주세요.')
+  const LoginButtonClick = async () => {
+    const { email, password } = inputData;
+    if (!email || !password) {
+      return alert("로그인 정보를 입력해주세요.");
     }
-    dispatch(postUser(email, password));
+    await dispatch(postUser(email, password));
     handleHidden(true);
     setInputData({
-        email: "",
-        password: "",
-    })
-  }
+      email: "",
+      password: "",
+    });
+  };
 
-  const handleInputValue = (key:string) => (e:any) => {
+  const handleInputValue = (key: string) => (e: any) => {
     setInputData({
       ...inputData,
-      [key]: e.target.value
-    })
-  }
+      [key]: e.target.value,
+    });
+  };
 
   return (
     <>
@@ -136,23 +131,29 @@ const LoginCpn = ({ handleHidden, hidden }:any) => {
       <ModalContent onClick={(e) => e.stopPropagation()}>
           <LoginTitle>Excelso LOGIN</LoginTitle>
           <ContentBox>
-             <ContentName>EMAIL</ContentName>
-             <ContentInput type="text"
-              placeholder="이메일" onChange={handleInputValue('email')}></ContentInput>
+            <ContentName>EMAIL</ContentName>
+            <ContentInput
+              type="text"
+              placeholder="이메일"
+              onChange={handleInputValue("email")}
+            ></ContentInput>
           </ContentBox>
           <ContentBox>
-             <ContentName>PASSWORD</ContentName>
-             <ContentInput type="password"
-              placeholder="패스워드" onChange={handleInputValue('password')}></ContentInput>
+            <ContentName>PASSWORD</ContentName>
+            <ContentInput
+              type="password"
+              placeholder="패스워드"
+              onChange={handleInputValue("password")}
+            ></ContentInput>
           </ContentBox>
           <ButtonBox>
             <LoginButton onClick={LoginButtonClick}>LOGIN</LoginButton>
             <SocialLoginButton>Social</SocialLoginButton>
           </ButtonBox>
-      </ModalContent>
-    </ModalBody>
+        </ModalContent>
+      </ModalBody>
     </>
-  )  
-}
+  );
+};
 
 export default LoginCpn;

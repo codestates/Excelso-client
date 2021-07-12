@@ -90,11 +90,11 @@ const MypageInfoCpn = () => {
       <MypageInfo>
         <MypageInfoBox>
           <MypageInfoName>이메일: </MypageInfoName>
-          <MypageInfoEmail>{userData.email}</MypageInfoEmail>
+          <MypageInfoEmail>{userData.info && userData.info.email}</MypageInfoEmail>
         </MypageInfoBox>
         <MypageInfoBox>
           <MypageInfoName>닉네임: </MypageInfoName>
-          <MypageInfoNick>{userData.nickname}</MypageInfoNick>
+          <MypageInfoNick>{userData.info && userData.info.nickname}</MypageInfoNick>
           <ChangeNicknameBtn onClick={changeNicknameBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
         </MypageInfoBox>
         <MypageInfoBox>
@@ -112,7 +112,7 @@ const MypageInfoCpn = () => {
         </MypageInfoBox>
       </MypageInfo>
     </MypageBody>
-    <ChangeNickname hidden={hidden} handleHidden={handleHidden} handleUserData={handleUserData}/>
+    <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
     </>    
   )
 }

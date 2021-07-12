@@ -24,7 +24,7 @@ import {
   MenuHidden,
   MenuLoginDiv,
   MenuSignupDiv,
-  MenuHideButton
+  MenuHideButton,
 } from "./navStyles";
 
 const Nav = (): JSX.Element => {
@@ -55,6 +55,7 @@ const Nav = (): JSX.Element => {
   const onClickLogout = () => {
     sessionStorage.clear();
     window.location.reload();
+
   };
 
   const onClickMenu = () => {
@@ -152,7 +153,6 @@ const Nav = (): JSX.Element => {
         )}
         )
       </MenuHidden>
-
       {/* <LoginCpn hidden={hidden} handleHidden={handleHidden} /> */}
     </>
   );

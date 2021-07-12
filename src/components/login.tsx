@@ -4,6 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { postUser } from "../reducers/loginReducer";
 
+// const OpenButton = style.button`
+//   background: blue;
+//   color: white;
+//   padding: 5px 20px;
+//   border-radius: 5px;
+// `;
+
 const ModalBody = style.div`
   width: 100%;
   height: 100%;
@@ -86,8 +93,6 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     email: "",
     password: "",
   });
-
-
   // const openButtonClick = () => {
   //   handleHidden(false);
   // };

@@ -1,4 +1,3 @@
-
 // import axios from "axios";
 import React, { useState } from "react";
 import style from "styled-components";
@@ -34,7 +33,6 @@ const ModalContent = style.div`
   width: 30%;
   position: relative;
 `;
-
 
 
 const ButtonBox = style.div`
@@ -114,4 +112,3 @@ const ChangeNickname = ({ hidden, handleHidden }: any) => {
 };
 
 export default ChangeNickname;
-

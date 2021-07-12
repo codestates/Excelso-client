@@ -28,6 +28,9 @@ export const FstContainer = styled.div`
   .swiper-pagination-bullet {
     background-color: #ddc6b6;
   }
+  .swiper-slide {
+    width: auto;
+  }
   .swiper-slide img {
     display: block;
     margin: 0 auto;
@@ -270,12 +273,32 @@ export const SnsMinWord = styled.div`
   }
 `;
 
+// export const FthContainer = styled.div`
+//   height: 23rem;
+//   margin: 7rem;
+//   display: grid;
+//   grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
+//   column-gap: 1rem;
+// `;
+
 export const FthContainer = styled.div`
-  height: 23rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30rem;
   margin: 7rem;
-  display: grid;
-  grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
-  column-gap: 1rem;
+  .swiper-container {
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  .swiper-slide {
+    width: auto;
+  }
+  .swiper-slide img {
+    height: 100%;
+  }
 `;
 
 export const SnsContainer = styled.div`

@@ -1,5 +1,6 @@
 import React from "react";
 import SwiperSlider from "../../components/slider/SwiperSlider";
+import Sns from "../../components/sns/Sns";
 import Nav from "../../components/nav/Nav";
 import Footer from "../../components/footer/Footer";
 import GoToTop from "../../components/gototop/GoToTop";
@@ -39,6 +40,8 @@ const Main = () => {
   const videoSource = `https://content.videvo.net/videvo_files/video/free/2020-03/originalContent/200223_Cafe_01_13.mp4`;
 
   const mdImg1 = `https://www.coffeebeankorea.com/data/menu/아이스바닐라라떼.jpg`;
+  const mdImg2 = `https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[168004]_20210415134634879.jpg`;
+  const mdImg3 = `https://www.baristapaulbassett.co.kr//upload/product/A/thumbnail_1_201903211115239201.jpg`;
 
   return (
     <>
@@ -95,10 +98,18 @@ const Main = () => {
                   </p>
                 </div>
               </MDExp>
-              <MDImg></MDImg>
+              <MDImg>
+                <div>
+                  <img src={mdImg2} alt="" />
+                </div>
+              </MDImg>
             </ThdContainer>
             <ThdContainer>
-              <MDImg></MDImg>
+              <MDImg>
+                <div>
+                  <img src={mdImg3} alt="" />
+                </div>
+              </MDImg>
               <MDExp>
                 <div>
                   <p>제 최애커피입니다.</p>
@@ -129,7 +140,7 @@ const Main = () => {
           <SnsWord>INSTAGRAM 보러가기</SnsWord>
           <SnsMinWord>INSTAGRAM</SnsMinWord>
           <FthContainer>
-            <SnsContainer>
+            {/* <SnsContainer>
               <img src={img1} alt={"sns"} />
             </SnsContainer>
             <SnsContainer>
@@ -143,7 +154,8 @@ const Main = () => {
             </SnsContainer>
             <SnsContainer>
               <img src={img5} alt={"sns"} />
-            </SnsContainer>
+            </SnsContainer> */}
+            <Sns />
           </FthContainer>
         </MainSectionFour>
         <Footer />

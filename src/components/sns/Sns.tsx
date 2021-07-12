@@ -9,8 +9,8 @@ import img3 from "../../img/coffee-4597416_1920.jpg";
 import img4 from "../../img/restaurant-4011989_1920.jpg";
 import img5 from "../../img/table-2600954_1920.jpg";
 
-SwiperCore.use([Navigation, Pagination, Autoplay]);
-const SwiperSlider: React.FC = () => {
+SwiperCore.use([Autoplay]);
+const Sns: React.FC = () => {
   const slides = [];
   const images = [img1, img2, img3, img4, img5];
 
@@ -21,17 +21,20 @@ const SwiperSlider: React.FC = () => {
       </SwiperSlide>
     );
   }
+
+  console.log(slides);
   return (
     <React.Fragment>
       <Swiper
-        id="main"
+        id="mainSns"
+        tag="section"
+        wrapperTag="ul"
         style={{ height: "100%" }}
-        spaceBetween={50}
-        slidesPerView={5}
-        navigation
-        pagination={{ clickable: true }}
-        loop={true}
+        spaceBetween={2}
+        slidesPerView={3}
         autoplay={true}
+        pagination={false}
+        loop={true}
         centeredSlides={true}
       >
         {slides.map(slide => {
@@ -42,4 +45,4 @@ const SwiperSlider: React.FC = () => {
   );
 };
 
-export default SwiperSlider;
+export default Sns;

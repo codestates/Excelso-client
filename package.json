@@ -13,9 +13,6 @@
     "@types/react-dom": "^17.0.8",
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
-    "@welcome-ui/swiper": "^3.0.0",
-    "@welcome-ui/utils": "^3.4.3",
-    "@xstyled/styled-components": "^3.0.3",
     "@xstyled/system": "^3.0.2",
     "axios": "^0.21.1",
     "node-sass": "^6.0.1",
@@ -26,8 +23,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-simple-image-slider": "^2.1.2",
-    "react-slick": "^0.28.1",
-    "react-slick-slider": "^0.15.10",
     "react-styled-carousel": "^0.5.1",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
@@ -39,7 +34,7 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "export PORT=3001 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

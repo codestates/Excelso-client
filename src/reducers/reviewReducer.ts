@@ -17,7 +17,7 @@ interface DELETEREVIEW {
 
 interface GETREVIEW {
   type: typeof GET_REVIEW;
-  review: reviewI;
+  reviews: reviewT[];
 }
 
 type PostReviewDispatch = ADDREVIEW | DELETEREVIEW;
@@ -30,17 +30,15 @@ export const addReviewAction = (
 ) => {
   return async (dispatch: Dispatch<ADDREVIEW>) => {
     try {
-      console.log("ADD_REVIEW ACTION");
-      console.log(coffee_id, content, rating, token);
-      const response = await axios.post("http://localhost:8000/review/update", {
+      // console.log("ADD_REVIEW ACTION");
+      console.log(token);
+      const response = await axios.post("http://localhost:3000/review/update", {
         coffee_id,
         content,
         rating,
         token,
       });
-      console.log(response);
       const data: string = await response.data;
-      console.log(data);
       return dispatch({
         type: ADD_REVIEW,
         message: data,
@@ -53,7 +51,7 @@ export const addReviewAction = (
 
 export const deleteReivewAction = (coffee_id: number, token: string) => {
   return async (dispatch: Dispatch<DELETEREVIEW>) => {
-    const response = await axios.post("http://localhost:8000/review/delete", {
+    const response = await axios.post("http://localhost:3000/review/delete", {
       coffee_id,
       token,
     });
@@ -70,17 +68,18 @@ export const getReviewAction = (coffee_id: number) => {
   return async (dispatch: Dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/review/${coffee_id}`
+        `http://localhost:3000/review/${coffee_id}`
       );
       const data = await response.data;
+
       return dispatch({
         type: GET_REVIEW,
-        review: data[0],
+        reviews: data,
       });
     } catch (err) {
       return dispatch({
         type: GET_REVIEW,
-        review: {},
+        reviews: {},
       });
     }
   };
@@ -99,10 +98,12 @@ export const PostReviewReducer = (
 ): PostReview => {
   switch (action.type) {
     case ADD_REVIEW:
+      console.log("ADD_REVIEW ACTION");
       return {
         message: "등록성공",
       };
     case DELETE_REVIEW:
+      console.log("DELETE_REVIEW ACTION");
       return {
         message: "삭제성공",
       };
@@ -111,7 +112,7 @@ export const PostReviewReducer = (
   }
 };
 
-export interface reviewI {
+export type reviewT = {
   id: number;
   content: string;
   rating: number;
@@ -121,17 +122,23 @@ export interface reviewI {
   user_id: number;
   nickname: string;
   email: string;
-}
-
-const defaultState2 = {
-  review: {},
 };
 
-export const GetReviewReducer = (state = defaultState2, action: GETREVIEW) => {
+export interface reviewI {
+  reviews: reviewT[];
+}
+const defaultState2: reviewI = {
+  reviews: [],
+};
+
+export const GetReviewReducer = (
+  state: reviewI = defaultState2,
+  action: GETREVIEW
+): reviewI => {
   switch (action.type) {
     case GET_REVIEW:
       return {
-        review: action.review,
+        reviews: action.reviews,
       };
     default:
       return state;

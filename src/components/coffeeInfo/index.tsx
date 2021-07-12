@@ -15,28 +15,21 @@ import {
   Info,
 } from "./styles";
 import { CoffeeT } from "../../reducers/coffeeReducer";
+import { reviewT } from "../../reducers/reviewReducer";
+
 interface CoffeeInfoI {
   suitCoffee: CoffeeT;
   children?: JSX.Element;
-  review:
-    | {
-        id: number;
-        coffee_id: number;
-        content: string;
-        nickname: string;
-        rating: number;
-        updatedAt: string;
-        user_id: number;
-        createdAt: string;
-      }
-    | {};
   handleShow: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  path: number;
+  reviews: reviewT[];
 }
 
 export default function CoffeeInfo({
   suitCoffee,
-  review,
   handleShow,
+  path,
+  reviews,
 }: CoffeeInfoI) {
   return suitCoffee ? (
     <CoffeeInfoContainer>
@@ -83,7 +76,7 @@ export default function CoffeeInfo({
       </ImageContainer>
       <Pane>
         <Space />
-        <Reviews review={review} handleShow={handleShow} />
+        <Reviews handleShow={handleShow} path={path} reviews={reviews} />
       </Pane>
     </CoffeeInfoContainer>
   ) : (

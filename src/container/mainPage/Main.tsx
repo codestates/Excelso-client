@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps } from "react-router-dom";
-import { Link } from "react-router-dom";
+import React from "react";
 
 import SwiperSlider from "../../components/slider/SwiperSlider";
 import Nav from "../../components/nav/Nav";
@@ -26,6 +24,7 @@ import {
   MainSectionFour,
   FthContainer,
   SnsWord,
+
   SnsMinWord,
   SnsContainer
 } from "./mainStyles";
@@ -40,6 +39,8 @@ const Main = ({ match }: RouteComponentProps) => {
   const videoSource = `https://vod-progressive.akamaized.net/exp=1626047862~acl=%2Fvimeo-prod-skyfire-std-us%2F01%2F4722%2F5%2F148614389%2F452088434.mp4~hmac=576d1790672bfa6f6d64c3755e553ec1858791ee3830445ef4a0dd220898788e/vimeo-prod-skyfire-std-us/01/4722/5/148614389/452088434.mp4?download=1&filename=Coffee+Jet+-+1631.mp4`;
 
   const mdImg1 = `https://www.coffeebeankorea.com/data/menu/아이스바닐라라떼.jpg`;
+
+ 
 
   return (
     <>
@@ -131,19 +132,19 @@ const Main = ({ match }: RouteComponentProps) => {
           <SnsMinWord>INSTAGRAM</SnsMinWord>
           <FthContainer>
             <SnsContainer>
-              <img src={img1} />
+              <img src={img1} alt={"sns"} />
             </SnsContainer>
             <SnsContainer>
-              <img src={img2} />
+              <img src={img2} alt={"sns"} />
             </SnsContainer>
             <SnsContainer>
-              <img src={img3} />
+              <img src={img3} alt={"sns"} />
             </SnsContainer>
             <SnsContainer>
-              <img src={img4} />
+              <img src={img4} alt={"sns"} />
             </SnsContainer>
             <SnsContainer>
-              <img src={img5} />
+              <img src={img5} alt={"sns"} />
             </SnsContainer>
           </FthContainer>
         </MainSectionFour>

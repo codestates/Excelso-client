@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+
 import { Autoplay } from "swiper";
 
 import { BiMenu } from "react-icons/bi";
+
+import LoginCpn from "../login";
 
 import {
   NavContainer,
@@ -24,12 +27,11 @@ import {
   MenuHideButton
 } from "./navStyles";
 
-const Nav = () => {
+const Nav = (): JSX.Element => {
   const history = useHistory();
 
-  const [clickLogin, setClickLogin] = useState(false);
   const [clickSignUp, setClickSignUp] = useState(false);
-  const [clickLogout, setClickLogout] = useState(false);
+  const [hidden, setHidden] = useState(true);
 
   const [menu, setMenu] = useState(false);
 
@@ -39,11 +41,7 @@ const Nav = () => {
   };
 
   const onClickLogin = () => {
-    if (clickLogin) {
-      setClickLogin(false);
-    } else {
-      setClickLogin(true);
-    }
+    setHidden(false);
   };
 
   const onClickSignUp = () => {
@@ -56,7 +54,9 @@ const Nav = () => {
 
   const onClickLogout = () => {
     sessionStorage.clear();
+    window.location.reload();
   };
+
 
   const onClickMenu = () => {
     if (menu) {
@@ -65,6 +65,18 @@ const Nav = () => {
       setMenu(true);
     }
   };
+
+
+  const handleHidden = (data: boolean) => {
+    console.log(data);
+    setHidden(data);
+  };
+
+//   const handleHidden = ( data: boolean ) => {
+//     console.log(data);
+//     setHidden(data);
+//   }
+
 
   return (
     <>
@@ -88,9 +100,7 @@ const Nav = () => {
               <MypageButton>마이페이지</MypageButton>
             </Link>
           ) : (
-            <Link to="/login">
-              <Button onClick={onClickLogin}>로그인</Button>
-            </Link>
+            <Button onClick={onClickLogin}>로그인</Button>
           )}
         </LoginDiv>
         <SignUpDiv>
@@ -104,6 +114,7 @@ const Nav = () => {
             </Link>
           )}
         </SignUpDiv>
+
         <Menubar onClick={onClickMenu}>
           <div>
             <BiMenu size="lg"></BiMenu>
@@ -145,6 +156,10 @@ const Nav = () => {
         )}
         )
       </MenuHidden>
+
+      </NavContainer>
+      <LoginCpn hidden={hidden} handleHidden={handleHidden} />
+
     </>
   );
 };

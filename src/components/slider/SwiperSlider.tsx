@@ -12,16 +12,16 @@ const SwiperSlider: React.FC = () => {
   const items = [
     {
       id: 1,
-      url: banner1
+      url: banner1,
     },
     {
       id: 2,
-      url: banner2
+      url: banner2,
     },
     {
       id: 3,
-      url: banner3
-    }
+      url: banner3,
+    },
   ];
 
   return (
@@ -31,17 +31,16 @@ const SwiperSlider: React.FC = () => {
         style={{ height: "100%" }}
         spaceBetween={50}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
         navigation
         pagination={{ clickable: true }}
         loop={true}
         autoplay={true}
         centeredSlides={true}
       >
-        {items.map(item => {
+        {items.map((item, idx) => {
           return (
             <SwiperSlide>
-              <img src={item.url} alt={`Slide ${item.id}`} />
+              <img key={idx} src={item.url} alt={`Slide ${item.id}`} />
             </SwiperSlide>
           );
         })}

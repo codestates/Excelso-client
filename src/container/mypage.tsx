@@ -1,8 +1,7 @@
-import { MpContainer, GlobalStyle, Navbar } from './style';
-import MypageInfoCpn from '../components/mypageInfo';
-import MypageReview from '../components/mypageReview';
-import SignoutBar from '../components/signout'
-
+import { MpContainer, GlobalStyle, Navbar } from "./style";
+import MypageInfoCpn from "../components/mypageInfo";
+import MypageReview from "../components/mypageReview";
+import SignoutBar from "../components/signout";
 
 const MypageContainer = () => {
   return (
@@ -15,7 +14,7 @@ const MypageContainer = () => {
         <SignoutBar></SignoutBar>
       </MpContainer>
     </>
-  )
-}
+  );
+};
 
 export default MypageContainer;

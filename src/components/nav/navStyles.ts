@@ -32,7 +32,7 @@ export const LogoDiv = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
 `;
 
 export const Logo = styled.button`
@@ -56,7 +56,7 @@ export const BeanDiv = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
   margin-left: 4rem;
   margin-right: 0;
   background-color: #262223;
@@ -71,7 +71,7 @@ export const MenuDiv = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
   margin-right: 4rem;
   margin-left: 0;
   background-color: #262223;
@@ -103,7 +103,7 @@ export const NavDiv = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
 `;
 
 export const Button = styled.button`
@@ -122,7 +122,7 @@ export const LoginDiv = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
   margin-right: 0;
   background-color: #262223;
   border-radius: 0.5rem;
@@ -138,7 +138,7 @@ export const SignUpDiv = styled.div`
   margin: 1rem;
   display: flex;
   justify-content: center;
-  align-itmes: center;
+  align-items: center;
   margin-left: 0;
   background-color: #262223;
   border-radius: 0.5rem;

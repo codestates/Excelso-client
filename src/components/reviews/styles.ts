@@ -14,6 +14,7 @@ export const Review = styled.div`
   width: 100%;
   background: white;
   padding: 5px 0;
+  border-bottom: 1px solid black;
 `;
 export const Pane = styled.div``;
 export const Writer = styled.h1`

@@ -31,31 +31,31 @@ const defaultState: CoffeeI = {
   coffees: [],
 };
 
-export interface ALL {
+export interface ALLI {
   type: typeof ALL;
   coffees: CoffeeT[];
 }
 
-export interface COFFEE {
+export interface COFFEEI {
   type: typeof COFFEE;
   coffees: CoffeeT[];
 }
 
-export interface TEA {
+export interface TEAI {
   type: typeof TEA;
   coffees: CoffeeT[];
 }
 
-export interface SMOOTHIE {
+export interface SMOOTHIEI {
   type: typeof SMOOTHIE;
   coffees: CoffeeT[];
 }
 
-export type CoffeeDispatch = ALL | COFFEE | TEA | SMOOTHIE;
+export type CoffeeDispatch = ALLI | COFFEEI | TEAI | SMOOTHIEI;
 
 export const coffeeList = (value: any = "ALL") => {
   return async (dispatch: Dispatch<CoffeeDispatch>) => {
-    const response = await axios.get("http://localhost:8000/coffee/coffeeInfo");
+    const response = await axios.get("http://localhost:3000/coffee/coffeeInfo");
     const data: CoffeeT[] = await response.data;
     return dispatch({
       type: value,
@@ -70,11 +70,13 @@ export const allCoffeeReducer = (
 ): CoffeeI => {
   switch (action.type) {
     case ALL:
+      console.log("ALL");
       return {
         ...state,
         coffees: action.coffees,
       };
     case COFFEE:
+      console.log("COFFEE");
       return {
         ...state,
         coffees: action.coffees.filter(

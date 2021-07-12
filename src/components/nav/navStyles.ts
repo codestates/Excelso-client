@@ -11,6 +11,18 @@ export const NavContainer = styled.div`
   height: 5.2rem;
   z-index: 50;
   background-color: #262223;
+  @media screen and (max-width: 500px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    width: 100%;
+    height: 3rem;
+    z-index: 50;
+  }
 `;
 
 export const LogoDiv = styled.div`
@@ -30,6 +42,11 @@ export const Logo = styled.button`
   border: none;
   color: #ddc6b6;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    width: 3rem;
+    height: 2rem;
+    font-size: 1.2rem;
+  }
 `;
 
 export const BeanDiv = styled.div`
@@ -59,6 +76,11 @@ export const MenuDiv = styled.div`
   margin-left: 0;
   background-color: #262223;
   border-radius: 0.5rem;
+  @media screen and (max-width: 500px) {
+    margin-top: 0.3rem;
+    font-size: 1.05rem;
+    margin: 0;
+  }
 `;
 
 export const MenuButton = styled.button`
@@ -68,6 +90,10 @@ export const MenuButton = styled.button`
   border: none;
   color: #ddc6b6;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    margin-top: 0.3rem;
+    font-size: 1.05rem;
+  }
 `;
 
 export const NavDiv = styled.div`
@@ -100,6 +126,9 @@ export const LoginDiv = styled.div`
   margin-right: 0;
   background-color: #262223;
   border-radius: 0.5rem;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
 `;
 
 export const SignUpDiv = styled.div`
@@ -113,6 +142,75 @@ export const SignUpDiv = styled.div`
   margin-left: 0;
   background-color: #262223;
   border-radius: 0.5rem;
+  @media screen and (max-width: 500px) {
+    display: none;
+  }
+`;
+
+export const Menubar = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  right: 0;
+  div {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #ddc6b6;
+    width: 100%;
+  }
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+`;
+
+export const MenuBarCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: transparent;
+  margin-right: 2rem;
+  width: 5rem;
+  height: 3rem;
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+`;
+
+export const MenuHidden = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 5rem;
+  right: 0;
+  background-color: #262223;
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+`;
+
+export const MenuLoginDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1.5rem;
+`;
+
+export const MenuSignupDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 1.5rem;
+`;
+
+export const MenuHideButton = styled.div`
+  background: transparent;
+  color: #ddc6b6;
+  border: 0;
+  font-size: 1rem;
 `;
 
 export const MypageButton = styled.button`

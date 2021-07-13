@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
+import { getUserReviewAction } from "../reducers/reviewReducer"
 import {
   MypageBody,
   MypageTitle,
@@ -12,7 +13,10 @@ import {
   ChangePwBtn,
   MypageInfoEmail,
   MypageInfoNick,
+  ModalLink,
+  ReviewButton,
 } from "./style";
+import MypageReview from './mypageReview';
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
@@ -28,6 +32,7 @@ interface userDataI {
   message: string;
 }
 const MypageInfoCpn = () => {
+  const dispatch = useDispatch();
   const [pwInfo, setPwInfo] = useState({
     currentPw: "",
     changePw: "",
@@ -39,11 +44,19 @@ const MypageInfoCpn = () => {
   );
 
   const [hidden, setHidden] = useState(true); // open
+  const [reviewHidden, setReviewHidden] = useState(true);
 
   const handleHidden = (data: boolean) => {
     console.log(data);
     setHidden(data);
   };
+
+  const reviewHandleHidden = (data: boolean) => {
+    console.log(data);
+    setReviewHidden(data);
+  };
+
+
   const handleChangePw = (key: string) => (e: any) => {
     setPwInfo({
       ...pwInfo,
@@ -79,9 +92,14 @@ const MypageInfoCpn = () => {
       .catch((err) => console.log(err));
   };
 
-  const changeNicknameBtnClick = () => {
+  const changeHiddenBtnClick = () => {
     setHidden(false);
   };
+
+  const reviewModalClick = () => { 
+    setReviewHidden(false);
+     dispatch(getUserReviewAction(userData.info.id));
+  }
 
   return (
     <>
@@ -95,7 +113,7 @@ const MypageInfoCpn = () => {
         <MypageInfoBox>
           <MypageInfoName>닉네임: </MypageInfoName>
           <MypageInfoNick>{userData.info && userData.info.nickname}</MypageInfoNick>
-          <ChangeNicknameBtn onClick={changeNicknameBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
+          <ChangeNicknameBtn onClick={changeHiddenBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
         </MypageInfoBox>
         <MypageInfoBox>
           <MypageInfoName>현재 비밀번호</MypageInfoName>
@@ -110,9 +128,15 @@ const MypageInfoCpn = () => {
           <MypageInfoInput type="password" onChange={handleChangePw('checkChangePw')}></MypageInfoInput>
           <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
         </MypageInfoBox>
+        <ModalLink>
+          {/* <ModalBookmark></ModalBookmark> */}
+          <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
+        </ModalLink>
       </MypageInfo>
     </MypageBody>
+    <MypageReview reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
     <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
+    
     </>    
   )
 }

@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 const GET_REVIEW = "GET_REVIEW";
 const ADD_REVIEW = "ADD_REVIEW";
 const DELETE_REVIEW = "DELETE_REVIEW";
+const GET_USER_REVIEW = "GET_USER_REVIEW";
 
 interface ADDREVIEW {
   type: typeof ADD_REVIEW;
@@ -18,6 +19,11 @@ interface DELETEREVIEW {
 interface GETREVIEW {
   type: typeof GET_REVIEW;
   reviews: reviewT[];
+}
+
+interface GETUSERREVIEW {
+  type: typeof GET_USER_REVIEW;
+  payload: userReviewT[];
 }
 
 type PostReviewDispatch = ADDREVIEW | DELETEREVIEW;
@@ -84,6 +90,27 @@ export const getReviewAction = (coffee_id: number) => {
     }
   };
 };
+
+export const getUserReviewAction = (user_id: number) => {
+  return async (dispatch: Dispatch<GETUSERREVIEW>) => {
+    try{
+      const response = await axios.get(
+        `http://localhost:3000/review/u/${user_id}`
+      );
+      const data = await response.data;
+
+      return dispatch({
+        type: GET_USER_REVIEW,
+        payload: data, 
+      });
+    }catch(err) {
+      return dispatch({
+        type: GET_USER_REVIEW,
+        payload: [],
+      })
+    }
+  }
+}
 interface PostReview {
   message: string;
 }
@@ -124,6 +151,16 @@ export type reviewT = {
   email: string;
 };
 
+export type userReviewT = {
+  id: number;
+  content: string;
+  rating: number;
+  createdAt: string;
+  updatedAt: string;
+  coffee_id: number;
+  src: string;
+}
+
 export interface reviewI {
   reviews: reviewT[];
 }
@@ -144,3 +181,26 @@ export const GetReviewReducer = (
       return state;
   }
 };
+
+
+export interface userReviewI {
+  payload: userReviewT[];
+}
+
+const defaultState3: userReviewI = {
+  payload: [],
+}
+
+export const UserGetReviewReducer = (
+  state: userReviewI = defaultState3,
+  action: GETUSERREVIEW
+): userReviewI => {
+  switch (action.type) {
+    case GET_USER_REVIEW:
+      return {
+        payload: action.payload, //배열
+      };
+    default:
+      return state;
+  }
+}

@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
 // import { addUserData, removeUserData } from './reducers/userInfo';
-
 import { useDispatch } from "react-redux";
 // import { RootState } from "./reducers";
 import { setLogin } from "./reducers/loginReducer";
-
-// import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from './reducers';
-// import "./App.css";
-
 import Main from "./container/mainPage/Main";
 import MenulistPage from "./pages/menulistpage";
 import Coffeeinfopage from "./pages/coffeeinfopage";
@@ -76,7 +70,6 @@ export const App = ({
         <BrandInfo></BrandInfo>
       </Route>
       <Route exact path="/signup" render={() => <Signup />} />
-
       <Route path="/mypage" render={() => <Mypage />} />
       <Route
         path="/login"

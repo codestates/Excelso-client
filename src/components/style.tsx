@@ -123,63 +123,93 @@ export const ChangePwBtn = styled.button`
   width: 20%;
 `
 
+export const ModalLink = styled.div`
+  
+`
+
+export const ReviewButton = styled.button`
+
+`
+
 // ==============Mypage Review=============
+// export const ReviewModalBody = styled.div `
+//   width: 100%;
+//   height: 100%;
+//   top: 0;
+//   left: 0;
 
-export const MypageReviewBody = styled.div`
-  height: 40vh;
-  width: 90%;
-  background-color: #262223;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 30px;
-`
+//   display: ${(props) => (props.hidden ? "none" : "flex")};
+//   justify-content: center;
+//   align-items: center;
+//   position: fixed;
+// `
 
-export const ReviewContainer = styled.div`
-  height: 80%;
-  width: 90%;
-  background-color: #DDC6B6;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  border-radius: 10px;
-`
+// export const ModalOverlay = styled.div`
+//   background-color: rgba(0, 0, 0, 0.6);
+//   width: 100%;
+//   height: 100%;
+//   position: absolute;
+// `
 
-export const ReviewBox = styled.div`
-  height: 80%;
-  width: 30%;
-  background-color: white;
-  border-radius: 40px;
-  margin-left: 12px;
-  display: flex;
-  flex-direction: column;
-`
+// export const MypageReviewBody = styled.div`
+//   height: 40vh;
+//   width: 90%;
+//   background-color: #262223;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 30px;
+// `
 
-export const ReviewPicture = styled.img`
+// export const ReviewContainer = styled.div`
+//   height: 80%;
+//   width: 90%;
+//   background-color: #DDC6B6;
+//   display: flex;
+//   justify-content: flex-start;
+//   align-items: center;
+//   border-radius: 10px;
+// `
 
-`
+// export const ReviewBox = styled.div`
+//   height: 80%;
+//   width: 30%;
+//   background-color: white;
+//   border-radius: 40px;
+//   margin-left: 12px;
+//   display: flex;
+//   flex-direction: column;
+// `
 
-export const ReviewFunc = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  width: 100%;
-  height: 100%;
-  margin-bottom: 4px;
-`
+// export const ReviewPicture = styled.img`
 
-export const ReviewUpdate = styled.button`
-  width: 3rem;
-  height: 1.3rem;
-`
+// `
 
-export const ReviewDelete = styled.button`
-  margin-right: 24px;
-  width: 3rem;
-  height: 1.3rem;
-`
+// export const ReviewFunc = styled.div`
+//   display: flex;
+//   justify-content: flex-end;
+//   align-items: flex-end;
+//   width: 100%;
+//   height: 100%;
+//   margin-bottom: 4px;
+// `
 
-//============singout bar============
+// export const ReviewButton = styled.button`
+
+// `
+
+// export const ReviewUpdate = styled.button`
+//   width: 3rem;
+//   height: 1.3rem;
+// `
+
+// export const ReviewDelete = styled.button`
+//   margin-right: 24px;
+//   width: 3rem;
+//   height: 1.3rem;
+// `
+
+//============signout bar============
 
 export const SignoutBarBody = styled.div`
   height: 5vh;
@@ -196,5 +226,3 @@ export const SignoutBtn = styled.button`
   border-radius: 5px;
   width: 10%;
 `
-
-//===========login ==============

@@ -8,7 +8,7 @@ import { coffeeList } from "../reducers/coffeeReducer";
 export default function Menulist() {
   const dispatch = useDispatch();
   const coffees = useSelector((state: RootState) => state.coffee.coffees);
-
+  console.log(coffees);
   useEffect(() => {
     dispatch(coffeeList());
   }, [dispatch]);

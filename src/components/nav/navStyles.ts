@@ -11,7 +11,7 @@ export const NavContainer = styled.div`
   height: 5.2rem;
   z-index: 50;
   background-color: #262223;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +42,7 @@ export const Logo = styled.button`
   border: none;
   color: #ddc6b6;
   cursor: pointer;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     width: 3rem;
     height: 2rem;
     font-size: 1.2rem;
@@ -76,7 +76,7 @@ export const MenuDiv = styled.div`
   margin-left: 0;
   background-color: #262223;
   border-radius: 0.5rem;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     margin-top: 0.3rem;
     font-size: 1.05rem;
     margin: 0;
@@ -90,7 +90,7 @@ export const MenuButton = styled.button`
   border: none;
   color: #ddc6b6;
   cursor: pointer;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     margin-top: 0.3rem;
     font-size: 1.05rem;
   }
@@ -126,7 +126,7 @@ export const LoginDiv = styled.div`
   margin-right: 0;
   background-color: #262223;
   border-radius: 0.5rem;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -142,7 +142,7 @@ export const SignUpDiv = styled.div`
   margin-left: 0;
   background-color: #262223;
   border-radius: 0.5rem;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -159,7 +159,7 @@ export const Menubar = styled.div`
     color: #ddc6b6;
     width: 100%;
   }
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;
@@ -172,7 +172,7 @@ export const MenuBarCol = styled.div`
   margin-right: 2rem;
   width: 5rem;
   height: 3rem;
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;
@@ -185,7 +185,7 @@ export const MenuHidden = styled.div`
   height: 5rem;
   right: 0;
   background-color: #262223;
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;

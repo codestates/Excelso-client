@@ -36,7 +36,7 @@ const MypageInfoCpn = () => {
   const [pwInfo, setPwInfo] = useState({
     currentPw: "",
     changePw: "",
-    checkChangePw: "",
+    checkChangePw: ""
   });
 
   const userData: userDataI = useSelector(
@@ -60,7 +60,7 @@ const MypageInfoCpn = () => {
   const handleChangePw = (key: string) => (e: any) => {
     setPwInfo({
       ...pwInfo,
-      [key]: String(e.target.value),
+      [key]: String(e.target.value)
     });
   };
 
@@ -79,17 +79,17 @@ const MypageInfoCpn = () => {
       .patch("http://localhost:3000/user/changepassword", {
         currentPassword: currentPw,
         changePassword: changePw,
-        token: JSON.parse(sessionStorage.getItem("accessToken")!),
+        token: JSON.parse(sessionStorage.getItem("accessToken")!)
       })
-      .then((res) => {
+      .then(res => {
         console.log(res);
         setPwInfo({
           currentPw: "",
           changePw: "",
-          checkChangePw: "",
+          checkChangePw: ""
         });
       })
-      .catch((err) => console.log(err));
+      .catch(err => console.log(err));
   };
 
   const changeHiddenBtnClick = () => {

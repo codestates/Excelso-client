@@ -1,6 +1,7 @@
 // import axios from "axios";
 import React, { useState } from "react";
 import style from "styled-components";
+import axios from 'axios';
 
 
 const ModalBody = style.div`
@@ -29,7 +30,7 @@ const ModalContent = style.div`
   background-color: white;
   text-align: center;
   border-radius: 20px;
-  height: 65vh;
+  height: 15vh;
   width: 30%;
   position: relative;
 `;
@@ -43,7 +44,14 @@ const ButtonBox = style.div`
 `;
 
 const ChangeButton = style.button`
-  width: 80%;
+  margin-top: 10px;
+  height: 5vh;
+  width: 30%;
+  outline: none;
+  background-color: #DDC6B6;
+  color: #262223;
+  border: none;
+  border-radius: 5px;
 `;
 
 
@@ -56,27 +64,35 @@ const ContentBox = style.div`
 `;
 
 const ContentName = style.div`
-  
+  margin-left: 24px;
 `;
 
 const ContentInput = style.input`
-  
+  width: 60%;
+  height: 15%;
+  margin-left: 18px;
 `;
 
 const ChangeNickname = ({ hidden, handleHidden }: any) => {
   const [newNickname, setNewNickname] = useState("");
 
-  // const changeButtonClick = async () => {
-  //   await axios.patch("http://localhost:3000/user/changenickname", {
-  //     token: JSON.parse(sessionStorage.getItem("accessToken")!),
-  //     changeNickname: newNickname,
-  //   }).then(() => {
-  //     handleUserData(newNickname);
-  //     console.log('change success')
-  //   })
-  //   .catch(err => console.log(err))
-  //   handleHidden(true);
-  // }
+  const changeButtonClick = async () => {
+    await axios.patch("http://localhost:3000/user/changenickname", {
+      token: JSON.parse(sessionStorage.getItem("accessToken")!),
+      changeNickname: newNickname,
+    }).then(async  () => {
+      // handleUserData(newNickname);
+      console.log('change success')
+      // await axios.get("http://localhost:3000/auth")
+      // .then((res) => {
+      //   setNewNickname("");
+      handleHidden(true);
+      window.location.reload();
+      // })
+    })
+    .catch(err => console.log(err))
+    handleHidden(true);
+  }
 
   const handleInputValue = (e: any) => {
     //check
@@ -103,7 +119,7 @@ const ChangeNickname = ({ hidden, handleHidden }: any) => {
             ></ContentInput>
           </ContentBox>
           <ButtonBox>
-            <ChangeButton>닉네임 변경</ChangeButton>
+            <ChangeButton onClick={changeButtonClick}>닉네임 변경</ChangeButton>
           </ButtonBox>
         </ModalContent>
       </ModalBody>

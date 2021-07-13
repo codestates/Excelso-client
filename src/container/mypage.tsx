@@ -1,7 +1,7 @@
-import { MpContainer, GlobalStyle, Navbar } from "./style";
+import { MpContainer, GlobalStyle } from "./style";
 import MypageInfoCpn from "../components/mypageInfo";
-import MypageReview from "../components/mypageReview";
 import SignoutBar from "../components/signout";
+import Nav from "../components/nav/Nav";
 
 
 const MypageContainer = () => {
@@ -9,9 +9,8 @@ const MypageContainer = () => {
     <>
       <GlobalStyle />
       <MpContainer>
-        <Navbar></Navbar>
+        <Nav />
         <MypageInfoCpn></MypageInfoCpn>
-        <MypageReview></MypageReview>
         <SignoutBar></SignoutBar>
       </MpContainer>
     </>

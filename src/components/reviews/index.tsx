@@ -18,11 +18,7 @@ interface Props {
   reviews: reviewT[];
 }
 
-export default function Reviews({
-  handleShow,
-  path,
-  reviews,
-}: Props): JSX.Element {
+export default function Reviews({ handleShow, reviews }: Props): JSX.Element {
   const userData: successPayloadTypeI = useSelector(
     (state: RootState) => state.loginReducer
   );
@@ -58,11 +54,11 @@ export default function Reviews({
                   )} ${review.createdAt.slice(11, 16)}`}</CreatedAt>
                 </Review>
               ) : (
-                <div>작성된 리뷰가 없습니다</div>
+                <div>서비스 이용에 불편을 드려 죄송합니다</div>
               );
             })
           ) : (
-            <div>작성된 리뷰가 없습니다1</div>
+            <div>작성된 리뷰가 없습니다</div>
           )}
         </div>
         {myReview ? (

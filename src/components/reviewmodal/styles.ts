@@ -6,7 +6,9 @@ interface Props {
 export const ReviewModalConatiner = styled.div<Props>`
   width: 100%;
   height: 100vh;
-  /* position: fixed; */
+  position: fixed;
+  top: 0;
+  z-index: 9999;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -16,7 +18,7 @@ export const ReviewModalConatiner = styled.div<Props>`
 
 export const Modal = styled.div`
   background: white;
-  width: 600px;
+  width: 620px;
   height: 300px;
   border-radius: 10px;
   display: flex;
@@ -31,17 +33,19 @@ export const Header = styled.div`
 export const Title = styled.h1``;
 
 export const Middle = styled.div`
+  display: flex;
   height: 50%;
   margin-left: 10px;
 `;
 
 export const AddButton = styled.button<ButtonProps>`
-  vertical-align: top;
   outline: none;
   border-radius: 7px;
   cursor: pointer;
-  padding: 10px;
+  padding: 7px;
   margin-left: 10px;
+  height: fit-content;
+  margin: 0 5px 5px;
 `;
 
 interface ButtonProps {

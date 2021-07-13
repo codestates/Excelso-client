@@ -53,7 +53,7 @@ export interface SMOOTHIEI {
 
 export type CoffeeDispatch = ALLI | COFFEEI | TEAI | SMOOTHIEI;
 
-export const coffeeList = (value: any = "ALL") => {
+export const coffeeList = (value: any = "COFFEE") => {
   return async (dispatch: Dispatch<CoffeeDispatch>) => {
     const response = await axios.get("http://localhost:3000/coffee/coffeeInfo");
     const data: CoffeeT[] = await response.data;

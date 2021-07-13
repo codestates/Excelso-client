@@ -28,6 +28,9 @@ export const FstContainer = styled.div`
   .swiper-pagination-bullet {
     background-color: #ddc6b6;
   }
+  .swiper-slide {
+    width: auto;
+  }
   .swiper-slide img {
     display: block;
     margin: 0 auto;
@@ -64,11 +67,19 @@ export const ExcelExp = styled.div`
   padding: 0.5rem;
   margin-top: 1.7rem;
 
-  p {
+  div {
     color: #262223;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     word-spacing: 0.15rem;
+    .mention2 {
+      @media screen and (max-width: 500px) {
+        color: #262223;
+        font-size: 0.7rem;
+        font-weight: 700;
+        word-spacing: 0.15rem;
+      }
+    }
   }
 `;
 
@@ -134,7 +145,8 @@ export const ThdContainer = styled.div`
   width: 65rem;
   height: 12rem;
   margin: 2rem;
-  @media screen and (max-width: 500px) {
+  margin-top: 2rem;
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -162,7 +174,7 @@ export const ThdTempContainer = styled.div`
     }
   }
 
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;
@@ -231,7 +243,7 @@ export const SnsWord = styled.div`
     background: transparent;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -256,17 +268,48 @@ export const SnsMinWord = styled.div`
   button {
     background: transparent;
   }
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 600px) {
     display: none;
   }
 `;
 
+// export const FthContainer = styled.div`
+//   height: 23rem;
+//   margin: 7rem;
+//   display: grid;
+//   grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
+//   column-gap: 1rem;
+// `;
+
 export const FthContainer = styled.div`
-  height: 23rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30rem;
   margin: 7rem;
-  display: grid;
-  grid-template-columns: 16rem 16rem 16rem 16rem 16rem;
-  column-gap: 1rem;
+  .swiper-container {
+    width: 100%;
+  }
+  .swiper-slide {
+    width: auto;
+  }
+  .swiper-slide img {
+    height: 100%;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
 `;
 
 export const SnsContainer = styled.div`
@@ -283,7 +326,7 @@ export const SnsContainer = styled.div`
       opacity: 1;
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;

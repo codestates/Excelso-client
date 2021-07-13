@@ -10,8 +10,6 @@ import {
   ChangeNicknameBtn,
   MypageInfoInput,
   ChangePwBtn,
-  MypageInfoEmail,
-  MypageInfoNick
 } from "./style";
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
@@ -82,7 +80,7 @@ const MypageInfoCpn = () => {
   const changeNicknameBtnClick = () => {
     setHidden(false);
   };
-
+  console.log(userData);
   return (
     <>
       <MypageBody>

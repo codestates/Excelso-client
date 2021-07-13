@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: fit-content;
   display: grid;
   grid-template-columns: repeat(4, auto);
   justify-content: center;

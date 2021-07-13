@@ -7,6 +7,7 @@ import {
   reviewT,
 } from "../../reducers/reviewReducer";
 import { RootState } from "../../reducers";
+import StarRating from "../star";
 import {
   ReviewModalConatiner,
   Modal,
@@ -93,11 +94,16 @@ export default function ReviewModal({
           <Title>리뷰 등록하기</Title>
         </Header>
         {myReview ? (
-          <Middle>
-            <TextArea value={value} onChange={getValue}></TextArea>
-            <AddButton onClick={addReview}>수정하기</AddButton>
-            <AddButton onClick={deleteReview}>삭제하기</AddButton>
-          </Middle>
+          <>
+            <StarRating on={false} />
+            <Middle>
+              <TextArea value={value} onChange={getValue}></TextArea>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <AddButton onClick={addReview}>수정하기</AddButton>
+                <AddButton onClick={deleteReview}>삭제하기</AddButton>
+              </div>
+            </Middle>
+          </>
         ) : (
           <Middle>
             <TextArea value={value} onChange={getValue}></TextArea>

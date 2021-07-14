@@ -12,8 +12,10 @@
 import styled from "styled-components";
 import axios from "axios";
 import { RootState } from "../reducers";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { deleteReivewAction } from "../reducers/reviewReducer";
+import ReviewUpdateModal from "./reviewUpdateModal";
 
  const ReviewModalBody = styled.div`
   width: 100%;
@@ -108,6 +110,7 @@ type userReviewT = {
   createdAt: string;
   updatedAt: string;
   coffee_id: number;
+  title: string;
   src: string;
 }
 
@@ -115,8 +118,14 @@ interface userReviewI {
   payload: userReviewT[]
 }
 
-const MypageReview = ({ reviewHidden, reviewHandleHidden} : any) => {
+const MypageReview = ({ reviewHidden, reviewHandleHidden, reviewModalClick } : any) => {
   const dispatch = useDispatch();
+
+  const [ updateHidden, setUpdateHidden ] = useState(true);
+  
+  const [ fakeCount, setFakeCount ] = useState(0); 
+
+  const [ personalData, setPersonalData ] = useState({});
 
   const userData: userDataI = useSelector(
     (state: RootState) => state.loginReducer
@@ -125,17 +134,35 @@ const MypageReview = ({ reviewHidden, reviewHandleHidden} : any) => {
   const reviewData: userReviewI = useSelector(
     (state: RootState) => state.UserGetReviewReducer
   ); 
+  
+  useEffect(() => {
+    if(fakeCount === 0) {
+      return;
+    }
+    reviewHandleHidden(true);
+    reviewModalClick();
+    // console.log(reviewData.payload)
+  },[fakeCount])
+//fakeCount로 모달에서 화면전환 없이 삭제하기
 
-  console.log(reviewData.payload)
   const closeModal = () => {
     reviewHandleHidden(true);
     console.log(reviewData);
   }
   
+  const deleteReview = async (data: number) => {
+    await dispatch(deleteReivewAction(data, userData.accessToken));
+    setFakeCount(fakeCount + 1); // useEffect 때문
+  }
 
-  // const data = () => {
-  //   console.log(reviewData);
-  // }
+  const handleUpdateButton = (data: userReviewT) => {
+    setPersonalData(data)
+    setUpdateHidden(false);
+  }
+
+  const handleUpdateClose = () => {
+    setUpdateHidden(true);
+  }
   
   return (
     <>
@@ -145,11 +172,11 @@ const MypageReview = ({ reviewHidden, reviewHandleHidden} : any) => {
           <ReviewContainer>
             {reviewData.payload.map((el: userReviewT) => {
               return (
-                <ReviewBox>
+                <ReviewBox key={el.id}>
                   <ReviewPicture src={el.src}/>
                   <ReviewFunc>
-                    <ReviewUpdate>수정</ReviewUpdate>
-                    <ReviewDelete>삭제</ReviewDelete>  
+                    <ReviewUpdate onClick={() => handleUpdateButton(el)}>수정</ReviewUpdate>
+                    <ReviewDelete onClick={() => deleteReview(el.coffee_id)}>삭제</ReviewDelete>  
                   </ReviewFunc>
                 </ReviewBox>
               )  
@@ -158,6 +185,7 @@ const MypageReview = ({ reviewHidden, reviewHandleHidden} : any) => {
           </ReviewContainer>  
         </MypageReviewBody>
     </ReviewModalBody> 
+    <ReviewUpdateModal updateHidden={updateHidden} handleUpdateClose={handleUpdateClose} personalData={personalData}></ReviewUpdateModal>
     </>
   )
 }

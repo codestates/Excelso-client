@@ -10,6 +10,7 @@ export const SignupBody = styled.div`
   text-align: center;
   color: #fff; 
   border-radius: 30px;
+  border: 4px solid #262223;
 `
 
 export const SignupTitle = styled.div`
@@ -124,11 +125,27 @@ export const ChangePwBtn = styled.button`
 `
 
 export const ModalLink = styled.div`
-  
+  margin-top: 32px;
 `
 
 export const ReviewButton = styled.button`
-
+  outline: none;
+  background-color: #fff;
+  color: #262223;
+  border: none;
+  border-radius: 5px;
+  width: 20%;
+  height: 4vh;
+  margin-left: 32px;
+`
+export const BookmarkButton = styled.button`
+  outline: none;
+  background-color: #fff;
+  color: #262223;
+  border: none;
+  border-radius: 5px;
+  width: 20%;
+  height: 4vh;
 `
 
 // ==============Mypage Review=============

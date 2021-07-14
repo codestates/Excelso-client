@@ -15,11 +15,13 @@ import {
   MypageInfoNick,
   ModalLink,
   ReviewButton,
+  BookmarkButton,
 } from "./style";
 import MypageReview from './mypageReview';
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
+import { isConstructorDeclaration } from "typescript";
 
 interface userDataI {
   success: boolean;
@@ -73,9 +75,8 @@ const MypageInfoCpn = () => {
       return alert("모든 비밀번호를 기입해주세요.");
     } else if (!regex.test(changePw) && !regex.test(checkChangePw)) {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
-    }
-
-    await axios
+    } else{
+      await axios
       .patch("http://localhost:3000/user/changepassword", {
         currentPassword: currentPw,
         changePassword: changePw,
@@ -90,6 +91,7 @@ const MypageInfoCpn = () => {
         });
       })
       .catch(err => console.log(err));
+    } 
   };
 
   const changeHiddenBtnClick = () => {
@@ -99,6 +101,10 @@ const MypageInfoCpn = () => {
   const reviewModalClick = () => { 
     setReviewHidden(false);
      dispatch(getUserReviewAction(userData.info.id));
+  }
+
+  const closeReviewModal = () => {
+    setReviewHidden(false);
   }
 
   return (
@@ -129,12 +135,12 @@ const MypageInfoCpn = () => {
           <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
         </MypageInfoBox>
         <ModalLink>
-          {/* <ModalBookmark></ModalBookmark> */}
+          <BookmarkButton>즐겨찾기</BookmarkButton>
           <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
         </ModalLink>
       </MypageInfo>
     </MypageBody>
-    <MypageReview reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
+    <MypageReview reviewModalClick={reviewModalClick} reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
     <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
     
     </>    

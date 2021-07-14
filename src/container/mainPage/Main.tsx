@@ -39,9 +39,9 @@ import img5 from "../../img/table-2600954_1920.jpg";
 const Main = () => {
   const videoSource = `https://content.videvo.net/videvo_files/video/free/2020-03/originalContent/200223_Cafe_01_13.mp4`;
 
-  const mdImg1 = `https://www.coffeebeankorea.com/data/menu/아이스바닐라라떼.jpg`;
-  const mdImg2 = `https://image.istarbucks.co.kr/upload/store/skuimg/2021/04/[168004]_20210415134634879.jpg`;
-  const mdImg3 = `https://www.baristapaulbassett.co.kr//upload/product/A/thumbnail_1_201903211115239201.jpg`;
+  const mdImg1 = `http://paikdabang.com/wp-content/uploads/2018/05/콜드브루-1-450x588.png`; // 콜드브루
+  const mdImg2 = `https://coffeebay.com/upload/menu/file_20200827174728.png`; // 크림소다 펄에이드
+  const mdImg3 = `https://image.dalkomm.com/data/KOMM/uploads/renew/bfi_thumb/20200319173058_app_thumb_c_mocalatte-3dhl66igs7gqly8ql1i58q.png`;
 
   return (
     <>
@@ -140,21 +140,6 @@ const Main = () => {
           <SnsWord>INSTAGRAM 보러가기</SnsWord>
           <SnsMinWord>INSTAGRAM</SnsMinWord>
           <FthContainer>
-            {/* <SnsContainer>
-              <img src={img1} alt={"sns"} />
-            </SnsContainer>
-            <SnsContainer>
-              <img src={img2} alt={"sns"} />
-            </SnsContainer>
-            <SnsContainer>
-              <img src={img3} alt={"sns"} />
-            </SnsContainer>
-            <SnsContainer>
-              <img src={img4} alt={"sns"} />
-            </SnsContainer>
-            <SnsContainer>
-              <img src={img5} alt={"sns"} />
-            </SnsContainer> */}
             <Sns />
           </FthContainer>
         </MainSectionFour>

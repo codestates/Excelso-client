@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { postUser } from "../reducers/loginReducer";
 
+import { GoogleLogin } from "react-google-login";
 // const OpenButton = style.button`
 //   background: blue;
 //   color: white;
@@ -16,7 +17,7 @@ const ModalBody = style.div`
   height: 100%;
   top: 0;
   left: 0;
-  display: ${(props) => (props.hidden ? "none" : "flex")};
+  display: ${props => (props.hidden ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -39,12 +40,12 @@ const ModalContent = style.div`
   width: 30%;
   position: relative;
   color: #DDC6B6;
-`
+`;
 
 const LoginTitle = style.div`
   font-size: 1.8rem;
   margin-top: 18px;
-`
+`;
 
 const ButtonBox = style.div`
   display: flex;
@@ -52,20 +53,20 @@ const ButtonBox = style.div`
   align-items: center;
   width: 100%;
   margin-top: 48px;
-`
+`;
 
 const LoginButton = style.button`
   width: 80%;
   height: 4vh;
   margin-bottom: 16px;
   border-radius: 30px;
-`
+`;
 
 const SocialLoginButton = style.button`
   width: 80%;
   height: 4vh;
   border-radius: 30px;
-`
+`;
 
 const ContentBox = style.div`
   width: 100%;
@@ -77,31 +78,29 @@ const ContentBox = style.div`
 const ContentName = style.div`
   padding: 4px 16px;
   width: 30%;
-`
+`;
 
 const ContentInput = style.input`
   width: 50%;
-`
+`;
 
 //type
-
 
 const LoginCpn = ({ handleHidden, hidden }: any) => {
   const dispatch = useDispatch();
   const userData = useSelector((state: RootState) => state.loginReducer);
   const [inputData, setInputData] = useState({
     email: "",
-    password: "",
+    password: ""
   });
   // const openButtonClick = () => {
   //   handleHidden(false);
   // };
 
-
   const ButtonClick = () => {
     setInputData({
       email: "",
-      password: "",
+      password: ""
     });
     console.log(userData);
     handleHidden(true);
@@ -116,24 +115,44 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     handleHidden(true);
     setInputData({
       email: "",
-      password: "",
+      password: ""
     });
   };
 
   const handleInputValue = (key: string) => (e: any) => {
     setInputData({
       ...inputData,
-      [key]: e.target.value,
+      [key]: e.target.value
     });
+  };
+
+  const handlelogin = async (googleData: any) => {
+    console.log(googleData);
+    const res = await fetch("http://localhost:3000/api/v1/auth/google", {
+      method: "POST",
+      body: JSON.stringify({
+        token: googleData.tokenId
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const data = await res.json();
+    // store returned user somehow
+    console.log(data);
+    if (data.email) {
+      await dispatch(postUser(data.email, ""));
+    }
   };
 
   return (
     <>
-    {/* <OpenButton onClick={openButtonClick}>open modal</OpenButton> */}
-    {/* <Nav></Nav> */}
-    <ModalBody hidden={hidden} onClick={ButtonClick}>
-      <ModalOverlay></ModalOverlay>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+      {/* <OpenButton onClick={openButtonClick}>open modal</OpenButton> */}
+      {/* <Nav></Nav> */}
+      <ModalBody hidden={hidden} onClick={ButtonClick}>
+        <ModalOverlay></ModalOverlay>
+        <ModalContent onClick={e => e.stopPropagation()}>
           <LoginTitle>Excelso LOGIN</LoginTitle>
           <ContentBox>
             <ContentName>EMAIL</ContentName>
@@ -153,7 +172,12 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
           </ContentBox>
           <ButtonBox>
             <LoginButton onClick={LoginButtonClick}>LOGIN</LoginButton>
-            <SocialLoginButton>Social</SocialLoginButton>
+            <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
+              buttonText="Log in with Google"
+              onSuccess={handlelogin}
+              onFailure={handlelogin}
+            />
           </ButtonBox>
         </ModalContent>
       </ModalBody>

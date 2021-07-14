@@ -28,5 +28,12 @@ export const Members = styled.div`
   span {
     color: white;
     margin: 0.7rem;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    a:hover {
+      color: purple;
+    }
   }
 `;

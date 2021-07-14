@@ -159,6 +159,7 @@ export type userReviewT = {
   updatedAt: string;
   coffee_id: number;
   src: string;
+  title: string;
 }
 
 export interface reviewI {

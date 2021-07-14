@@ -9,6 +9,8 @@ const SignoutBar = () => {
     })
     .then(() => {
       window.location.replace("/");
+      sessionStorage.clear();
+      alert("회원탈퇴 되었습니다.");
     }).catch(err => alert(err))  
   }
 

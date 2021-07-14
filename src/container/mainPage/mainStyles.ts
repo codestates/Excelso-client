@@ -72,13 +72,10 @@ export const ExcelExp = styled.div`
     font-size: 1.5rem;
     font-weight: 700;
     word-spacing: 0.15rem;
-    .mention2 {
-      @media screen and (max-width: 500px) {
-        color: #262223;
-        font-size: 0.7rem;
-        font-weight: 700;
-        word-spacing: 0.15rem;
-      }
+  }
+  div.mention2 {
+    @media screen and (max-width: 500px) {
+      display: none;
     }
   }
 `;
@@ -296,19 +293,6 @@ export const FthContainer = styled.div`
   }
   .swiper-slide img {
     height: 100%;
-
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
   }
 `;
 

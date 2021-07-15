@@ -49,7 +49,7 @@ const MypageInfoCpn = () => {
   const [hidden, setHidden] = useState(true); // open
   const [reviewHidden, setReviewHidden] = useState(true);
 
-  // const [goEmail, setGoEmail] = useState("");
+  const [goEmail, setGoEmail] = useState("");
 
   const handleHidden = (data: boolean) => {
     console.log(data);

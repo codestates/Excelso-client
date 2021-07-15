@@ -94,16 +94,21 @@ const ContentInput = style.textarea`
 
 const ReviewUpdateModal = ({ updateHidden, handleUpdateClose, personalData }: any) => {
   const { content, rating, updatedAt, coffee_id, title } = personalData;
-
+  // console.log(content);
 //   const coffeeData = await axios.get("http://localhost:3000/coffee/coffeeinfo")
 //   .then(res => {
 //     return res.data
 //   })
   
-//   const click = () => {
-//     console.log(coffeeData)
-//   }
-  const [ inputValue, setInputValue ] = useState("");
+  const updateReview = async () => {
+    await axios.post("http://localhost:3000/review/update", {
+      user_id: "",
+      coffee_id,
+      content,
+      rating,
+    })
+  }
+  const [ inputValue, setInputValue ] = useState(content);
 
   const changeInputValue = (e: any): void => {
     setInputValue(e.target.value);
@@ -117,12 +122,12 @@ const ReviewUpdateModal = ({ updateHidden, handleUpdateClose, personalData }: an
           <ContentBox>
             <ContentName>{title}</ContentName>
             <ContentInput
-              defaultValue={content}
+              value={inputValue}
               onChange={changeInputValue} // 작성중
             ></ContentInput>
           </ContentBox>
           <ButtonBox>
-            <LoginButton>등록</LoginButton>
+            <LoginButton onClick={updateReview}>등록</LoginButton>
             <SocialLoginButton onClick={handleUpdateClose}>취소</SocialLoginButton>
           </ButtonBox>
         </ModalContent>

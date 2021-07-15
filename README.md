@@ -18,7 +18,7 @@
 
 
 ### FRONT-END
-<img src="https://img.shields.io/badge/JavaScript-3178C6?style=flat-square&logo=TypeScript&logoColor=black"/></a>
+<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=black"/></a>
 <img src="https://img.shields.io/badge/styledComponents-DB7093?style=flat-square&logo=styled-components&logoColor=black"/></a>
 <img src="https://img.shields.io/badge/ReactHooks-B7178C?style=flat-square&logo=React&logoColor=black"/></a>
 <img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=black"/></a>

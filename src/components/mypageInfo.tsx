@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
-import { getUserReviewAction } from "../reducers/reviewReducer"
+import { getUserReviewAction } from "../reducers/reviewReducer";
 import {
   MypageBody,
   MypageTitle,
@@ -15,13 +15,13 @@ import {
   MypageInfoNick,
   ModalLink,
   ReviewButton,
-  BookmarkButton,
+  BookmarkButton
 } from "./style";
-import MypageReview from './mypageReview';
+import MypageReview from "./mypageReview";
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
-import { isConstructorDeclaration } from "typescript";
+import { getJSDocAugmentsTag, isConstructorDeclaration } from "typescript";
 
 interface userDataI {
   success: boolean;
@@ -33,6 +33,7 @@ interface userDataI {
   };
   message: string;
 }
+
 const MypageInfoCpn = () => {
   const dispatch = useDispatch();
   const [pwInfo, setPwInfo] = useState({
@@ -58,7 +59,6 @@ const MypageInfoCpn = () => {
     setReviewHidden(data);
   };
 
-
   const handleChangePw = (key: string) => (e: any) => {
     setPwInfo({
       ...pwInfo,
@@ -75,9 +75,26 @@ const MypageInfoCpn = () => {
       return alert("모든 비밀번호를 기입해주세요.");
     } else if (!regex.test(changePw) && !regex.test(checkChangePw)) {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
-    } else{
+    } else {
       await axios
-      .patch("http://localhost:3000/user/changepassword", {
+
+        .patch("http://localhost:3000/user/changepassword", {
+          currentPassword: currentPw,
+          changePassword: changePw,
+          token: JSON.parse(sessionStorage.getItem("accessToken")!)
+        })
+        .then(res => {
+          console.log(res);
+          setPwInfo({
+            currentPw: "",
+            changePw: "",
+            checkChangePw: ""
+          });
+        })
+        .catch(err => console.log(err));
+    }
+
+<!--       .patch("http://localhost:3000/user/changepassword", {
         currentPassword: currentPw,
         changePassword: changePw,
         token: JSON.parse(sessionStorage.getItem("accessToken")!)
@@ -91,60 +108,79 @@ const MypageInfoCpn = () => {
         });
       })
       .catch(err => console.log(err));
-    } 
+    }  -->
+
   };
 
   const changeHiddenBtnClick = () => {
     setHidden(false);
   };
 
-  const reviewModalClick = () => { 
+  const reviewModalClick = () => {
     setReviewHidden(false);
-     dispatch(getUserReviewAction(userData.info.id));
-  }
+    dispatch(getUserReviewAction(userData.info.id));
+  };
 
   const closeReviewModal = () => {
     setReviewHidden(false);
-  }
+  };
 
   return (
     <>
-    <MypageBody>
-      <MypageTitle>마이페이지</MypageTitle>
-      <MypageInfo>
-        <MypageInfoBox>
-          <MypageInfoName>이메일: </MypageInfoName>
-          <MypageInfoEmail>{userData.info && userData.info.email}</MypageInfoEmail>
-        </MypageInfoBox>
-        <MypageInfoBox>
-          <MypageInfoName>닉네임: </MypageInfoName>
-          <MypageInfoNick>{userData.info && userData.info.nickname}</MypageInfoNick>
-          <ChangeNicknameBtn onClick={changeHiddenBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
-        </MypageInfoBox>
-        <MypageInfoBox>
-          <MypageInfoName>현재 비밀번호</MypageInfoName>
-          <MypageInfoInput type="password" onChange={handleChangePw('currentPw')}></MypageInfoInput>
-        </MypageInfoBox>
-        <MypageInfoBox>
-          <MypageInfoName>변경할 비밀번호</MypageInfoName>
-          <MypageInfoInput type="password" onChange={handleChangePw('changePw')}></MypageInfoInput>
-        </MypageInfoBox>
-        <MypageInfoBox>
-          <MypageInfoName>비밀번호 확인</MypageInfoName>
-          <MypageInfoInput type="password" onChange={handleChangePw('checkChangePw')}></MypageInfoInput>
-          <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
-        </MypageInfoBox>
-        <ModalLink>
-          <BookmarkButton>즐겨찾기</BookmarkButton>
-          <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
-        </ModalLink>
-      </MypageInfo>
-    </MypageBody>
-    <MypageReview reviewModalClick={reviewModalClick} reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
-    <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
-    
-    </>    
-  )
-}
+      <MypageBody>
+        <MypageTitle>마이페이지</MypageTitle>
+        <MypageInfo>
+          <MypageInfoBox>
+            <MypageInfoName>이메일: </MypageInfoName>
+            <MypageInfoEmail>
+              {userData.info && userData.info.nickname}
+            </MypageInfoEmail>
+          </MypageInfoBox>
+          <MypageInfoBox>
+            <MypageInfoName>닉네임: </MypageInfoName>
+            <MypageInfoNick>
+              {userData.info && userData.info.nickname}
+            </MypageInfoNick>
+            <ChangeNicknameBtn onClick={changeHiddenBtnClick}>
+              닉네임 변경하기
+            </ChangeNicknameBtn>
+          </MypageInfoBox>
+          <MypageInfoBox>
+            <MypageInfoName>현재 비밀번호</MypageInfoName>
+            <MypageInfoInput
+              type="password"
+              onChange={handleChangePw("currentPw")}
+            ></MypageInfoInput>
+          </MypageInfoBox>
+          <MypageInfoBox>
+            <MypageInfoName>변경할 비밀번호</MypageInfoName>
+            <MypageInfoInput
+              type="password"
+              onChange={handleChangePw("changePw")}
+            ></MypageInfoInput>
+          </MypageInfoBox>
+          <MypageInfoBox>
+            <MypageInfoName>비밀번호 확인</MypageInfoName>
+            <MypageInfoInput
+              type="password"
+              onChange={handleChangePw("checkChangePw")}
+            ></MypageInfoInput>
+            <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
+          </MypageInfoBox>
+          <ModalLink>
+            <BookmarkButton>즐겨찾기</BookmarkButton>
+            <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
+          </ModalLink>
+        </MypageInfo>
+      </MypageBody>
+      <MypageReview
+        reviewModalClick={reviewModalClick}
+        reviewHidden={reviewHidden}
+        reviewHandleHidden={reviewHandleHidden}
+      />
+      <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
+    </>
+  );
+};
 
 export default MypageInfoCpn;

@@ -14,16 +14,15 @@ import {
   Route,
   Switch,
   RouteComponentProps,
-  withRouter,
+  withRouter
   // Redirect,
 } from "react-router-dom";
 
 export const App = ({
   history,
   location,
-  match,
+  match
 }: RouteComponentProps): JSX.Element => {
-
   const dispatch = useDispatch();
 
   // const [userData, setUserData] = useState(
@@ -77,7 +76,6 @@ export const App = ({
           return <LoginCpn />;
         }}
       />
-
     </Switch>
   );
 };

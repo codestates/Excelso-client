@@ -55,7 +55,7 @@ const Main = () => {
           <SndContainer>
             <ExcelLogo>Excelso</ExcelLogo>
             <ExcelExp>
-              <div>
+              <div className="mention1">
                 저희 Excelso에서는 원하시는 브랜드 커피 음료를 추천받으실 수
                 있습니다.
               </div>
@@ -74,7 +74,9 @@ const Main = () => {
           </VideoContainer>
         </MainSectionTwo>
         <MainSectionThree>
-          <MDWord>MD's PICK</MDWord>
+          <div className="mdPick">
+            <MDWord>MD's PICK</MDWord>
+          </div>
           <MDContainer>
             <ThdContainer>
               <MDImg>
@@ -137,8 +139,11 @@ const Main = () => {
           </MDContainer>
         </MainSectionThree>
         <MainSectionFour>
-          <SnsWord>INSTAGRAM 보러가기</SnsWord>
-          <SnsMinWord>INSTAGRAM</SnsMinWord>
+          <div className="instagram">
+            <SnsWord>INSTAGRAM 보러가기</SnsWord>
+            <SnsMinWord>INSTAGRAM</SnsMinWord>
+          </div>
+
           <FthContainer>
             <Sns />
           </FthContainer>

@@ -51,25 +51,26 @@ export const SndContainer = styled.div`
 
 export const ExcelLogo = styled.div`
   opacity: 0.7;
-  width: 12.5rem;
-  padding: 0.5rem;
+  width: 13%;
+  height: 30%;
+  padding: 0.5%;
   margin-top: 2rem;
   background-color: #262223;
   border-radius: 1rem;
 
   color: #ddc6b6;
-  font-size: 3rem;
+  font-size: 3vw;
   font-weight: 500;
 `;
 
 export const ExcelExp = styled.div`
-  height: 5rem;
+  height: 70%;
   padding: 0.5rem;
   margin-top: 1.7rem;
 
-  div {
+  div.mention1 {
     color: #262223;
-    font-size: 1.5rem;
+    font-size: 100%;
     font-weight: 700;
     word-spacing: 0.15rem;
   }
@@ -107,6 +108,10 @@ export const MainSectionThree = styled.section`
   width: 100%;
   height: 100vh;
   padding: 2rem;
+  div.mdPick {
+    top: 0;
+    height: 20%;
+  }
 `;
 
 export const MDWord = styled.div`
@@ -131,7 +136,7 @@ export const MDWord = styled.div`
 export const MDContainer = styled.div`
   display: block;
   width: 70rem;
-  height: 42rem;
+  height: 80%;
   padding-left: 3rem;
 `;
 
@@ -209,18 +214,20 @@ export const MDExp = styled.div`
 `;
 
 export const MainSectionFour = styled.div`
-  position: relative;
   display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
   background-color: #ddc6b6;
   padding: 2rem;
+  div.instagram {
+    top: 0;
+  }
 `;
 
 export const SnsWord = styled.div`
-  position: absolute;
   left: 0;
   top: 0;
   display: flex;

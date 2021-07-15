@@ -33,21 +33,21 @@ const ModalContent = style.div`
   width: 55%;
   position: relative;
   color: #DDC6B6;
-`
+`;
 
 const LoginTitle = style.div`
   font-size: 1.8rem;
   margin-top: 18px;
   text-align: left;
   margin-left: 36px;
-`
+`;
 
 const ButtonBox = style.div`
   display: flex;
   justify-content: flex-end;
   width: 100%;
   margin-top: 68px;
-`
+`;
 
 const LoginButton = style.button`
     background-color: #fff;
@@ -56,7 +56,7 @@ const LoginButton = style.button`
     border-radius: 5px;
     width: 10%;
     height: 5vh;
-`
+`;
 
 const SocialLoginButton = style.button`
     background-color: #fff;
@@ -67,7 +67,7 @@ const SocialLoginButton = style.button`
     height: 5vh;
     margin-left: 16px;
     margin-right: 16px;
-`
+`;
 
 const ContentBox = style.div`
   width: 100%;
@@ -79,7 +79,7 @@ const ContentBox = style.div`
 const ContentName = style.div`
   padding: 4px 16px;
   width: 30%;
-`
+`;
 
 const ContentInput = style.textarea`
   height: 20vh;
@@ -87,42 +87,50 @@ const ContentInput = style.textarea`
   resize: none;
   padding: 12px 8px;
   
-`
+`;
 
 //type
 
-
-const ReviewUpdateModal = ({ updateHidden, handleUpdateClose, personalData }: any) => {
+const ReviewUpdateModal = ({
+  updateHidden,
+  handleUpdateClose,
+  personalData,
+}: any) => {
   const { content, rating, updatedAt, coffee_id, title } = personalData;
-
+  // console.log(content);
 //   const coffeeData = await axios.get("http://localhost:3000/coffee/coffeeinfo")
 //   .then(res => {
 //     return res.data
 //   })
   
-//   const click = () => {
-//     console.log(coffeeData)
-//   }
-  const [ inputValue, setInputValue ] = useState("");
+  const updateReview = async () => {
+    await axios.post("http://localhost:3000/review/update", {
+      user_id: "",
+      coffee_id,
+      content,
+      rating,
+    })
+  }
+  const [ inputValue, setInputValue ] = useState(content);
 
   const changeInputValue = (e: any): void => {
     setInputValue(e.target.value);
-  }
+  };
   return (
     <>
-    <ModalBody hidden={updateHidden} onClick={handleUpdateClose}>
-      <ModalOverlay></ModalOverlay>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
+      <ModalBody hidden={updateHidden} onClick={handleUpdateClose}>
+        <ModalOverlay></ModalOverlay>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
           <LoginTitle>내가 작성한 리뷰</LoginTitle>
           <ContentBox>
             <ContentName>{title}</ContentName>
             <ContentInput
-              defaultValue={content}
+              value={inputValue}
               onChange={changeInputValue} // 작성중
             ></ContentInput>
           </ContentBox>
           <ButtonBox>
-            <LoginButton>등록</LoginButton>
+            <LoginButton onClick={updateReview}>등록</LoginButton>
             <SocialLoginButton onClick={handleUpdateClose}>취소</SocialLoginButton>
           </ButtonBox>
         </ModalContent>
@@ -132,7 +140,6 @@ const ReviewUpdateModal = ({ updateHidden, handleUpdateClose, personalData }: an
 };
 
 export default ReviewUpdateModal;
-
 
 // id: number;
 // content: string;

@@ -12,7 +12,7 @@ export const CoffeeInfoContainer = styled.div`
 export const Pane = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
+  margin: 0;
   height: 90%;
   flex: 1;
   height: 100%;

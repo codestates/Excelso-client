@@ -3,7 +3,7 @@
 //   ReviewContainer,
 //   ReviewBox,
 //   ReviewPicture,
-//   ReviewFunc, 
+//   ReviewFunc,
 //   ReviewUpdate,
 //   ReviewDelete,
 //   ReviewModalBody,
@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteReivewAction } from "../reducers/reviewReducer";
 import ReviewUpdateModal from "./reviewUpdateModal";
 
- const ReviewModalBody = styled.div`
+const ReviewModalBody = styled.div`
   width: 100%;
   height: 100%;
   top: 0;
@@ -27,16 +27,16 @@ import ReviewUpdateModal from "./reviewUpdateModal";
   align-items: center;
   position: fixed;
   z-index: 100;
-`
+`;
 
- const ModalOverlay = styled.div`
+const ModalOverlay = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   position: absolute;
-`
+`;
 
- const MypageReviewBody = styled.div`
+const MypageReviewBody = styled.div`
   height: 50vh;
   width: 90%;
   background-color: #262223;
@@ -46,19 +46,19 @@ import ReviewUpdateModal from "./reviewUpdateModal";
   border-radius: 30px;
   position: relative;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-`
+`;
 
- const ReviewContainer = styled.div`
+const ReviewContainer = styled.div`
   height: 90%;
   width: 95%;
-  background-color: #DDC6B6;
+  background-color: #ddc6b6;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-radius: 10px;
-`
+`;
 
- const ReviewBox = styled.div`
+const ReviewBox = styled.div`
   height: 80%;
   width: 30%;
   background-color: white;
@@ -66,32 +66,32 @@ import ReviewUpdateModal from "./reviewUpdateModal";
   margin-left: 12px;
   display: flex;
   flex-direction: column;
-`
+`;
 
- const ReviewPicture = styled.img`
+const ReviewPicture = styled.img`
   height: 90%;
   border-radius: 80px;
-`
+`;
 
- const ReviewFunc = styled.div`
+const ReviewFunc = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
   height: 100%;
   margin-bottom: 4px;
-`
+`;
 
- const ReviewUpdate = styled.button`
+const ReviewUpdate = styled.button`
   width: 3rem;
   height: 1.3rem;
-`
+`;
 
- const ReviewDelete = styled.button`
+const ReviewDelete = styled.button`
   margin-right: 24px;
   width: 3rem;
   height: 1.3rem;
-`
+`;
 interface userDataI {
   success: boolean;
   accessToken: string;
@@ -112,90 +112,97 @@ type userReviewT = {
   coffee_id: number;
   title: string;
   src: string;
-}
+};
 
 interface userReviewI {
-  payload: userReviewT[]
+  payload: userReviewT[];
 }
 
-const MypageReview = ({ reviewHidden, reviewHandleHidden, reviewModalClick } : any) => {
+const MypageReview = ({
+  reviewHidden,
+  reviewHandleHidden,
+  reviewModalClick,
+}: any) => {
   const dispatch = useDispatch();
 
-  const [ updateHidden, setUpdateHidden ] = useState(true);
-  
-  const [ fakeCount, setFakeCount ] = useState(0); 
+  const [updateHidden, setUpdateHidden] = useState(true);
 
-  const [ personalData, setPersonalData ] = useState({});
+  const [fakeCount, setFakeCount] = useState(0);
+
+  const [personalData, setPersonalData] = useState({});
 
   const userData: userDataI = useSelector(
     (state: RootState) => state.loginReducer
   );
-  
+
   const reviewData: userReviewI = useSelector(
     (state: RootState) => state.UserGetReviewReducer
-  ); 
-  
+  );
+
+  console.log(personalData);
   useEffect(() => {
-    if(fakeCount === 0) {
+    if (fakeCount === 0) {
       return;
     }
     reviewHandleHidden(true);
     reviewModalClick();
     // console.log(reviewData.payload)
-  },[fakeCount])
-//fakeCount로 모달에서 화면전환 없이 삭제하기
+  }, [fakeCount]);
+  //fakeCount로 모달에서 화면전환 없이 삭제하기
 
   const closeModal = () => {
     reviewHandleHidden(true);
     console.log(reviewData);
-  }
-  
+  };
+
   const deleteReview = async (data: number) => {
     await dispatch(deleteReivewAction(data, userData.accessToken));
     setFakeCount(fakeCount + 1); // useEffect 때문
-  }
+  };
 
   const handleUpdateButton = (data: userReviewT) => {
-    setPersonalData(data)
+    setPersonalData(data);
     setUpdateHidden(false);
-  }
+  };
 
   const handleUpdateClose = () => {
     setUpdateHidden(true);
-  }
-  
+  };
+
   return (
     <>
-    <ReviewModalBody hidden={reviewHidden} onClick={closeModal}>
-      <ModalOverlay></ModalOverlay> 
+      <ReviewModalBody hidden={reviewHidden} onClick={closeModal}>
+        <ModalOverlay></ModalOverlay>
         <MypageReviewBody onClick={(e) => e.stopPropagation()}>
           <ReviewContainer>
             {reviewData.payload.map((el: userReviewT) => {
               return (
                 <ReviewBox key={el.id}>
-                  <ReviewPicture src={el.src}/>
+                  <ReviewPicture src={el.src} />
                   <ReviewFunc>
-                    <ReviewUpdate onClick={() => handleUpdateButton(el)}>수정</ReviewUpdate>
-                    <ReviewDelete onClick={() => deleteReview(el.coffee_id)}>삭제</ReviewDelete>  
+                    <ReviewUpdate onClick={() => handleUpdateButton(el)}>
+                      수정
+                    </ReviewUpdate>
+                    <ReviewDelete onClick={() => deleteReview(el.coffee_id)}>
+                      삭제
+                    </ReviewDelete>
                   </ReviewFunc>
                 </ReviewBox>
-              )  
-            })
-            }  
-          </ReviewContainer>  
+              );
+            })}
+          </ReviewContainer>
         </MypageReviewBody>
-    </ReviewModalBody> 
-    <ReviewUpdateModal updateHidden={updateHidden} handleUpdateClose={handleUpdateClose} personalData={personalData}></ReviewUpdateModal>
+      </ReviewModalBody>
+      <ReviewUpdateModal
+        updateHidden={updateHidden}
+        handleUpdateClose={handleUpdateClose}
+        personalData={personalData}
+      ></ReviewUpdateModal>
     </>
-  )
-}
+  );
+};
 
 export default MypageReview;
 
-
-
 // {CommentList.data.data ? (CommentList.data.data.map((commentData,index)=> <CommentBox key={index} commentData={commentData} accessToken={accessToken}/>))
 //  : <div className="nothing"/>}
-
-
-

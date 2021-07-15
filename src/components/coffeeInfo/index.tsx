@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Reviews from "../reviews";
+import Toggle from "../toggle";
 import {
   CoffeeInfoContainer,
   Pane,
@@ -31,6 +32,12 @@ export default function CoffeeInfo({
   path,
   reviews,
 }: CoffeeInfoI) {
+  const [toggle, setToggle] = useState(false);
+
+  const onToggle = () => {
+    setToggle(!toggle);
+  };
+
   return suitCoffee ? (
     <CoffeeInfoContainer>
       <InfoContainer>
@@ -76,6 +83,18 @@ export default function CoffeeInfo({
       </ImageContainer>
       <Pane>
         <Space />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "row-reverse",
+            marginRight: "30px",
+          }}
+        >
+          OFF
+          <Toggle bookmark={toggle} onToggle={onToggle} />
+          ON
+        </div>
         <Reviews handleShow={handleShow} path={path} reviews={reviews} />
       </Pane>
     </CoffeeInfoContainer>

@@ -77,6 +77,7 @@ const MypageInfoCpn = () => {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
     } else {
       await axios
+
         .patch("http://localhost:3000/user/changepassword", {
           currentPassword: currentPw,
           changePassword: changePw,
@@ -92,6 +93,23 @@ const MypageInfoCpn = () => {
         })
         .catch(err => console.log(err));
     }
+
+<!--       .patch("http://localhost:3000/user/changepassword", {
+        currentPassword: currentPw,
+        changePassword: changePw,
+        token: JSON.parse(sessionStorage.getItem("accessToken")!)
+      })
+      .then(res => {
+        alert("비밀번호가 변경되었습니다.");
+        setPwInfo({
+          currentPw: "",
+          changePw: "",
+          checkChangePw: ""
+        });
+      })
+      .catch(err => console.log(err));
+    }  -->
+
   };
 
   const changeHiddenBtnClick = () => {

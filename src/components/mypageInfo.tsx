@@ -83,7 +83,7 @@ const MypageInfoCpn = () => {
         token: JSON.parse(sessionStorage.getItem("accessToken")!)
       })
       .then(res => {
-        console.log(res);
+        alert("비밀번호가 변경되었습니다.");
         setPwInfo({
           currentPw: "",
           changePw: "",

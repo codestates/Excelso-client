@@ -97,16 +97,21 @@ const ReviewUpdateModal = ({
   personalData,
 }: any) => {
   const { content, rating, updatedAt, coffee_id, title } = personalData;
-  console.log("content:", content);
-  //   const coffeeData = await axios.get("http://localhost:3000/coffee/coffeeinfo")
-  //   .then(res => {
-  //     return res.data
-  //   })
-
-  //   const click = () => {
-  //     console.log(coffeeData)
-  //   }
-  const [inputValue, setInputValue] = useState("");
+  // console.log(content);
+//   const coffeeData = await axios.get("http://localhost:3000/coffee/coffeeinfo")
+//   .then(res => {
+//     return res.data
+//   })
+  
+  const updateReview = async () => {
+    await axios.post("http://localhost:3000/review/update", {
+      user_id: "",
+      coffee_id,
+      content,
+      rating,
+    })
+  }
+  const [ inputValue, setInputValue ] = useState(content);
 
   const changeInputValue = (e: any): void => {
     setInputValue(e.target.value);
@@ -125,10 +130,8 @@ const ReviewUpdateModal = ({
             ></ContentInput>
           </ContentBox>
           <ButtonBox>
-            <LoginButton>등록</LoginButton>
-            <SocialLoginButton onClick={handleUpdateClose}>
-              취소
-            </SocialLoginButton>
+            <LoginButton onClick={updateReview}>등록</LoginButton>
+            <SocialLoginButton onClick={handleUpdateClose}>취소</SocialLoginButton>
           </ButtonBox>
         </ModalContent>
       </ModalBody>

@@ -142,8 +142,11 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     // store returned user somehow
     console.log(data);
     if (data.email) {
-      await dispatch(postUser(data.email, ""));
+      sessionStorage.setItem("accessToken", JSON.stringify(googleData.tokenId));
+    } else {
+      alert("로그인을 실패했습니다");
     }
+    handleHidden(true);
   };
 
   return (

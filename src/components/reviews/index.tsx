@@ -25,7 +25,8 @@ export default function Reviews({ handleShow, reviews }: Props): JSX.Element {
   const myReview =
     Array.isArray(reviews) && userData.success
       ? reviews.filter((review) => review.user_id === userData.info.id)[0]
-      : [];
+      : undefined;
+  // console.log("myReview", myReview);
   return (
     <>
       <ReviewContainer>
@@ -61,10 +62,10 @@ export default function Reviews({ handleShow, reviews }: Props): JSX.Element {
             <div>작성된 리뷰가 없습니다</div>
           )}
         </div>
-        {myReview ? (
-          <AddReview onClick={handleShow}>리뷰 수정</AddReview>
-        ) : (
+        {!myReview ? (
           <AddReview onClick={handleShow}>리뷰 등록</AddReview>
+        ) : (
+          <AddReview onClick={handleShow}>리뷰 수정</AddReview>
         )}
       </ReviewContainer>
     </>

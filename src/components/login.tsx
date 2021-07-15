@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
-import { postUser } from "../reducers/loginReducer";
+import { postUser, googleUser } from "../reducers/loginReducer";
 
 import { GoogleLogin } from "react-google-login";
 // const OpenButton = style.button`
@@ -138,9 +138,10 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
       }
     });
 
+    // await dispatch(googleUser(googleData));
+
     const data = await res.json();
-    // store returned user somehow
-    console.log(data);
+    console.log(data); // data.email && data.nickname
     if (data.email) {
       sessionStorage.setItem("accessToken", JSON.stringify(googleData.tokenId));
     } else {
@@ -180,6 +181,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
               buttonText="Log in with Google"
               onSuccess={handlelogin}
               onFailure={handlelogin}
+              cookiePolicy={"single_host_origin"}
             />
           </ButtonBox>
         </ModalContent>

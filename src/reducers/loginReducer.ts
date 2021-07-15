@@ -64,6 +64,31 @@ export const setLogin = (accessToken: string) => {
   };
 };
 
+export const googleUser = (googleData: any) => {
+  // return async (dispatch: Dispatch<loginDispatchType>) => {
+  //   try {
+  //     const res = await fetch("http://localhost:3000/api/v1/auth/google", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         token: googleData.tokenId
+  //       }),
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //     });
+  //     const data = await res.json();
+  //     return dispatch({
+  //       type: LOGIN_SUCCESS,
+  //       payload: data
+  //     });
+  //   } catch (err) {
+  //     dispatch({
+  //       type: LOGIN_FAIL
+  //     });
+  //   }
+  // };
+};
+
 export const postUser = (email: string, password: string) => async (
   dispatch: Dispatch<loginDispatchType>
 ) => {

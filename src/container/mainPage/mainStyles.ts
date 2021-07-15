@@ -209,18 +209,20 @@ export const MDExp = styled.div`
 `;
 
 export const MainSectionFour = styled.div`
-  position: relative;
   display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100vh;
   background-color: #ddc6b6;
   padding: 2rem;
+  div.instagram {
+    top: 0;
+  }
 `;
 
 export const SnsWord = styled.div`
-  position: absolute;
   left: 0;
   top: 0;
   display: flex;

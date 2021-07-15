@@ -74,7 +74,9 @@ const Main = () => {
           </VideoContainer>
         </MainSectionTwo>
         <MainSectionThree>
-          <MDWord>MD's PICK</MDWord>
+          <div className="mdPick">
+            <MDWord>MD's PICK</MDWord>
+          </div>
           <MDContainer>
             <ThdContainer>
               <MDImg>
@@ -137,8 +139,11 @@ const Main = () => {
           </MDContainer>
         </MainSectionThree>
         <MainSectionFour>
-          <SnsWord>INSTAGRAM 보러가기</SnsWord>
-          <SnsMinWord>INSTAGRAM</SnsMinWord>
+          <div className="instagram">
+            <SnsWord>INSTAGRAM 보러가기</SnsWord>
+            <SnsMinWord>INSTAGRAM</SnsMinWord>
+          </div>
+
           <FthContainer>
             <Sns />
           </FthContainer>

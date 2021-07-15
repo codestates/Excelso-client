@@ -140,17 +140,15 @@ const MypageInfoCpn = () => {
           <MypageInfoBox>
             <MypageInfoName>이메일: </MypageInfoName>
             <MypageInfoEmail>
-              {(userData.info && userData.info.nickname) || goEmail !== ""
-                ? goEmail
-                : ""}
+              {userData.info && userData.info.nickname}
+              {goEmail !== "" ? goEmail : ""}
             </MypageInfoEmail>
           </MypageInfoBox>
           <MypageInfoBox>
             <MypageInfoName>닉네임: </MypageInfoName>
             <MypageInfoNick>
-              {(userData.info && userData.info.nickname) || goNickname !== ""
-                ? goNickname
-                : ""}
+              {userData.info && userData.info.nickname}
+              {goNickname !== "" ? goNickname : ""}
             </MypageInfoNick>
             <ChangeNicknameBtn onClick={changeHiddenBtnClick}>
               닉네임 변경하기

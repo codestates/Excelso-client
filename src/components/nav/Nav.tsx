@@ -113,7 +113,7 @@ const Nav = (): JSX.Element => {
         </SignUpDiv>
         <Menubar onClick={onClickMenu}>
           <div>
-            <BiMenu size="lg"></BiMenu>
+            <BiMenu size="md"></BiMenu>
           </div>
         </Menubar>
       </NavContainer>

@@ -51,12 +51,12 @@ export const setLogin = (accessToken: string) => {
       console.log("로그인유지시도");
       // console.log(token)
       const response = await axios.post("http://localhost:3000/auth", {
-        accessToken,
+        accessToken
       });
       const data = await response.data;
       return dispatch({
         type: LOGIN_SUCCESS,
-        payload: data,
+        payload: data
       });
     } catch (e) {
       console.log(e);
@@ -64,28 +64,28 @@ export const setLogin = (accessToken: string) => {
   };
 };
 
-export const postUser =
-  (email: string, password: string) =>
-  async (dispatch: Dispatch<loginDispatchType>) => {
-    try {
-      console.log("Start requset of postUser");
-      await axios
-        .post("http://localhost:3000/user/login", {
-          email,
-          password,
-        })
-        .then((res) => {
-          return dispatch({
-            type: LOGIN_SUCCESS,
-            payload: res.data,
-          });
+export const postUser = (email: string, password: string) => async (
+  dispatch: Dispatch<loginDispatchType>
+) => {
+  try {
+    console.log("Start requset of postUser");
+    await axios
+      .post("http://localhost:3000/user/login", {
+        email,
+        password
+      })
+      .then(res => {
+        return dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data
         });
-    } catch (err) {
-      dispatch({
-        type: LOGIN_FAIL,
       });
-    }
-  };
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAIL
+    });
+  }
+};
 
 //reducer
 export interface InitialState {
@@ -94,7 +94,7 @@ export interface InitialState {
   accessToken?: successPayloadType;
 }
 const initialState: InitialState = {
-  success: false,
+  success: false
 };
 
 const loginReducer = (state = initialState, action: loginDispatchType) => {
@@ -103,7 +103,7 @@ const loginReducer = (state = initialState, action: loginDispatchType) => {
       console.log("LOGIN_FAIL");
       return {
         ...state,
-        success: false,
+        success: false
       };
     case LOGIN_SUCCESS:
       console.log("LOGIN_SUCCESS & 로그인유지성공");
@@ -117,8 +117,8 @@ const loginReducer = (state = initialState, action: loginDispatchType) => {
         info: {
           id: info.id,
           email: info.email,
-          nickname: info.nickname,
-        },
+          nickname: info.nickname
+        }
       };
     // case SET_LOGIN:
     //   console.log("SET_LOGIN");

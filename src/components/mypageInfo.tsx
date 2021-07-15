@@ -41,31 +41,6 @@ const MypageInfoCpn = () => {
     changePw: "",
     checkChangePw: ""
   });
-  const [goEmail, setGoEmail] = useState("");
-  const [goNickname, setGoNickname] = useState("");
-
-  useEffect(() => {
-    let goToken = sessionStorage.getItem("accessToken")?.slice(1, -1);
-    // console.log(goToken);
-    async function fetchMyAPI() {
-      const res = await fetch("http://localhost:3000/api/v1/auth/google", {
-        method: "POST",
-        body: JSON.stringify({
-          token: goToken
-        }),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      });
-      const goData = await res.json();
-
-      setGoEmail(goData.email);
-      // console.log(goData);
-      const goNickname = goData.nickname;
-      setGoNickname(goData.nickname);
-    }
-    fetchMyAPI();
-  });
 
   const userData: userDataI = useSelector(
     (state: RootState) => state.loginReducer
@@ -141,14 +116,12 @@ const MypageInfoCpn = () => {
             <MypageInfoName>이메일: </MypageInfoName>
             <MypageInfoEmail>
               {userData.info && userData.info.nickname}
-              {goEmail !== "" ? goEmail : ""}
             </MypageInfoEmail>
           </MypageInfoBox>
           <MypageInfoBox>
             <MypageInfoName>닉네임: </MypageInfoName>
             <MypageInfoNick>
               {userData.info && userData.info.nickname}
-              {goNickname !== "" ? goNickname : ""}
             </MypageInfoNick>
             <ChangeNicknameBtn onClick={changeHiddenBtnClick}>
               닉네임 변경하기

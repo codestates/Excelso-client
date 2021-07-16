@@ -23,16 +23,9 @@ import {
   MDExp,
   MainSectionFour,
   FthContainer,
-  SnsWord,
-  SnsMinWord,
-  SnsContainer
+  SnsWord
 } from "./mainStyles";
-
-import img1 from "../../img/cake-1589012_1280.jpg";
-import img2 from "../../img/coffee-3759005_1920.jpg";
-import img3 from "../../img/coffee-4597416_1920.jpg";
-import img4 from "../../img/restaurant-4011989_1920.jpg";
-import img5 from "../../img/table-2600954_1920.jpg";
+import { GlobalStyles } from "../../globalstyle";
 
 // import VideoSrc from "../videos/200223_Cafe_01_13.mp4";
 
@@ -45,6 +38,7 @@ const Main = () => {
 
   return (
     <>
+      <GlobalStyles />
       <Nav />
       <MainContainer>
         <GoToTop />
@@ -74,9 +68,7 @@ const Main = () => {
           </VideoContainer>
         </MainSectionTwo>
         <MainSectionThree>
-          <div className="mdPick">
-            <MDWord>MD's PICK</MDWord>
-          </div>
+          <MDWord>MD's PICK</MDWord>
           <MDContainer>
             <ThdContainer>
               <MDImg>
@@ -139,11 +131,7 @@ const Main = () => {
           </MDContainer>
         </MainSectionThree>
         <MainSectionFour>
-          <div className="instagram">
-            <SnsWord>INSTAGRAM 보러가기</SnsWord>
-            <SnsMinWord>INSTAGRAM</SnsMinWord>
-          </div>
-
+          <SnsWord>INSTAGRAM 보러가기</SnsWord>
           <FthContainer>
             <Sns />
           </FthContainer>

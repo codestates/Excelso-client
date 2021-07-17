@@ -94,6 +94,23 @@ const MypageInfoCpn = () => {
         })
         .catch(err => console.log(err));
     }
+
+//       .patch("http://localhost:3000/user/changepassword", {
+//         currentPassword: currentPw,
+//         changePassword: changePw,
+//         token: JSON.parse(sessionStorage.getItem("accessToken")!)
+//       })
+//       .then(res => {
+//         alert("비밀번호가 변경되었습니다.");
+//         setPwInfo({
+//           currentPw: "",
+//           changePw: "",
+//           checkChangePw: ""
+//         });
+//       })
+//       .catch(err => console.log(err));
+//     }  
+
   };
 
   const changeHiddenBtnClick = () => {

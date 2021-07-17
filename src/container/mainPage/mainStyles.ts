@@ -233,6 +233,10 @@ export const MainSectionFour = styled.div`
   height: 100vh;
   background-color: #ddc6b6;
   padding: 2vw;
+
+  section#mainSns {
+    margin: 0 auto;
+  }
 `;
 
 export const SnsWord = styled.div`
@@ -249,16 +253,15 @@ export const SnsWord = styled.div`
   background-color: #262223;
   border-radius: 1vw;
 
-  color: #ddc6b6;
-  font-size: 3vw;
-  font-weight: 500;
-  text-align: center;
-  button {
-    background: transparent;
+  a {
+    text-decoration: none;
+    color: #ddc6b6;
+    font-size: 3vw;
+    font-weight: 500;
+    text-align: center;
   }
-
-  @media screen and (max-width: 30vw) {
-    display: none;
+  a:hover {
+    cursor: pointer;
   }
 `;
 

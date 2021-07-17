@@ -131,7 +131,11 @@ const Main = () => {
           </MDContainer>
         </MainSectionThree>
         <MainSectionFour>
-          <SnsWord>INSTAGRAM 보러가기</SnsWord>
+          <SnsWord>
+            <a href="https://www.instagram.com/excelso2021/">
+              INSTAGRAM 보러가기
+            </a>
+          </SnsWord>
           <FthContainer>
             <Sns />
           </FthContainer>

@@ -50,8 +50,7 @@ export default function BrandCard(): JSX.Element {
         <BrandCardInner
           style={{
             backgroundImage:
-              'url("http://www.slist.kr/news/photo/202011/198169_338203_5518.jpg")',
-            backgroundPosition: "100px -80px"
+              'url("http://www.slist.kr/news/photo/202011/198169_338203_5518.jpg")'
           }}
         ></BrandCardInner>
         <BrandCardHidden>

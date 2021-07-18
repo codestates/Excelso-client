@@ -12,13 +12,18 @@ export const FootDiv = styled.div`
   background-color: #262223;
   color: white;
   text-align: center;
-  padding: 6vw 1vw;
+  padding: 4.5vw 1vw;
 `;
 
 export const FootLogo = styled.div`
-  p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+
+  div {
     color: white;
-    font-size: 6vw;
+    font-size: 7vw;
   }
 `;
 

@@ -35,6 +35,7 @@ export const FstContainer = styled.div`
     display: block;
     margin: 0 auto;
     height: 100%;
+    width: 75%;
   }
 `;
 
@@ -48,6 +49,7 @@ export const SndContainer = styled.div`
   height: 30%;
   background-color: #ddc6b6;
   padding: 1.5vw;
+  overflow: hidden;
 `;
 
 export const ExcelLogo = styled.div`
@@ -68,6 +70,10 @@ export const ExcelLogo = styled.div`
 `;
 
 export const ExcelExp = styled.div`
+  display: flex;
+  display: block;
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 20vh;
   padding: 0.5vw;
@@ -75,15 +81,26 @@ export const ExcelExp = styled.div`
   text-align: center;
 
   div.mention1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 3vh;
     color: #262223;
     font-size: 2vw;
     font-weight: 700;
   }
 
   div.mention2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 3vh;
     color: #262223;
     font-size: 1vw;
     font-weight: 700;
+    overflow: hidden;
 
     margin-top: 1vh;
   }
@@ -273,6 +290,7 @@ export const FthContainer = styled.div`
   height: 50vh;
   margin: 5vw;
   margin: 0 atuo;
+  overflow: hidden;
   .swiper-container {
     width: 100%;
   }

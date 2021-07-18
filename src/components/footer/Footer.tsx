@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <FootDiv>
       <FootLogo>
-        <p>EXCELSO</p>
+        <div>EXCELSO</div>
       </FootLogo>
       <Members>
         <span>

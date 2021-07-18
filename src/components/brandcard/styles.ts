@@ -68,11 +68,17 @@ export const BrandCardHidden = styled.div`
   -ms-transform: rotateY(180deg);
   -moz-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
+  overflow: hidden;
 
   background-color: #262223;
   text-align: center;
   color: #ddc6b6;
   font-size: 1vw;
+  div {
+    top: -1vw;
+    height: 3vh;
+    position: fixed;
+  }
 `;
 
 export const Image = styled.img`

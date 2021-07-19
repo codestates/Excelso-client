@@ -160,6 +160,7 @@ export type userReviewT = {
   coffee_id: number;
   src: string;
   title: string;
+  user_id: number;
 }
 
 export interface reviewI {

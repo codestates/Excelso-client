@@ -17,6 +17,9 @@ import {
 } from "./styles";
 import { CoffeeT } from "../../reducers/coffeeReducer";
 import { reviewT } from "../../reducers/reviewReducer";
+import axios from 'axios';
+import { RootState } from "../../reducers";
+import { useSelector, useDispatch } from "react-redux";
 
 interface CoffeeInfoI {
   suitCoffee: CoffeeT;
@@ -26,16 +29,46 @@ interface CoffeeInfoI {
   reviews: reviewT[];
 }
 
+interface userDataI {
+  success: boolean;
+  accessToken: string;
+  info: {
+    id: number;
+    email: string;
+    nickname: string;
+  };
+  message: string;
+}
+
 export default function CoffeeInfo({
   suitCoffee,
   handleShow,
   path,
   reviews,
 }: CoffeeInfoI) {
-  const [toggle, setToggle] = useState(false);
+  const userData: userDataI = useSelector(
+    (state: RootState) => state.loginReducer
+  );
 
-  const onToggle = () => {
+  const [toggle, setToggle] = useState(false);
+  
+  const onToggle = async () => {
+    
+    const rating = reviews.filter(el => {
+      if((el.coffee_id === path) && (el.user_id === userData.info.id)) {
+        return true;
+      } 
+    })
+    console.log(reviews)
     setToggle(!toggle);
+    console.log(toggle, path, rating[0].rating);
+ 
+      await axios.post("http://localhost:3000/bookmark/addbookmark", {
+        token: JSON.parse(sessionStorage.getItem("accessToken")!),
+        coffee_id: path,
+        rating: rating[0].rating,
+      }).then(() => alert("!"))
+      .catch((err) => console.log(err))
   };
 
   return suitCoffee ? (

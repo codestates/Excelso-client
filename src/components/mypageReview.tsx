@@ -112,6 +112,7 @@ type userReviewT = {
   coffee_id: number;
   title: string;
   src: string;
+  user_id: number;
 };
 
 interface userReviewI {
@@ -197,6 +198,7 @@ const MypageReview = ({
         updateHidden={updateHidden}
         handleUpdateClose={handleUpdateClose}
         personalData={personalData}
+
       ></ReviewUpdateModal>
     </>
   );

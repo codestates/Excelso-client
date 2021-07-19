@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
@@ -96,26 +96,38 @@ const ReviewUpdateModal = ({
   handleUpdateClose,
   personalData,
 }: any) => {
-  const { content, rating, updatedAt, coffee_id, title } = personalData;
-  // console.log(content);
+  const { content, rating, updatedAt, coffee_id, title, user_id } = personalData;
+  console.log(content);
 //   const coffeeData = await axios.get("http://localhost:3000/coffee/coffeeinfo")
 //   .then(res => {
 //     return res.data
 //   })
-  
+
   const updateReview = async () => {
+    // const { coffee_id, content, token, rating } = req.body;
+
     await axios.post("http://localhost:3000/review/update", {
-      user_id: "",
+      token: JSON.parse(sessionStorage.getItem("accessToken")!),
       coffee_id,
-      content,
+      content: inputValue,
       rating,
+    }).then(() => {
+      return alert('수정되었습니다.');
+    }).catch(() => {
+      return alert('정보를 다시 입력해주세요.');
     })
   }
+
   const [ inputValue, setInputValue ] = useState(content);
+
+  useEffect(() => {
+    setInputValue(content);   
+  },[content]) 
 
   const changeInputValue = (e: any): void => {
     setInputValue(e.target.value);
   };
+
   return (
     <>
       <ModalBody hidden={updateHidden} onClick={handleUpdateClose}>
@@ -135,7 +147,7 @@ const ReviewUpdateModal = ({
           </ButtonBox>
         </ModalContent>
       </ModalBody>
-    </>
+    </> 
   );
 };
 

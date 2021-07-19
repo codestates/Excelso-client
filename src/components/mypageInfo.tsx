@@ -17,7 +17,9 @@ import {
   ReviewButton,
   BookmarkButton
 } from "./style";
-import MypageReview from "./mypageReview";
+
+import BookmarkModal from "./bookmarkModal";
+import MypageReview from './mypageReview';
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
@@ -48,6 +50,8 @@ const MypageInfoCpn = () => {
 
   const [hidden, setHidden] = useState(true); // open
   const [reviewHidden, setReviewHidden] = useState(true);
+  const [bookmarkData, setBookmarkData] = useState([]);
+  const [bookHidden, setBookHidden] = useState(true);
 
   const [goEmail, setGoEmail] = useState("");
 
@@ -126,62 +130,56 @@ const MypageInfoCpn = () => {
     setReviewHidden(false);
   };
 
+  const bookmarkModalClick = async () => {
+    const data = await axios.get(`http://localhost:3000/bookmark/${userData.info.id}`)
+    .then(res => res.data)
+    // 데이터 연결
+    setBookmarkData(data);
+    setBookHidden(false);
+  }
+
+  const handleCloseBookModal = (data: boolean) => {
+    setBookHidden(data)
+  }
+
   return (
     <>
-      <MypageBody>
-        <MypageTitle>마이페이지</MypageTitle>
-        <MypageInfo>
-          <MypageInfoBox>
-            <MypageInfoName>이메일: </MypageInfoName>
-            <MypageInfoEmail>
-              {userData.info && userData.info.nickname}
-            </MypageInfoEmail>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>닉네임: </MypageInfoName>
-            <MypageInfoNick>
-              {userData.info && userData.info.nickname}
-            </MypageInfoNick>
-            <ChangeNicknameBtn onClick={changeHiddenBtnClick}>
-              닉네임 변경하기
-            </ChangeNicknameBtn>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>현재 비밀번호</MypageInfoName>
-            <MypageInfoInput
-              type="password"
-              onChange={handleChangePw("currentPw")}
-            ></MypageInfoInput>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>변경할 비밀번호</MypageInfoName>
-            <MypageInfoInput
-              type="password"
-              onChange={handleChangePw("changePw")}
-            ></MypageInfoInput>
-          </MypageInfoBox>
-          <MypageInfoBox>
-            <MypageInfoName>비밀번호 확인</MypageInfoName>
-            <MypageInfoInput
-              type="password"
-              onChange={handleChangePw("checkChangePw")}
-            ></MypageInfoInput>
-            <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
-          </MypageInfoBox>
-          <ModalLink>
-            <BookmarkButton>즐겨찾기</BookmarkButton>
-            <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
-          </ModalLink>
-        </MypageInfo>
-      </MypageBody>
-      <MypageReview
-        reviewModalClick={reviewModalClick}
-        reviewHidden={reviewHidden}
-        reviewHandleHidden={reviewHandleHidden}
-      />
-      <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
-    </>
-  );
-};
+    <MypageBody>
+      <MypageTitle>마이페이지</MypageTitle>
+      <MypageInfo>
+        <MypageInfoBox>
+          <MypageInfoName>이메일: </MypageInfoName>
+          <MypageInfoEmail>{userData.info && userData.info.email}</MypageInfoEmail>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>닉네임: </MypageInfoName>
+          <MypageInfoNick>{userData.info && userData.info.nickname}</MypageInfoNick>
+          <ChangeNicknameBtn onClick={changeHiddenBtnClick}>닉네임 변경하기</ChangeNicknameBtn>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>현재 비밀번호</MypageInfoName>
+          <MypageInfoInput type="password" onChange={handleChangePw('currentPw')}></MypageInfoInput>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>변경할 비밀번호</MypageInfoName>
+          <MypageInfoInput type="password" onChange={handleChangePw('changePw')}></MypageInfoInput>
+        </MypageInfoBox>
+        <MypageInfoBox>
+          <MypageInfoName>비밀번호 확인</MypageInfoName>
+          <MypageInfoInput type="password" onChange={handleChangePw('checkChangePw')}></MypageInfoInput>
+          <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
+        </MypageInfoBox>
+        <ModalLink>
+          <BookmarkButton onClick={bookmarkModalClick}>즐겨찾기</BookmarkButton>
+          <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
+        </ModalLink>
+      </MypageInfo>
+    </MypageBody>
+    <MypageReview reviewModalClick={reviewModalClick} reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
+    <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
+    <BookmarkModal bookmarkData={bookmarkData} bookHidden={bookHidden} handleCloseBookModal={handleCloseBookModal} />
+    </>    
+  )
+}
 
 export default MypageInfoCpn;

@@ -8,26 +8,30 @@ export const FootDiv = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 18rem;
+  height: 30vh;
   background-color: #262223;
   color: white;
   text-align: center;
-  padding: 5rem 1rem;
+  padding: 4.5vw 1vw;
 `;
 
 export const FootLogo = styled.div`
-  p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+
+  div {
     color: white;
-    font-size: 4.8rem;
+    font-size: 7vw;
   }
 `;
 
 export const Members = styled.div`
   display: inline;
-  margin-top: 2.5rem;
   span {
     color: white;
-    margin: 0.7rem;
+    margin: 1.5vw;
     a {
       text-decoration: none;
       color: white;

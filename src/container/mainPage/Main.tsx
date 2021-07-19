@@ -23,16 +23,9 @@ import {
   MDExp,
   MainSectionFour,
   FthContainer,
-  SnsWord,
-  SnsMinWord,
-  SnsContainer
+  SnsWord
 } from "./mainStyles";
-
-import img1 from "../../img/cake-1589012_1280.jpg";
-import img2 from "../../img/coffee-3759005_1920.jpg";
-import img3 from "../../img/coffee-4597416_1920.jpg";
-import img4 from "../../img/restaurant-4011989_1920.jpg";
-import img5 from "../../img/table-2600954_1920.jpg";
+import { GlobalStyles } from "../../globalstyle";
 
 // import VideoSrc from "../videos/200223_Cafe_01_13.mp4";
 
@@ -45,6 +38,7 @@ const Main = () => {
 
   return (
     <>
+      <GlobalStyles />
       <Nav />
       <MainContainer>
         <GoToTop />
@@ -55,13 +49,15 @@ const Main = () => {
           <SndContainer>
             <ExcelLogo>Excelso</ExcelLogo>
             <ExcelExp>
-              <div>
+              <div className="mention1">
                 저희 Excelso에서는 원하시는 브랜드 커피 음료를 추천받으실 수
                 있습니다.
               </div>
               <div className="mention2">
-                원하시는 제품에 대한 영양정보 및 다른 고객님들의 제품 리뷰 등
-                다양한 정보를 얻으실 수 있습니다.
+                <p>
+                  원하시는 제품에 대한 영양정보 및 다른 고객님들의 제품 리뷰 등
+                  다양한 정보를 얻으실 수 있습니다.
+                </p>
               </div>
             </ExcelExp>
           </SndContainer>
@@ -137,8 +133,11 @@ const Main = () => {
           </MDContainer>
         </MainSectionThree>
         <MainSectionFour>
-          <SnsWord>INSTAGRAM 보러가기</SnsWord>
-          <SnsMinWord>INSTAGRAM</SnsMinWord>
+          <SnsWord>
+            <a href="https://www.instagram.com/excelso2021/">
+              INSTAGRAM 보러가기
+            </a>
+          </SnsWord>
           <FthContainer>
             <Sns />
           </FthContainer>

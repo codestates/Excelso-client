@@ -18,13 +18,7 @@ import {
   SignUpDiv,
   Button,
   Logo,
-  MypageButton,
-  Menubar,
-  MenuBarCol,
-  MenuHidden,
-  MenuLoginDiv,
-  MenuSignupDiv,
-  MenuHideButton
+  MypageButton
 } from "./navStyles";
 
 const Nav = (): JSX.Element => {
@@ -111,47 +105,7 @@ const Nav = (): JSX.Element => {
             </Link>
           )}
         </SignUpDiv>
-        <Menubar onClick={onClickMenu}>
-          <div>
-            <BiMenu size="md"></BiMenu>
-          </div>
-        </Menubar>
       </NavContainer>
-      <MenuHidden>
-        {menu ? (
-          <MenuBarCol>
-            <MenuLoginDiv>
-              {sessionStorage.getItem("accessToken") ? (
-                <Link to="/mypage">
-                  <MenuHideButton>마이페이지</MenuHideButton>
-                </Link>
-              ) : (
-                <Link to="/login">
-                  <MenuHideButton onClick={onClickLogin}>로그인</MenuHideButton>
-                </Link>
-              )}
-            </MenuLoginDiv>
-            <MenuSignupDiv>
-              {sessionStorage.getItem("accessToken") ? (
-                <Link to="/">
-                  <MenuHideButton onClick={onClickLogout}>
-                    로그아웃
-                  </MenuHideButton>
-                </Link>
-              ) : (
-                <Link to="/signup">
-                  <MenuHideButton onClick={onClickSignUp}>
-                    회원가입
-                  </MenuHideButton>
-                </Link>
-              )}
-            </MenuSignupDiv>
-          </MenuBarCol>
-        ) : (
-          ""
-        )}
-        )
-      </MenuHidden>
       <LoginCpn hidden={hidden} handleHidden={handleHidden} />
     </>
   );

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
-import { getUserReviewAction } from "../reducers/reviewReducer"
+import { getUserReviewAction } from "../reducers/reviewReducer";
 import {
   MypageBody,
   MypageTitle,
@@ -15,14 +15,15 @@ import {
   MypageInfoNick,
   ModalLink,
   ReviewButton,
-  BookmarkButton,
+  BookmarkButton
 } from "./style";
+
 import BookmarkModal from "./bookmarkModal";
 import MypageReview from './mypageReview';
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
-import { isConstructorDeclaration } from "typescript";
+import { getJSDocAugmentsTag, isConstructorDeclaration } from "typescript";
 
 interface userDataI {
   success: boolean;
@@ -34,6 +35,7 @@ interface userDataI {
   };
   message: string;
 }
+
 const MypageInfoCpn = () => {
   const dispatch = useDispatch();
   const [pwInfo, setPwInfo] = useState({
@@ -51,6 +53,8 @@ const MypageInfoCpn = () => {
   const [bookmarkData, setBookmarkData] = useState([]);
   const [bookHidden, setBookHidden] = useState(true);
 
+  const [goEmail, setGoEmail] = useState("");
+
   const handleHidden = (data: boolean) => {
     console.log(data);
     setHidden(data);
@@ -60,7 +64,6 @@ const MypageInfoCpn = () => {
     console.log(data);
     setReviewHidden(data);
   };
-
 
   const handleChangePw = (key: string) => (e: any) => {
     setPwInfo({
@@ -78,37 +81,54 @@ const MypageInfoCpn = () => {
       return alert("모든 비밀번호를 기입해주세요.");
     } else if (!regex.test(changePw) && !regex.test(checkChangePw)) {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
-    } else{
+    } else {
       await axios
-      .patch("http://localhost:3000/user/changepassword", {
-        currentPassword: currentPw,
-        changePassword: changePw,
-        token: JSON.parse(sessionStorage.getItem("accessToken")!)
-      })
-      .then(res => {
-        alert("비밀번호가 변경되었습니다.");
-        setPwInfo({
-          currentPw: "",
-          changePw: "",
-          checkChangePw: ""
-        });
-      })
-      .catch(err => console.log(err));
-    } 
+        .patch("http://localhost:3000/user/changepassword", {
+          currentPassword: currentPw,
+          changePassword: changePw,
+          token: JSON.parse(sessionStorage.getItem("accessToken")!)
+        })
+        .then(res => {
+          console.log(res);
+          setPwInfo({
+            currentPw: "",
+            changePw: "",
+            checkChangePw: ""
+          });
+        })
+        .catch(err => console.log(err));
+    }
+
+//       .patch("http://localhost:3000/user/changepassword", {
+//         currentPassword: currentPw,
+//         changePassword: changePw,
+//         token: JSON.parse(sessionStorage.getItem("accessToken")!)
+//       })
+//       .then(res => {
+//         alert("비밀번호가 변경되었습니다.");
+//         setPwInfo({
+//           currentPw: "",
+//           changePw: "",
+//           checkChangePw: ""
+//         });
+//       })
+//       .catch(err => console.log(err));
+//     }  
+
   };
 
   const changeHiddenBtnClick = () => {
     setHidden(false);
   };
 
-  const reviewModalClick = () => { 
+  const reviewModalClick = () => {
     setReviewHidden(false);
-     dispatch(getUserReviewAction(userData.info.id));
-  }
+    dispatch(getUserReviewAction(userData.info.id));
+  };
 
   const closeReviewModal = () => {
     setReviewHidden(false);
-  }
+  };
 
   const bookmarkModalClick = async () => {
     const data = await axios.get(`http://localhost:3000/bookmark/${userData.info.id}`)

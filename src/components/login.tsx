@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
-import { postUser } from "../reducers/loginReducer";
+import { postUser, googleUser } from "../reducers/loginReducer";
 
 import { GoogleLogin } from "react-google-login";
 // const OpenButton = style.button`
@@ -128,24 +128,25 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
 
   const handlelogin = async (googleData: any) => {
     console.log(googleData);
-    const res = await fetch("http://localhost:3000/api/v1/auth/google", {
-      method: "POST",
-      body: JSON.stringify({
-        token: googleData.tokenId
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
+    // const res = await fetch("http://localhost:3000/api/v1/auth/google", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     token: googleData.tokenId
+    //   }),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // });
 
-    const data = await res.json();
-    // store returned user somehow
-    console.log(data);
-    if (data.email) {
-      sessionStorage.setItem("accessToken", JSON.stringify(googleData.tokenId));
-    } else {
-      alert("로그인을 실패했습니다");
-    }
+    await dispatch(googleUser(googleData));
+
+    // const data = await res.json();
+    // console.log(data); // data.email && data.nickname
+    // if (data.email) {
+    //   sessionStorage.setItem("accessToken", JSON.stringify(googleData.tokenId));
+    // } else {
+    //   alert("로그인을 실패했습니다");
+    // }
     handleHidden(true);
   };
 
@@ -180,6 +181,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
               buttonText="Log in with Google"
               onSuccess={handlelogin}
               onFailure={handlelogin}
+              cookiePolicy={"single_host_origin"}
             />
           </ButtonBox>
         </ModalContent>

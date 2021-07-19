@@ -17,6 +17,7 @@ import {
   ReviewButton,
   BookmarkButton,
 } from "./style";
+import BookmarkModal from "./bookmarkModal";
 import MypageReview from './mypageReview';
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
@@ -47,6 +48,8 @@ const MypageInfoCpn = () => {
 
   const [hidden, setHidden] = useState(true); // open
   const [reviewHidden, setReviewHidden] = useState(true);
+  const [bookmarkData, setBookmarkData] = useState([]);
+  const [bookHidden, setBookHidden] = useState(true);
 
   const handleHidden = (data: boolean) => {
     console.log(data);
@@ -107,6 +110,18 @@ const MypageInfoCpn = () => {
     setReviewHidden(false);
   }
 
+  const bookmarkModalClick = async () => {
+    const data = await axios.get(`http://localhost:3000/bookmark/${userData.info.id}`)
+    .then(res => res.data)
+    // 데이터 연결
+    setBookmarkData(data);
+    setBookHidden(false);
+  }
+
+  const handleCloseBookModal = (data: boolean) => {
+    setBookHidden(data)
+  }
+
   return (
     <>
     <MypageBody>
@@ -135,14 +150,14 @@ const MypageInfoCpn = () => {
           <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
         </MypageInfoBox>
         <ModalLink>
-          <BookmarkButton>즐겨찾기</BookmarkButton>
+          <BookmarkButton onClick={bookmarkModalClick}>즐겨찾기</BookmarkButton>
           <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
         </ModalLink>
       </MypageInfo>
     </MypageBody>
     <MypageReview reviewModalClick={reviewModalClick} reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
     <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
-    
+    <BookmarkModal bookmarkData={bookmarkData} bookHidden={bookHidden} handleCloseBookModal={handleCloseBookModal} />
     </>    
   )
 }

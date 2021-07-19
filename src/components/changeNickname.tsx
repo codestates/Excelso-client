@@ -13,7 +13,7 @@ const ModalBody = style.div`
   left: 0;
 
   display: ${(props) => (props.hidden ? "none" : "flex")};
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
   position: fixed;
 `;
@@ -85,6 +85,7 @@ const ChangeNickname = ({ hidden, handleHidden }: any) => {
     }).then(async  () => {
       // handleUserData(newNickname);
       console.log('change success')
+      console.log(url);
       // await axios.get("http://localhost:3000/auth")
       // .then((res) => {
       //   setNewNickname("");

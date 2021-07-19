@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
 import { postUser } from "../reducers/loginReducer";
 import axios from "axios";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 const ModalBody = style.div`
   width: 100%;
@@ -106,7 +108,7 @@ const ReviewUpdateModal = ({
   const updateReview = async () => {
     // const { coffee_id, content, token, rating } = req.body;
 
-    await axios.post("http://localhost:3000/review/update", {
+    await axios.post(`${url}/review/update`, {
       token: JSON.parse(sessionStorage.getItem("accessToken")!),
       coffee_id,
       content: inputValue,

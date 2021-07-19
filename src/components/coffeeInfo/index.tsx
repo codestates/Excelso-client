@@ -20,6 +20,8 @@ import { reviewT } from "../../reducers/reviewReducer";
 import axios from 'axios';
 import { RootState } from "../../reducers";
 import { useSelector, useDispatch } from "react-redux";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 interface CoffeeInfoI {
   suitCoffee: CoffeeT;
@@ -63,7 +65,7 @@ export default function CoffeeInfo({
     setToggle(!toggle);
     console.log(toggle, path, rating[0].rating);
  
-      await axios.post("http://localhost:3000/bookmark/addbookmark", {
+      await axios.post(`${url}/bookmark/addbookmark`, {
         token: JSON.parse(sessionStorage.getItem("accessToken")!),
         coffee_id: path,
         rating: rating[0].rating,

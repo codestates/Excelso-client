@@ -5,6 +5,8 @@ const GET_REVIEW = "GET_REVIEW";
 const ADD_REVIEW = "ADD_REVIEW";
 const DELETE_REVIEW = "DELETE_REVIEW";
 const GET_USER_REVIEW = "GET_USER_REVIEW";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 interface ADDREVIEW {
   type: typeof ADD_REVIEW;
@@ -38,7 +40,7 @@ export const addReviewAction = (
     try {
       // console.log("ADD_REVIEW ACTION");
       console.log(token);
-      const response = await axios.post("http://localhost:3000/review/update", {
+      const response = await axios.post(`${url}/review/update`, {
         coffee_id,
         content,
         rating,
@@ -57,7 +59,7 @@ export const addReviewAction = (
 
 export const deleteReivewAction = (coffee_id: number, token: string) => {
   return async (dispatch: Dispatch<DELETEREVIEW>) => {
-    const response = await axios.post("http://localhost:3000/review/delete", {
+    const response = await axios.post(`${url}/review/delete`, {
       coffee_id,
       token,
     });
@@ -74,7 +76,7 @@ export const getReviewAction = (coffee_id: number) => {
   return async (dispatch: Dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/review/${coffee_id}`
+        `${url}/review/${coffee_id}`
       );
       const data = await response.data;
 
@@ -95,7 +97,7 @@ export const getUserReviewAction = (user_id: number) => {
   return async (dispatch: Dispatch<GETUSERREVIEW>) => {
     try{
       const response = await axios.get(
-        `http://localhost:3000/review/u/${user_id}`
+        `${url}/review/u/${user_id}`
       );
       const data = await response.data;
 

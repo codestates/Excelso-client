@@ -1,10 +1,12 @@
 import { SignoutBarBody, SignoutBtn } from "./style"
 import axios from "axios"
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 const SignoutBar = () => {
   
   const signout = async () => {
-    await axios.post("http://localhost:3000/user/deleteuser", {
+    await axios.post(`${url}/user/deleteuser`, {
       token: JSON.parse(sessionStorage.getItem("accessToken")!),
     })
     .then(() => {

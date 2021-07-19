@@ -17,7 +17,7 @@ const ModalBody = style.div`
   height: 100%;
   top: 0;
   left: 0;
-  display: ${props => (props.hidden ? "none" : "flex")};
+  display: ${(props) => (props.hidden ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -91,7 +91,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
   const userData = useSelector((state: RootState) => state.loginReducer);
   const [inputData, setInputData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   // const openButtonClick = () => {
   //   handleHidden(false);
@@ -100,7 +100,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
   const ButtonClick = () => {
     setInputData({
       email: "",
-      password: ""
+      password: "",
     });
     console.log(userData);
     handleHidden(true);
@@ -115,14 +115,14 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     handleHidden(true);
     setInputData({
       email: "",
-      password: ""
+      password: "",
     });
   };
 
   const handleInputValue = (key: string) => (e: any) => {
     setInputData({
       ...inputData,
-      [key]: e.target.value
+      [key]: e.target.value,
     });
   };
 
@@ -156,7 +156,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
       {/* <Nav></Nav> */}
       <ModalBody hidden={hidden} onClick={ButtonClick}>
         <ModalOverlay></ModalOverlay>
-        <ModalContent onClick={e => e.stopPropagation()}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
           <LoginTitle>Excelso LOGIN</LoginTitle>
           <ContentBox>
             <ContentName>EMAIL</ContentName>

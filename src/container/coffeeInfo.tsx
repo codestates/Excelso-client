@@ -11,8 +11,8 @@ function CoffeesInfo({ location }: any) {
   const path = Number(location.pathname.split("/")[2]);
   const coffees = useSelector((state: RootState) => state.coffee.coffees);
   const reviews = useSelector((state: RootState) => state.getRivew.reviews);
-  const suitCoffee = coffees.filter(c => c.id === path);
-
+  const suitCoffee = coffees.filter((c) => c.id === path);
+  console.log("suitCoffee is:", suitCoffee);
   const [show, Setshow] = useState(false);
 
   const handleShow = (
@@ -28,11 +28,12 @@ function CoffeesInfo({ location }: any) {
 
   useEffect(() => {
     // 커피메뉴목록 호출
-    dispatch(coffeeList());
+    dispatch(coffeeList(suitCoffee && suitCoffee[0].category.toUpperCase()));
   }, [dispatch]);
 
   useEffect(() => {
     // console.log("useEffet getReviewAction"); 기존의 작성되어있는 리뷰 호출
+
     dispatch(getReviewAction(path));
   }, [dispatch, path]);
   return (

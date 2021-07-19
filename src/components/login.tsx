@@ -17,7 +17,7 @@ const ModalBody = style.div`
   height: 100%;
   top: 0;
   left: 0;
-  display: ${props => (props.hidden ? "none" : "flex")};
+  display: ${(props) => (props.hidden ? "none" : "flex")};
   justify-content: center;
   align-items: center;
   position: fixed;
@@ -91,7 +91,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
   const userData = useSelector((state: RootState) => state.loginReducer);
   const [inputData, setInputData] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   // const openButtonClick = () => {
   //   handleHidden(false);
@@ -100,7 +100,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
   const ButtonClick = () => {
     setInputData({
       email: "",
-      password: ""
+      password: "",
     });
     console.log(userData);
     handleHidden(true);
@@ -115,14 +115,14 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     handleHidden(true);
     setInputData({
       email: "",
-      password: ""
+      password: "",
     });
   };
 
   const handleInputValue = (key: string) => (e: any) => {
     setInputData({
       ...inputData,
-      [key]: e.target.value
+      [key]: e.target.value,
     });
   };
 
@@ -131,22 +131,19 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
     const res = await fetch("http://localhost:3000/api/v1/auth/google", {
       method: "POST",
       body: JSON.stringify({
-        token: googleData.tokenId
+        token: googleData.tokenId,
       }),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     });
 
     const data = await res.json();
     // store returned user somehow
     console.log(data);
     if (data.email) {
-      sessionStorage.setItem("accessToken", JSON.stringify(googleData.tokenId));
-    } else {
-      alert("로그인을 실패했습니다");
+      await dispatch(postUser(data.email, ""));
     }
-    handleHidden(true);
   };
 
   return (
@@ -155,7 +152,7 @@ const LoginCpn = ({ handleHidden, hidden }: any) => {
       {/* <Nav></Nav> */}
       <ModalBody hidden={hidden} onClick={ButtonClick}>
         <ModalOverlay></ModalOverlay>
-        <ModalContent onClick={e => e.stopPropagation()}>
+        <ModalContent onClick={(e) => e.stopPropagation()}>
           <LoginTitle>Excelso LOGIN</LoginTitle>
           <ContentBox>
             <ContentName>EMAIL</ContentName>

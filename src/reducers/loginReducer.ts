@@ -6,6 +6,7 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const SET_LOGIN = "SET_LOGIN";
 require("dotenv").config();
 const url = process.env.REACT_APP_API_ROOT;
+const url2 = process.env.REACT_APP_API_URL;
 
 export type successPayloadType = {
   accessToken: string;
@@ -72,7 +73,7 @@ export const googleUser = (googleData: any) => async (
   try {
     console.log("Start requset of postUser");
     await axios
-      .post(`${url}/api/v1/auth/google`, { // url
+      .post(`${url2}/api/v1/auth/google`, { // url
         token: googleData.tokenId
       })
       .then(res => {

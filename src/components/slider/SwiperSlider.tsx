@@ -6,22 +6,23 @@ import "swiper/swiper-bundle.min.css";
 import banner1 from "../../img/floor-1256804_1280.jpg";
 import banner2 from "../../img/cafe-1869656_1280.jpg";
 import banner3 from "../../img/coffee-918926_1280.jpg";
+import banner4 from "../../img/floor-1256804_1280 copy.jpg";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 const SwiperSlider: React.FC = () => {
   const items = [
     {
       id: 1,
-      url: banner1,
+      url: banner4
     },
     {
       id: 2,
-      url: banner2,
+      url: banner2
     },
     {
       id: 3,
-      url: banner3,
-    },
+      url: banner3
+    }
   ];
 
   return (

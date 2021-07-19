@@ -1,5 +1,7 @@
 import { Dispatch } from "redux";
 import axios from "axios";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 const ALL = "ALL";
 const COFFEE = "COFFEE";
@@ -55,7 +57,7 @@ export type CoffeeDispatch = ALLI | COFFEEI | TEAI | SMOOTHIEI;
 
 export const coffeeList = (value: any = "COFFEE") => {
   return async (dispatch: Dispatch<CoffeeDispatch>) => {
-    const response = await axios.get("http://localhost:3000/coffee/coffeeInfo");
+    const response = await axios.get(`${url}/coffee/coffeeInfo`);
     const data: CoffeeT[] = await response.data;
     return dispatch({
       type: value,

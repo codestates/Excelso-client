@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { AppContainerWithRouter } from "./App";
 import store from "./store";
 import { Provider } from "react-redux";
-import { GolbalStyles } from "./globalstyle";
+import { GlobalStyles } from "./globalstyle";
 import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <GolbalStyles />
+      <GlobalStyles />
       <Provider store={store}>
         <AppContainerWithRouter />
       </Provider>

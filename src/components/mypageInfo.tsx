@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../reducers";
-import { getUserReviewAction } from "../reducers/reviewReducer"
+import { getUserReviewAction } from "../reducers/reviewReducer";
 import {
   MypageBody,
   MypageTitle,
@@ -15,13 +15,17 @@ import {
   MypageInfoNick,
   ModalLink,
   ReviewButton,
-  BookmarkButton,
+  BookmarkButton
 } from "./style";
+
+import BookmarkModal from "./bookmarkModal";
 import MypageReview from './mypageReview';
 import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
-import { isConstructorDeclaration } from "typescript";
+import { getJSDocAugmentsTag, isConstructorDeclaration } from "typescript";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 interface userDataI {
   success: boolean;
@@ -33,6 +37,7 @@ interface userDataI {
   };
   message: string;
 }
+
 const MypageInfoCpn = () => {
   const dispatch = useDispatch();
   const [pwInfo, setPwInfo] = useState({
@@ -47,6 +52,10 @@ const MypageInfoCpn = () => {
 
   const [hidden, setHidden] = useState(true); // open
   const [reviewHidden, setReviewHidden] = useState(true);
+  const [bookmarkData, setBookmarkData] = useState([]);
+  const [bookHidden, setBookHidden] = useState(true);
+
+  const [goEmail, setGoEmail] = useState("");
 
   const handleHidden = (data: boolean) => {
     console.log(data);
@@ -57,7 +66,6 @@ const MypageInfoCpn = () => {
     console.log(data);
     setReviewHidden(data);
   };
-
 
   const handleChangePw = (key: string) => (e: any) => {
     setPwInfo({
@@ -75,36 +83,65 @@ const MypageInfoCpn = () => {
       return alert("모든 비밀번호를 기입해주세요.");
     } else if (!regex.test(changePw) && !regex.test(checkChangePw)) {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
-    } else{
+    } else {
       await axios
-      .patch("http://localhost:3000/user/changepassword", {
-        currentPassword: currentPw,
-        changePassword: changePw,
-        token: JSON.parse(sessionStorage.getItem("accessToken")!)
-      })
-      .then(res => {
-        alert("비밀번호가 변경되었습니다.");
-        setPwInfo({
-          currentPw: "",
-          changePw: "",
-          checkChangePw: ""
-        });
-      })
-      .catch(err => console.log(err));
-    } 
+        .patch(`${url}/user/changepassword`, {
+          currentPassword: currentPw,
+          changePassword: changePw,
+          token: JSON.parse(sessionStorage.getItem("accessToken")!)
+        })
+        .then(res => {
+          console.log(res);
+          setPwInfo({
+            currentPw: "",
+            changePw: "",
+            checkChangePw: ""
+          });
+        })
+        .catch(err => console.log(err));
+    }
+
+//       .patch("http://localhost:3000/user/changepassword", {
+//         currentPassword: currentPw,
+//         changePassword: changePw,
+//         token: JSON.parse(sessionStorage.getItem("accessToken")!)
+//       })
+//       .then(res => {
+//         alert("비밀번호가 변경되었습니다.");
+//         setPwInfo({
+//           currentPw: "",
+//           changePw: "",
+//           checkChangePw: ""
+//         });
+//       })
+//       .catch(err => console.log(err));
+//     }  
+
   };
 
   const changeHiddenBtnClick = () => {
     setHidden(false);
   };
 
-  const reviewModalClick = () => { 
+  const reviewModalClick = () => {
     setReviewHidden(false);
-     dispatch(getUserReviewAction(userData.info.id));
-  }
+    dispatch(getUserReviewAction(userData.info.id));
+  };
 
   const closeReviewModal = () => {
     setReviewHidden(false);
+  };
+
+  const bookmarkModalClick = async () => {
+    const data = await axios.get(`${url}/bookmark/${userData.info.id}`)
+    .then(res => res.data)
+    // 데이터 연결
+    setBookmarkData(data);
+    setBookHidden(false);
+  }
+
+  const handleCloseBookModal = (data: boolean) => {
+    setBookHidden(data)
   }
 
   return (
@@ -135,14 +172,14 @@ const MypageInfoCpn = () => {
           <ChangePwBtn onClick={changeButtonClick}>비밀번호 변경</ChangePwBtn>
         </MypageInfoBox>
         <ModalLink>
-          <BookmarkButton>즐겨찾기</BookmarkButton>
+          <BookmarkButton onClick={bookmarkModalClick}>즐겨찾기</BookmarkButton>
           <ReviewButton onClick={reviewModalClick}>리뷰</ReviewButton>
         </ModalLink>
       </MypageInfo>
     </MypageBody>
     <MypageReview reviewModalClick={reviewModalClick} reviewHidden={reviewHidden} reviewHandleHidden={reviewHandleHidden} />
     <ChangeNickname hidden={hidden} handleHidden={handleHidden} />
-    
+    <BookmarkModal bookmarkData={bookmarkData} bookHidden={bookHidden} handleCloseBookModal={handleCloseBookModal} />
     </>    
   )
 }

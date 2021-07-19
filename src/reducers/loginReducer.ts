@@ -4,6 +4,8 @@ import { Dispatch } from "redux";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const SET_LOGIN = "SET_LOGIN";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 export type successPayloadType = {
   accessToken: string;
@@ -50,7 +52,7 @@ export const setLogin = (accessToken: string) => {
     try {
       console.log("로그인유지시도");
       // console.log(token)
-      const response = await axios.post("http://localhost:3000/auth", {
+      const response = await axios.post(`${url}/auth`, {
         accessToken
       });
       const data = await response.data;
@@ -64,13 +66,35 @@ export const setLogin = (accessToken: string) => {
   };
 };
 
+export const googleUser = (googleData: any) => async (
+  dispatch: Dispatch<loginDispatchType>
+) => {
+  try {
+    console.log("Start requset of postUser");
+    await axios
+      .post(`${url}/api/v1/auth/google`, { // url
+        token: googleData.tokenId
+      })
+      .then(res => {
+        return dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data
+        });
+      });
+  } catch (err) {
+    dispatch({
+      type: LOGIN_FAIL
+    });
+  }
+};
+
 export const postUser = (email: string, password: string) => async (
   dispatch: Dispatch<loginDispatchType>
 ) => {
   try {
     console.log("Start requset of postUser");
     await axios
-      .post("http://localhost:3000/user/login", {
+      .post(`${url}/user/login`, {
         email,
         password
       })

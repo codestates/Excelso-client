@@ -40,10 +40,12 @@ export default function BrandCard(): JSX.Element {
           }}
         ></BrandCardInner>
         <BrandCardHidden>
-          브라질 원두 고유의 묵직한 바디감이잘 표현되어 있으며, 아몬드의
-          고소함과밀크초콜릿 같은 은은한 단맛이 균형을 이루는매력적인
-          블렌딩입니다.커피를 머금었을 때 입안을 감싸는 실키함이편안한 에프터를
-          선사합니다.
+          <div>
+            브라질 원두 고유의 묵직한 바디감이잘 표현되어 있으며, 아몬드의
+            고소함과밀크초콜릿 같은 은은한 단맛이 균형을 이루는매력적인
+            블렌딩입니다.커피를 머금었을 때 입안을 감싸는 실키함이편안한
+            에프터를 선사합니다.
+          </div>
         </BrandCardHidden>
       </div>
       <div className="cardContainer">
@@ -51,15 +53,17 @@ export default function BrandCard(): JSX.Element {
           style={{
             backgroundImage:
               'url("http://www.slist.kr/news/photo/202011/198169_338203_5518.jpg")',
-            backgroundPosition: "100px -80px"
+            backgroundPosition: "8.5vw -2vh"
           }}
         ></BrandCardInner>
         <BrandCardHidden>
-          트리플 바스켓으로 25g의 원두를 사용하는 Paul Bassett의 에스프레소는
-          완벽한 커피맛을 내기 위해 추출 시 컬러가 짙은 갈색에서 옅은 색으로
-          변하는 ‘컬러 체인지’가 일어나기 전, 크레마를 포함하여 약 24ml의
-          ‘에센스’만 추출합니다. 이렇게 추출한 커피는 단맛, 신맛, 바디의
-          밸런스가 완벽한 맛입니다.
+          <div>
+            트리플 바스켓으로 25g의 원두를 사용하는 Paul Bassett의 에스프레소는
+            완벽한 커피맛을 내기 위해 추출 시 컬러가 짙은 갈색에서 옅은 색으로
+            변하는 ‘컬러 체인지’가 일어나기 전, 크레마를 포함하여 약 24ml의
+            ‘에센스’만 추출합니다. 이렇게 추출한 커피는 단맛, 신맛, 바디의
+            밸런스가 완벽한 맛입니다.
+          </div>
         </BrandCardHidden>
       </div>
       <div className="cardContainer">
@@ -67,14 +71,16 @@ export default function BrandCard(): JSX.Element {
           style={{
             backgroundImage:
               'url("https://yt3.ggpht.com/Uqhf9MBF3oGaRUKoQS3V3aBXS-jRfWrpUBeE7gJZsUBQ7GtrF-iuS1jBQXVn061-CTuddvjiT7c=s900-c-k-c0x00ffffff-no-rj")',
-            backgroundPosition: "10px"
+            backgroundPosition: "1vw"
           }}
         ></BrandCardInner>
         <BrandCardHidden>
-          최고 품질로 선별된 최상급의 아라비카종을 사용하여 부드러운 맛과 향의
-          밸런스를 최적화시킨 프리미엄 블렌딩을 추구하며 명품 머신 라 심발리를
-          통해 추출되는 달콤의 에스프레소는 커피를 처음 접하는 고객부터 커피
-          애호가 모두 만족할 수 있는 맛과 향을 자랑합니다.
+          <div>
+            최고 품질로 선별된 최상급의 아라비카종을 사용하여 부드러운 맛과 향의
+            밸런스를 최적화시킨 프리미엄 블렌딩을 추구하며 명품 머신 라 심발리를
+            통해 추출되는 달콤의 에스프레소는 커피를 처음 접하는 고객부터 커피
+            애호가 모두 만족할 수 있는 맛과 향을 자랑합니다.
+          </div>
         </BrandCardHidden>
       </div>
       <div className="cardContainer">
@@ -96,7 +102,8 @@ export default function BrandCard(): JSX.Element {
           style={{
             backgroundImage:
               'url("https://mblogthumb-phinf.pstatic.net/20160606_150/ppanppane_1465209194979nyiGG_PNG/%C4%BF%C7%C7%BA%F3%B7%CE%B0%ED_%284%29.png?type=w800")',
-            backgroundSize: "cover"
+            backgroundSize: "cover",
+            backgroundPosition: "1vw"
           }}
         ></BrandCardInner>
         <BrandCardHidden>

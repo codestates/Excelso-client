@@ -4,6 +4,8 @@ import { Dispatch } from "redux";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const SET_LOGIN = "SET_LOGIN";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 export type successPayloadType = {
   accessToken: string;
@@ -50,7 +52,7 @@ export const setLogin = (accessToken: string) => {
     try {
       console.log("로그인유지시도");
       // console.log(token)
-      const response = await axios.post("http://localhost:3000/auth", {
+      const response = await axios.post(`${url}/auth`, {
         accessToken
       });
       const data = await response.data;
@@ -70,7 +72,7 @@ export const googleUser = (googleData: any) => async (
   try {
     console.log("Start requset of postUser");
     await axios
-      .post("http://localhost:3000/api/v1/auth/google", {
+      .post(`${url}/api/v1/auth/google`, {
         token: googleData.tokenId
       })
       .then(res => {
@@ -92,7 +94,7 @@ export const postUser = (email: string, password: string) => async (
   try {
     console.log("Start requset of postUser");
     await axios
-      .post("http://localhost:3000/user/login", {
+      .post(`${url}/user/login`, {
         email,
         password
       })

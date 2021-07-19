@@ -10,6 +10,8 @@ import {
   IsSameButton,
 } from "./style";
 import axios from "axios";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 const SignupInfoCpn = () => {
   const [userInfo, setUserInfo] = useState({
@@ -44,7 +46,7 @@ const SignupInfoCpn = () => {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
     }
     await axios
-      .post("http://localhost:3000/user/signup", {
+      .post(`${url}/user/signup`, {
         email,
         nickname,
         password,
@@ -71,7 +73,7 @@ const SignupInfoCpn = () => {
       return alert("이메일 형태를 확인해주세요.");
     }
     await axios
-      .post("http://localhost:3000/user/checkemail", {
+      .post(`${url}/user/checkemail`, {
         email: userInfo.email,
       })
       .then(() => {
@@ -91,7 +93,7 @@ const SignupInfoCpn = () => {
       return alert("닉네임을 적어주세요.");
     }
     await axios
-      .post("http://localhost:3000/user/checkNickname", {
+      .post(`${url}/user/checkNickname`, {
         nickname: userInfo.nickname,
       })
       .then(() => {

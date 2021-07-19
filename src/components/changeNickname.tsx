@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import style from "styled-components";
 import axios from 'axios';
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 
 const ModalBody = style.div`
@@ -77,7 +79,7 @@ const ChangeNickname = ({ hidden, handleHidden }: any) => {
   const [newNickname, setNewNickname] = useState("");
 
   const changeButtonClick = async () => {
-    await axios.patch("http://localhost:3000/user/changenickname", {
+    await axios.patch(`${url}/user/changenickname`, {
       token: JSON.parse(sessionStorage.getItem("accessToken")!),
       changeNickname: newNickname,
     }).then(async  () => {

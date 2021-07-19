@@ -24,6 +24,8 @@ import ChangeNickname from "./changeNickname";
 // import { StaticRouter } from "react-router";
 import axios from "axios";
 import { getJSDocAugmentsTag, isConstructorDeclaration } from "typescript";
+require("dotenv").config();
+const url = process.env.REACT_APP_API_ROOT;
 
 interface userDataI {
   success: boolean;
@@ -83,7 +85,7 @@ const MypageInfoCpn = () => {
       return alert("숫자와 영문자 조합으로 6자리 이상을 사용해야 합니다.");
     } else {
       await axios
-        .patch("http://localhost:3000/user/changepassword", {
+        .patch(`${url}/user/changepassword`, {
           currentPassword: currentPw,
           changePassword: changePw,
           token: JSON.parse(sessionStorage.getItem("accessToken")!)
@@ -131,7 +133,7 @@ const MypageInfoCpn = () => {
   };
 
   const bookmarkModalClick = async () => {
-    const data = await axios.get(`http://localhost:3000/bookmark/${userData.info.id}`)
+    const data = await axios.get(`${url}/bookmark/${userData.info.id}`)
     .then(res => res.data)
     // 데이터 연결
     setBookmarkData(data);

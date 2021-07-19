@@ -72,7 +72,7 @@ export const googleUser = (googleData: any) => async (
   try {
     console.log("Start requset of postUser");
     await axios
-      .post(`${url}/api/v1/auth/google`, {
+      .post(`${url}/api/v1/auth/google`, { // url
         token: googleData.tokenId
       })
       .then(res => {
